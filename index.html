@@ -5,13 +5,13 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>DBCheck · 开源数据库智能巡检与实时监控平台</title>
-<meta content="DBCheck v26.7.29.2 是一款开源、跨平台、支持 21 种主流与国产数据库的智能巡检与实时监控平台。内置 340+ 巡检规则、实时监控大屏、本地 AI 诊断与一键报告，让数据库运维可知、可控、可防。" name="description"/>
+<meta content="DBCheck v26.7.30.1 是一款开源、跨平台、支持 21 种主流与国产数据库的智能巡检与实时监控平台。内置 340+ 巡检规则、实时监控大屏、本地 AI 诊断与一键报告，让数据库运维可知、可控、可防。" name="description"/>
 <meta content="数据库巡检, 数据库监控, 信创, 国产化替代, DBA工具, Kingbase, 达梦, 优炫, UXDB, Oracle, MySQL, PostgreSQL, 开源, 数据库可观测性" name="keywords"/>
 <meta content="Jack Ge (fiyo)" name="author"/>
 <meta content="index, follow" name="robots"/>
 <!-- Open Graph -->
 <meta content="DBCheck · 开源数据库巡检与实时监控平台" property="og:title"/>
-<meta content="开源跨平台数据库智能巡检与实时监控平台 v26.7.29.2，本地 AI 诊断、数据不出网。" property="og:description"/>
+<meta content="开源跨平台数据库智能巡检与实时监控平台 v26.7.30.1，本地 AI 诊断、数据不出网。" property="og:description"/>
 <meta content="website" property="og:type"/>
 <meta content="https://fiyo.github.io/DBCheck" property="og:url"/>
 <meta content="https://fiyo.github.io/DBCheck/dbcheck_logo_banner.png" property="og:image"/>
@@ -551,7 +551,7 @@
 <section class="hero">
 <div class="hero-inner">
 <div class="hero-copy">
-<div class="hero-badge"><span class="pulse"></span> 社区版 · 开源 Apache 2.0 协议 · <span id="verBadge">v26.7.29.2</span></div>
+<div class="hero-badge"><span class="pulse"></span> 社区版 · 开源 Apache 2.0 协议 · <span id="verBadge">v26.7.30.1</span></div>
 <h1>让数据库运维<br/><span class="gradient-text">可知 · 可控 · 可防</span></h1>
 <p class="sub">DBCheck 是一款<strong>开源、跨平台</strong>、支持 <strong>21 种</strong>主流与国产数据库的智能巡检与实时监控平台。内置 340+ 巡检规则、实时监控大屏、本地 AI 诊断与一键报告，把 DBA 的重复劳动变成一键流程。</p>
 <div class="hero-tags">
@@ -1248,7 +1248,7 @@ python web_ui.py</pre>
       'use strict';
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // ---- version badge (from version.json, fallback v26.7.29.2) ----
+      // ---- version badge (from version.json, fallback v26.7.30.1) ----
       fetch('version.json').then(function(r){return r.json();}).then(function(d){ if(d&&d.version){ var el=document.getElementById('verBadge'); if(el) el.textContent=d.version; } }).catch(function(){});
 
       // ---- mobile menu ----
