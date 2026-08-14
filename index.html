@@ -5,13 +5,13 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>DBCheck · 开源数据库智能巡检与实时监控平台</title>
-<meta content="DBCheck v26.8.6.1 是一款开源、跨平台、支持 21 种主流与国产数据库的智能巡检与实时监控平台。内置 344+ 巡检规则、实时监控大屏、本地 AI 诊断与一键报告，让数据库运维可知、可控、可防。" name="description"/>
+<meta content="DBCheck v26.8.14.0 是一款开源、跨平台、支持 21 种主流与国产数据库的智能巡检与实时监控平台。内置 344+ 巡检规则、实时监控大屏、本地 AI 诊断与一键报告，让数据库运维可知、可控、可防。" name="description"/>
 <meta content="数据库巡检, 数据库监控, 信创, 国产化替代, DBA工具, Kingbase, 达梦, 优炫, UXDB, Oracle, MySQL, PostgreSQL, 开源, 数据库可观测性" name="keywords"/>
 <meta content="Jack Ge (fiyo)" name="author"/>
 <meta content="index, follow" name="robots"/>
 <!-- Open Graph -->
 <meta content="DBCheck · 开源数据库巡检与实时监控平台" property="og:title"/>
-<meta content="开源跨平台数据库智能巡检与实时监控平台 v26.8.6.1，本地 AI 诊断、数据不出网。" property="og:description"/>
+<meta content="开源跨平台数据库智能巡检与实时监控平台 v26.8.14.0，本地 AI 诊断、数据不出网。" property="og:description"/>
 <meta content="website" property="og:type"/>
 <meta content="https://fiyo.github.io/DBCheck" property="og:url"/>
 <meta content="https://fiyo.github.io/DBCheck/dbcheck_logo_banner.png" property="og:image"/>
@@ -403,25 +403,8 @@
     .foot-links a:hover{color:#fff}
     .foot-bottom{max-width:var(--maxw);margin:28px auto 0;padding:18px 24px 0;border-top:1px solid rgba(255,255,255,.08);font-size:.8rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
-    /* ---------- PROFESSIONAL (premium gold/purple) ---------- */
+    /* ---------- 商业支持 accent (gold tag kept for #support) ---------- */
     .sec-tag.pro{background:linear-gradient(120deg,rgba(224,169,59,.2),rgba(10,42,110,.2));color:#a16207;border-color:rgba(224,169,59,.3);box-shadow:none}
-    #professional{background:linear-gradient(180deg,rgba(255,250,240,.6),rgba(248,245,255,.6));backdrop-filter:blur(3px)}
-    #professional .sec-head h2{font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.12;letter-spacing:-.02em}
-    .hl-gold{background:linear-gradient(120deg,#e0a93b,#caa23a);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .hl-purple{background:linear-gradient(120deg,#0A2A6E,#0A2A6E);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .hl-indigo{background:linear-gradient(120deg,#0A2A6E,var(--primary-2));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .show-text h3.bar{border-left:3px solid var(--gold);padding-left:14px}
-    .pro-diagram{position:relative;display:grid;place-items:center;padding:30px;border-radius:28px;box-shadow:var(--shadow-sm);
-      background:linear-gradient(135deg,rgba(10,42,110,.05),rgba(74,159,216,.05));
-      border:1px solid rgba(255,255,255,.6);overflow:hidden;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-    .pro-diagram::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(10,42,110,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(10,42,110,.06) 1px,transparent 1px);background-size:28px 28px;opacity:.3}
-    .pro-diagram svg{position:relative;width:100%;max-width:380px;height:auto}
-    .bm.pro{border:1.5px solid var(--gold);box-shadow:0 22px 56px -30px rgba(224,169,59,.6);background:linear-gradient(160deg,rgba(255,252,244,.9),rgba(250,246,255,.9))}
-    .bm.pro .bmk{color:#b45309;background:rgba(245,158,11,.14);display:inline-block;padding:4px 11px;border-radius:999px}
-    #professional .fcard::before{background:linear-gradient(90deg,var(--gold),var(--pro-purple));opacity:.45}
-    #professional .fcard:hover::before{opacity:1}
-    .pro-flow .flow-cap{max-width:760px;margin:14px auto 0;font-size:.88rem;line-height:1.7;color:var(--text-2);text-align:center}
-    .pro-flow .flow-cap strong{color:var(--primary-2)}
 
     /* ---------- VERSION COMPARE TABLE ---------- */
     .cmp-wrap{max-width:940px;margin:0 auto;background:var(--surface);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.7);border-radius:var(--radius);padding:8px 24px 18px;box-shadow:var(--shadow);overflow:hidden}
@@ -436,7 +419,6 @@
     .cmp-table tbody tr:last-child td{border-bottom:none}
     .cmp-table td.y{color:var(--green);font-weight:700}
     .cmp-table td.n{color:var(--text-3);font-weight:700}
-    .cmp-table .pro-only{background:rgba(245,158,11,.07)}
     .cmp-table td:first-child{font-weight:600;color:var(--text)}
     .cmp-note{margin-top:18px;text-align:center;font-size:.86rem;color:var(--text-2)}
     .cmp-note b{color:#a16207}
@@ -537,8 +519,7 @@
 <a href="#quickstart">快速开始</a>
 <a href="#databases">数据库</a>
 <a href="#usecases">使用场景</a>
-<a href="#professional">专业版</a>
-<a href="#model">版本对比</a>
+<a href="#model">版本与支持</a>
 <a href="#support">商业支持</a>
 </nav>
 <div class="nav-actions">
@@ -552,7 +533,7 @@
 <section class="hero">
 <div class="hero-inner">
 <div class="hero-copy">
-<div class="hero-badge"><span class="pulse"></span> 社区版 · 开源 Apache 2.0 协议 · <span id="verBadge">v26.8.6.1</span></div>
+<div class="hero-badge"><span class="pulse"></span> 社区版 · 开源 Apache 2.0 协议 · <span id="verBadge">v26.8.14.0</span></div>
 <h1>让数据库运维<br/><span class="gradient-text">可知 · 可控 · 可防</span></h1>
 <p class="sub">DBCheck 是一款<strong>开源、跨平台</strong>、支持 <strong>21 种</strong>主流与国产数据库的智能巡检与实时监控平台。内置 344+ 巡检规则、实时监控大屏、本地 AI 诊断与一键报告，把 DBA 的重复劳动变成一键流程。</p>
 <div class="hero-tags">
@@ -810,6 +791,8 @@
 <li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-book"></use></svg></span><div class="fi-text"><h3>RAG 知识库</h3><p>上传 PDF / Word / MD / TXT 自动向量化，诊断时自动检索最佳实践。</p></div></li>
 <li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-trending-up"></use></svg></span><div class="fi-text"><h3>Oracle AWR 分析</h3><p>上传 AWR HTML，自动解析生成结构化 Word 报告 + AI 诊断建议。</p></div></li>
 <li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-hard-drive"></use></svg></span><div class="fi-text"><h3>DM8 离线存储检查</h3><p>无需启动实例，直接扫描 .DBF 识别坏块（全零 / 常量填充 / 截断），支持本地与 SSH 远程。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-users"></use></svg></span><div class="fi-text"><h3>协同诊断中枢</h3><p>一支由五位诊断专员（监控哨兵 / 巡检分析 / 根因定位 / SQL 治理 / 锁等待分析）组成的 AI DBA 团队，在<strong>共享上下文（黑板）</strong>上串行接力、彼此印证，输出根因推断与可执行处置方案。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-target"></use></svg></span><div class="fi-text"><h3>方案代价验证</h3><p>协同诊断中枢为每个处置方案标注执行代价、回滚风险与维护窗口提示，给出"先易后难"的执行顺序，避免盲改生产。</p></div></li>
 </ul>
 </div>
 <!-- 3 报告与协作 -->
@@ -819,6 +802,8 @@
 <li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-link"></use></svg></span><div class="fi-text"><h3>分享链接</h3><p>一键生成在线链接，免登录查看，权限隔离 + 访问统计，随时撤销。</p></div></li>
 <li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-check-circle"></use></svg></span><div class="fi-text"><h3>巡检章节管理</h3><p>每种库可独立增删 / 排序 / 启停章节，Word 报告动态生成。</p></div></li>
 <li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-bell"></use></svg></span><div class="fi-text"><h3>定时任务与通知</h3><p>Cron 快捷预设，完成后自动邮件（带附件）或 Webhook（企微 / 钉钉 / 自定义）。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-ticket"></use></svg></span><div class="fi-text"><h3>工单闭环</h3><p>诊断结果一键生成工单，跟踪待处理 / 处理中 / 已解决 / 已关闭 / 已取消并回写反馈，形成"诊断 → 派单 → 处置 → 反馈"运维闭环。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-clock"></use></svg></span><div class="fi-text"><h3>诊断历史</h3><p>每次协同诊断完整落库并生成诊断编号（diag_no），支持按数据源筛选、列表浏览与一键回填工单。</p></div></li>
 </ul>
 </div>
 <!-- 4 扩展与运维 -->
@@ -829,167 +814,15 @@
 <li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-server"></use></svg></span><div class="fi-text"><h3>服务器巡检</h3><p>独立于数据库巡检，覆盖 CPU / 内存 / 磁盘 / 网络 / 服务 / 进程。</p></div></li>
 <li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-terminal"></use></svg></span><div class="fi-text"><h3>REST API</h3><p>API Key 认证，便于接入 CI/CD 与监控系统，融入自动化运维流水线。</p></div></li>
 <li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-globe"></use></svg></span><div class="fi-text"><h3>多语言 · 主题 · 分发</h3><p>中 / 英文切换，深 / 浅色主题；Docker 多架构镜像 + 一键打包分发。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-microscope"></use></svg></span><div class="fi-text"><h3>eBPF 内核级采集</h3><p>块设备服务时间 p50/p95/p99 微秒级百分位、按进程 IO / CPU 归因，精度高于 psutil，擅长暴露长尾抖动。<strong>默认关闭、仅 opt-in</strong>，绝不在生产默认注入内核程序。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-terminal"></use></svg></span><div class="fi-text"><h3>SSH 安全宿主采集</h3><p>零侵入、无需预装 Python 也可采集：纯 Shell 脚本经 SSH 注入远端执行，凭据 Fernet 加密，防打满、防悬挂、防泄露。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-shield"></use></svg></span><div class="fi-text"><h3>统一可观测视图</h3><p>宿主资源（eBPF / psutil / SSH）+ 数据库细粒度指标 + 巡检风险统一到同一分析平面，根因定位成为可串联的证据链。</p></div></li>
 </ul>
 </div>
 </div>
 </div>
 </section>
-<!-- ================= PROFESSIONAL ================= -->
-<section class="block showcase" id="professional">
-<div class="container">
-<div class="sec-head reveal">
-<div class="sec-tag pro"><svg aria-hidden="true" class="svg-ico"><use href="#icon-crown"></use></svg> 专业版 · Professional</div>
-<h2>从<span class="hl-gold">发现风险</span>到<span class="hl-purple">解释原因</span>、给出顺序、<span class="hl-indigo">闭环处置</span></h2>
-<p>在标准巡检、实时监控、健康大屏之上，专业版引入<span class="gradient-text">协同诊断中枢</span>、eBPF 内核级采集、SSH 安全采集、诊断历史与工单闭环，面向中大型生产环境的深度可观测与根因定位。所有描述均对应真实实现——专业，首先意味着<span style="color:var(--text)">可信</span>。</p>
-</div>
-<!-- 协同诊断中枢 showcase -->
-<div class="show-row rev reveal">
-<div class="show-text">
-<h3 class="bar">协同诊断中枢</h3>
-<p>把「一句目标 + 一个数据源」交给一组专精的<strong>诊断专员</strong>，在<strong>共享上下文（黑板）</strong>上协同推进，最终输出异常发现、根因推断、可执行处置方案，以及方案代价评估与工单。</p>
-<ul>
-<li><i class="fas fa-check"></i> 五位诊断专员：运行监控哨兵 · 深度巡检分析 · 根因定位 · SQL 治理 · 锁等待分析</li>
-<li><i class="fas fa-check"></i> 共享上下文（黑板）：结论在同一空间接力，不层层失真、不压缩</li>
-<li><i class="fas fa-check"></i> 方案代价验证：推荐「先易后难」执行顺序，标注是否需维护窗口</li>
-<li><i class="fas fa-check"></i> 流式协同：SSE 实时展示"现在谁在研判"，而非黑箱等待</li>
-</ul>
-</div>
-<div class="show-art pro-diagram">
-<svg fill="none" height="260" viewbox="0 0 360 260" width="360">
-<defs>
-<lineargradient id="bbFill" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#0D1426"></stop><stop offset="1" stop-color="#0A2A6E"></stop></lineargradient>
-</defs>
-<!-- connection lines (subtle gold dashed, slow flow) -->
-<g opacity=".45" stroke="#e0a93b" stroke-dasharray="4 6" stroke-width="1.2">
-<line class="flow" x1="180" x2="54" y1="130" y2="34"></line>
-<line class="flow" x1="180" x2="306" y1="130" y2="34"></line>
-<line class="flow" x1="180" x2="48" y1="130" y2="186"></line>
-<line class="flow" x1="180" x2="312" y1="130" y2="186"></line>
-<line class="flow" x1="180" x2="180" y1="130" y2="228"></line>
-</g>
-<!-- blackboard (shared context) -->
-<rect fill="url(#bbFill)" height="76" rx="16" stroke="#e0a93b" stroke-width="2" width="84" x="138" y="92"></rect>
-<text fill="#fff" font-family="Inter" font-size="14" font-weight="700" text-anchor="middle" x="180" y="124">共享上下文</text>
-<text fill="#cbd5e1" font-family="Inter" font-size="12" font-weight="500" text-anchor="middle" x="180" y="144">黑板</text>
-<!-- specialist nodes: unified glass pills + 3 coordinated accent colors -->
-<g class="sp sp1"><rect fill="rgba(255,255,255,.9)" height="28" rx="14" stroke="#e0a93b" stroke-width="1.5" width="92" x="8" y="20"></rect><text fill="#1e293b" font-family="Inter" font-size="11" font-weight="700" text-anchor="middle" x="54" y="38">监控哨兵</text></g>
-<g class="sp sp2"><rect fill="rgba(255,255,255,.9)" height="28" rx="14" stroke="#0A2A6E" stroke-width="1.5" width="92" x="260" y="20"></rect><text fill="#1e293b" font-family="Inter" font-size="11" font-weight="700" text-anchor="middle" x="306" y="38">巡检分析</text></g>
-<g class="sp sp3"><rect fill="rgba(255,255,255,.9)" height="28" rx="14" stroke="#64748b" stroke-width="1.5" width="92" x="2" y="172"></rect><text fill="#1e293b" font-family="Inter" font-size="11" font-weight="700" text-anchor="middle" x="48" y="190">根因定位</text></g>
-<g class="sp sp4"><rect fill="rgba(255,255,255,.9)" height="28" rx="14" stroke="#e0a93b" stroke-width="1.5" width="92" x="266" y="172"></rect><text fill="#1e293b" font-family="Inter" font-size="11" font-weight="700" text-anchor="middle" x="312" y="190">SQL 治理</text></g>
-<g class="sp sp5"><rect fill="rgba(255,255,255,.9)" height="28" rx="14" stroke="#0A2A6E" stroke-width="1.5" width="92" x="134" y="214"></rect><text fill="#1e293b" font-family="Inter" font-size="11" font-weight="700" text-anchor="middle" x="180" y="232">锁等待分析</text></g>
-</svg>
-</div>
-</div>
-<!-- AI DBA 团队：五位诊断专员 -->
-<div class="sec-head reveal" style="margin-top:66px">
-<div class="sec-tag pro"><svg aria-hidden="true" class="svg-ico"><use href="#icon-users"></use></svg> 五位诊断专员 · AI DBA 团队</div>
-<h2>不是黑箱，是一支<span class="hl-gold">各司其职</span>的 DBA 团队</h2>
-<p>协同诊断中枢把「一句目标 + 一个数据源」拆给五位专精的<strong>诊断专员</strong>。他们在<span class="gradient-text">共享上下文（黑板）</span>上串行接力、彼此印证，最终汇成带根因与处置顺序的诊断报告——既专业，又透明。</p>
-</div>
-<!-- 协同流程示意 -->
-<div class="pro-flow reveal" style="margin:26px 0 6px;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.7);border-radius:22px;padding:18px 14px;backdrop-filter:blur(10px)">
-<svg aria-label="五位诊断专员在共享上下文黑板上串行协同的流程示意" role="img" viewbox="0 0 820 340" width="100%">
-<defs>
-<lineargradient id="bb2" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#0D1426"></stop><stop offset="1" stop-color="#0A2A6E"></stop></lineargradient>
-<lineargradient id="out2" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#e0a93b"></stop><stop offset="1" stop-color="#0A2A6E"></stop></lineargradient>
-<marker id="ah" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3"><path d="M0,0 L6,3 L0,6 Z" fill="#94a3b8"></path></marker>
-<marker id="ahg" markerheight="7" markerwidth="7" orient="auto" refx="5" refy="2.5"><path d="M0,0 L5,2.5 L0,5 Z" fill="#e0a93b"></path></marker>
-<marker id="ahp" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3"><path d="M0,0 L6,3 L0,6 Z" fill="#0A2A6E"></path></marker>
-</defs>
-<!-- 横向流程：输入 + 五位专员 -->
-<g font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">
-<rect fill="rgba(255,255,255,.92)" height="56" rx="14" stroke="#e0a93b" stroke-width="1.8" width="96" x="16" y="50"></rect>
-<text fill="#1e293b" x="64" y="82">目标</text>
-<text fill="#64748b" font-size="11" font-weight="500" x="64" y="98">+ 数据源</text>
-<rect fill="rgba(255,255,255,.92)" height="56" rx="14" stroke="#e0a93b" stroke-width="1.8" width="96" x="140" y="50"></rect>
-<text fill="#1e293b" font-size="12" x="188" y="79">运行监控</text>
-<text fill="#1e293b" font-size="12" x="188" y="95">哨兵</text>
-<rect fill="rgba(255,255,255,.92)" height="56" rx="14" stroke="#0A2A6E" stroke-width="1.8" width="96" x="264" y="50"></rect>
-<text fill="#1e293b" font-size="12" x="312" y="79">深度巡检</text>
-<text fill="#1e293b" font-size="12" x="312" y="95">分析</text>
-<rect fill="rgba(255,255,255,.92)" height="56" rx="14" stroke="#64748b" stroke-width="1.8" width="96" x="388" y="50"></rect>
-<text fill="#1e293b" font-size="12" x="436" y="79">根因</text>
-<text fill="#1e293b" font-size="12" x="436" y="95">定位</text>
-<rect fill="rgba(255,255,255,.92)" height="56" rx="14" stroke="#e0a93b" stroke-width="1.8" width="96" x="512" y="50"></rect>
-<text fill="#1e293b" font-size="12" x="560" y="79">SQL</text>
-<text fill="#1e293b" font-size="12" x="560" y="95">治理</text>
-<rect fill="rgba(255,255,255,.92)" height="56" rx="14" stroke="#0A2A6E" stroke-width="1.8" width="96" x="636" y="50"></rect>
-<text fill="#1e293b" font-size="12" x="684" y="79">锁等待</text>
-<text fill="#1e293b" font-size="12" x="684" y="95">分析</text>
-</g>
-<!-- 节点间串联箭头 -->
-<g fill="none" marker-end="url(#ah)" stroke="#94a3b8" stroke-width="2">
-<line x1="112" x2="138" y1="78" y2="78"></line>
-<line x1="236" x2="262" y1="78" y2="78"></line>
-<line x1="360" x2="386" y1="78" y2="78"></line>
-<line x1="484" x2="510" y1="78" y2="78"></line>
-<line x1="608" x2="634" y1="78" y2="78"></line>
-</g>
-<!-- 写入黑板 -->
-<g fill="none" marker-end="url(#ahg)" opacity=".7" stroke="#e0a93b" stroke-dasharray="4 5" stroke-width="1.6">
-<line x1="64" x2="64" y1="106" y2="168"></line>
-<line x1="188" x2="188" y1="106" y2="168"></line>
-<line x1="312" x2="312" y1="106" y2="168"></line>
-<line x1="436" x2="436" y1="106" y2="168"></line>
-<line x1="560" x2="560" y1="106" y2="168"></line>
-<line x1="684" x2="684" y1="106" y2="168"></line>
-</g>
-<!-- 黑板（共享上下文） -->
-<rect fill="url(#bb2)" height="70" rx="18" stroke="#e0a93b" stroke-width="2" width="788" x="16" y="170"></rect>
-<text fill="#fff" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="800" text-anchor="middle" x="410" y="200">共享上下文（黑板）</text>
-<text fill="#cbd5e1" font-family="Inter, system-ui, sans-serif" font-size="12" text-anchor="middle" x="410" y="224">五位专员的结论在同一空间接力 —— 不层层失真、不压缩、不黑箱</text>
-<!-- 输出 -->
-<line marker-end="url(#ahp)" stroke="#0A2A6E" stroke-width="2.4" x1="410" x2="410" y1="240" y2="262"></line>
-<rect fill="url(#out2)" height="60" rx="16" width="296" x="262" y="264"></rect>
-<text fill="#fff" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="410" y="290">处置方案 · 代价评估 · 工单</text>
-<text fill="#f1e7d0" font-family="Inter, system-ui, sans-serif" font-size="11" text-anchor="middle" x="410" y="310">异常发现 + 根因推断 + 可执行顺序</text>
-</svg>
-<p class="flow-cap">串行协同：协同诊断中枢依次调度五位专员，单专员异常不中断整体；每位专员把结论写入黑板，下一位在其上接力，并由<strong>方案代价验证</strong>给出「先易后难」的执行顺序与维护窗口提示。全程 SSE 流式展示「现在谁在研判」。</p>
-</div>
-<!-- 五位专员详卡 -->
-<div class="grid-3 stagger" style="margin-top:30px">
-<div class="fcard glow reveal">
-<div class="fic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-bell"></use></svg></div>
-<h3>运行监控哨兵</h3>
-<p>持续盯防连接数、活跃会话、QPS/TPS、缓冲命中率、复制延迟等实时指标与告警阈值；第一时间发现异常波动、连接风暴、资源打满，把「现在有问题 + 初步信号」写入黑板，触发后续深度研判。</p>
-<span class="tag">实时哨兵</span>
-</div>
-<div class="fcard glow reveal">
-<div class="fic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-search"></use></svg></div>
-<h3>深度巡检分析</h3>
-<p>在 344+ 巡检规则命中与深采指标之上做二次关联，把零散风险串联成「风险画像」；区分偶发抖动与结构性隐患，指出最该优先处理的问题类别，为根因定位提供结构化线索。</p>
-<span class="tag">风险画像</span>
-</div>
-<div class="fcard glow reveal">
-<div class="fic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-target"></use></svg></div>
-<h3>根因定位</h3>
-<p>对异常做因果推断，区分「表象」与「根因」，给出可信度与完整证据链；不只治标，更解释「为什么会这样」，把根因结论落到黑板，供治理专员制定处置。</p>
-<span class="tag">因果推断</span>
-</div>
-<div class="fcard glow reveal">
-<div class="fic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-database"></use></svg></div>
-<h3>SQL 治理</h3>
-<p>审查慢 SQL、全表扫描、缺失/冗余索引、危险 DDL、隐式类型转换等；给出改写建议与索引方案，并评估执行代价与回滚风险，把「怎么改」落成可执行 SQL。</p>
-<span class="tag">索引与改写</span>
-</div>
-<div class="fcard glow reveal">
-<div class="fic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-link"></use></svg></div>
-<h3>锁等待分析</h3>
-<p>剖析锁等待链与阻塞会话，定位「谁阻塞了谁、卡在哪把锁」；给出 Kill / 重试 / 事务拆分 / 索引优化等处置顺序，在高并发争用场景快速止血。</p>
-<span class="tag">阻塞止血</span>
-</div>
-</div>
-<!-- professional capability grid -->
-<div class="grid-3 stagger" style="margin-top:52px">
-<div class="fcard glow reveal"><div class="fic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-microscope"></use></svg></div><h3>eBPF 内核级采集</h3><p>块设备服务时间 p50/p95/p99 微秒级百分位、按进程 IO / CPU 归因，精度高于 psutil，擅长暴露长尾抖动。<strong>默认关闭、仅 opt-in</strong>，绝不在生产默认注入内核程序。</p></div>
-<div class="fcard glow reveal"><div class="fic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-terminal"></use></svg></div><h3>SSH 安全宿主采集</h3><p>零侵入、无需预装 Python 也可采集：纯 Shell 脚本经 SSH 注入远端执行。全局并发信号量 + 超时看门狗 + 凭据 Fernet 加密，防打满、防悬挂、防泄露。</p></div>
-<div class="fcard glow reveal"><div class="fic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-globe"></use></svg></div><h3>统一可观测视图</h3><p>宿主资源（eBPF / psutil / SSH）+ 数据库细粒度指标 + 巡检风险统一到同一分析平面，根因定位成为可串联的证据链。</p></div>
-<div class="fcard glow reveal"><div class="fic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-ticket"></use></svg></div><h3>工单闭环</h3><p>诊断结果一键生成工单，跟踪待处理 / 处理中 / 已解决 / 已关闭 / 已取消并回写反馈，形成「诊断 → 派单 → 处置 → 反馈」运维闭环。</p></div>
-<div class="fcard glow reveal"><div class="fic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-clock"></use></svg></div><h3>诊断历史</h3><p>每次协同诊断完整落库，生成诊断编号（diag_no），支持按数据源筛选、列表浏览、查看完整结果与一键回填工单。</p></div>
-<div class="fcard glow reveal"><div class="fic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-shield"></use></svg></div><h3>克制而可信</h3><p>采集失败透明暴露真实原因而非静默空值；eBPF 全程可降级、零依赖 Shell 兜底——在"能力强"与"不添乱"之间取平衡。</p></div>
-</div>
-</div>
-</section>
+
 <!-- ================= HOW IT WORKS ================= -->
 <section class="block alt" id="how">
 <div class="container">
@@ -1041,7 +874,7 @@ python web_ui.py</pre>
 <div class="hint">需要 Python 3.10+，访问 http://localhost:5003。</div>
 </div>
 </div>
-<p class="cmp-note">社区版提供 Docker / 源码部署；专业版不提供 Docker 拉取，以授权许可方式交付。</p>
+<p class="cmp-note">社区版提供 Docker / compose / 源码多种部署方式，完全开源、可私有化部署。</p>
 </div>
 </section>
 <!-- ================= SUPPORTED DB ================= -->
@@ -1115,55 +948,23 @@ python web_ui.py</pre>
 <section class="block" id="model">
 <div class="container">
 <div class="sec-head reveal">
-<div class="sec-tag"><svg aria-hidden="true" class="svg-ico"><use href="#icon-book-open"></use></svg> 版本对比</div>
-<h2>社区版免费开源，专业版为授权产品</h2>
-<p>标准版聚焦"发现风险"，专业版进一步回答"为什么"和"先做什么"。两者共用同一套巡检、监控与报告底座。</p>
+<div class="sec-tag"><svg aria-hidden="true" class="svg-ico"><use href="#icon-book-open"></use></svg> 版本与支持</div>
+<h2>开源免费，商业支持可选</h2>
+<p>DBCheck 社区版永久免费、Apache 2.0 开源，前述全部能力（含协同诊断中枢、eBPF / SSH 采集、工单闭环）均随社区版开放；如需稳定的官方技术支持，可购买商业支持服务。</p>
 </div>
-<div class="cmp-wrap reveal">
-<table class="cmp-table">
-<thead>
-<tr><th>能力</th><th>社区版</th><th>专业版</th></tr>
-</thead>
-<tbody>
-<tr><td>多数据源智能巡检</td><td class="y">✅</td><td class="y">✅</td></tr>
-<tr><td>实时监控 + 健康大屏</td><td class="y">✅</td><td class="y">✅</td></tr>
-<tr><td>本地 AI 诊断赋能</td><td class="y">✅</td><td class="y">✅</td></tr>
-<tr><td>插件体系</td><td class="y">✅</td><td class="y">✅</td></tr>
-<tr><td>企业级 RBAC</td><td class="y">✅</td><td class="y">✅</td></tr>
-<tr class="pro-only"><td>eBPF 内核级宿主采集</td><td class="n">—</td><td class="y">✅ opt-in</td></tr>
-<tr class="pro-only"><td>SSH 安全宿主采集</td><td class="n">—</td><td class="y">✅</td></tr>
-<tr class="pro-only"><td>协同诊断中枢（5 专员 + 黑板）</td><td class="n">—</td><td class="y">✅</td></tr>
-<tr class="pro-only"><td>方案代价验证</td><td class="n">—</td><td class="y">✅</td></tr>
-<tr class="pro-only"><td>工单闭环</td><td class="n">—</td><td class="y">✅</td></tr>
-<tr class="pro-only"><td>诊断历史</td><td class="n">—</td><td class="y">✅</td></tr>
-<tr class="pro-only"><td>统一可观测视图（宿主 + DB + 巡检）</td><td class="n">—</td><td class="y">✅</td></tr>
-</tbody>
-</table>
-<p class="cmp-note">专业版 <b>不提供试用</b>，也<b>不提供 Docker 镜像拉取</b>；以授权许可方式交付，需获取许可证后部署。</p>
-</div>
-<div class="bm-grid stagger" style="margin-top:54px">
+<div class="bm-grid stagger" style="margin-top:8px;grid-template-columns:repeat(2,1fr)">
 <div class="bm reveal">
-<div class="bmk">COMMUNITY · 已发布</div>
-<h3>社区版 · 免费开源</h3>
+<div class="bmk">COMMUNITY · 免费开源</div>
+<h3>社区版 · 永久免费</h3>
 <div class="price">Apache 2.0 开源</div>
 <ul>
 <li><i class="fas fa-check"></i> 全量巡检与实时监控能力</li>
 <li><i class="fas fa-check"></i> 21 种数据库适配</li>
 <li><i class="fas fa-check"></i> 本地 AI 诊断 / 报告导出</li>
+<li><i class="fas fa-check"></i> 协同诊断中枢 + eBPF / SSH 采集</li>
+<li><i class="fas fa-check"></i> 工单闭环 + 诊断历史</li>
 <li><i class="fas fa-check"></i> 插件系统与 REST API</li>
 </ul>
-</div>
-<div class="bm pro reveal">
-<div class="bmk">PROFESSIONAL · 已发布</div>
-<h3>专业版 · 授权产品</h3>
-<div class="price">需获取授权许可</div>
-<ul>
-<li><i class="fas fa-check"></i> 社区版全部能力</li>
-<li><i class="fas fa-check"></i> 协同诊断中枢 + 方案代价验证</li>
-<li><i class="fas fa-check"></i> eBPF / SSH 内核与宿主采集</li>
-<li><i class="fas fa-check"></i> 工单闭环 + 诊断历史</li>
-</ul>
-<div class="no-trial"><i class="fas fa-info-circle"></i> 不提供试用 · 不提供 Docker 拉取</div>
 </div>
 <div class="bm reveal">
 <div class="bmk">SERVICES · 已开放</div>
@@ -1258,7 +1059,7 @@ python web_ui.py</pre>
 <h2>开始使用 DBCheck</h2>
 <p>免费、开源、可私有化部署。欢迎试用、提建议，或与我们交流你的数据库运维场景。</p>
 <div class="hero-cta">
-<a class="btn btn-outline" href="#professional"><i class="fas fa-crown"></i> 了解专业版</a>
+<a class="btn btn-outline" href="#support"><i class="fas fa-award"></i> 商业支持</a>
 <a class="btn btn-ghost" href="#quickstart"><i class="fas fa-rocket"></i> 快速开始</a>
 <a class="btn btn-primary" href="https://github.com/fiyo/DBCheck" target="_blank"><i class="fab fa-github"></i> 查看开源项目</a>
 </div>
@@ -1279,7 +1080,7 @@ python web_ui.py</pre>
 <a href="#quickstart">快速开始</a>
 <a href="#databases">数据库</a>
 <a href="#usecases">使用场景</a>
-<a href="#model">版本对比</a>
+<a href="#model">版本与支持</a>
 <a href="#support">商业支持</a>
 <a href="mailto:sdfiyon@gmail.com">联系</a>
 </div>
@@ -1291,13 +1092,6 @@ python web_ui.py</pre>
 </footer>
 </div>
 <style>
-    /* animated connection flow in professional diagram */
-    .flow{animation:flow 10s linear infinite}
-    @keyframes flow{to{stroke-dashoffset:-24}}
-    .sp{transform-box:fill-box;transform-origin:center;animation:spFloat 8s ease-in-out infinite}
-    .sp2{animation-delay:.4s}.sp3{animation-delay:.8s}.sp4{animation-delay:1.2s}.sp5{animation-delay:1.6s}
-    @keyframes spFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
-    @media (prefers-reduced-motion: reduce){.flow,.sp{animation:none}}
     /* ===== commercial support pricing ===== */
     .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px}
     .price-card{position:relative;background:var(--surface);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.7);border-radius:var(--radius);padding:34px 28px 30px;box-shadow:var(--shadow);overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
@@ -1327,7 +1121,7 @@ python web_ui.py</pre>
       'use strict';
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // ---- version badge (from version.json, fallback v26.8.6.1) ----
+      // ---- version badge (from version.json, fallback v26.8.14.0) ----
       fetch('version.json').then(function(r){return r.json();}).then(function(d){ if(d&&d.version){ var el=document.getElementById('verBadge'); if(el) el.textContent=d.version; } }).catch(function(){});
 
       // ---- mobile menu ----
