@@ -321,6 +321,21 @@
     .dbchip img{height:20px;width:20px;object-fit:contain}
     .dbchip i{color:var(--primary-2);font-size:1.05rem}
     .dbchip.more{background:rgba(10,42,110,.08);border:1px dashed var(--border-strong);font-weight:600;font-size:.88rem;color:var(--text-2)}
+    /* 客户实践 */
+    .cust-wrap{margin-top:42px}
+    .cust-head{margin-bottom:18px}
+    .cust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    @media(max-width:980px){.cust-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.cust-grid{grid-template-columns:1fr}}
+    .cust-card{display:flex;flex-direction:column;gap:12px;padding:20px 18px;border-radius:16px;background:var(--surface);
+      border:1px solid rgba(255,255,255,.7);box-shadow:var(--shadow);transition:transform .22s,box-shadow .22s,border-color .22s}
+    .cust-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--primary)}
+    .cust-tag{display:inline-block;align-self:flex-start;font-size:.72rem;font-weight:700;letter-spacing:.03em;
+      color:var(--primary);background:rgba(10,42,110,.08);padding:3px 10px;border-radius:999px}
+    .cust-desc{font-size:.9rem;line-height:1.65;color:var(--text-2);margin:0;flex:1}
+    .cust-name{display:flex;align-items:center;gap:8px;font-weight:700;font-size:.95rem;color:var(--text)}
+    .cust-name::before{content:"";width:22px;height:22px;border-radius:50%;flex:0 0 22px;
+      background:linear-gradient(135deg,var(--primary),var(--primary-2))}
 
     /* ---------- HOW IT WORKS ---------- */
     .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative;max-width:1080px;margin:10px auto 0}
@@ -886,26 +901,26 @@ python web_ui.py</pre>
 <p>21 种主流与国产数据库统一接入，正是信创混合架构下的现实需求。</p>
 </div>
 <div class="dbchips reveal">
-<span class="dbchip"><img alt="" onerror="this.replaceWith(document.createTextNode('🐬'))" src="mysql.png"/> MySQL</span>
+<span class="dbchip"><img alt="MySQL" onerror="this.outerHTML='<i class=\\'fas fa-database\\'></i>'" src="assets/db_logos/mysql.png"/> MySQL</span>
 <span class="dbchip"><i class="fas fa-database"></i> MariaDB</span>
-<span class="dbchip"><img alt="" src="tidb.png"/> TiDB</span>
-<span class="dbchip"><img alt="" onerror="this.replaceWith(document.createTextNode('🐘'))" src="postgresql.png"/> PostgreSQL</span>
-<span class="dbchip"><i class="fas fa-database"></i> IvorySQL</span>
-<span class="dbchip"><i class="fas fa-database"></i> KingbaseES</span>
-<span class="dbchip"><img alt="" src="oracle.png"/> Oracle</span>
-<span class="dbchip"><img alt="" src="sqlserver.png"/> SQL Server</span>
-<span class="dbchip"><img alt="" src="dm.png"/> 达梦 DM8</span>
-<span class="dbchip"><i class="fas fa-database"></i> YashanDB</span>
-<span class="dbchip"><i class="fas fa-database"></i> GBase 8s</span>
-<span class="dbchip"><i class="fas fa-database"></i> MongoDB</span>
-<span class="dbchip"><i class="fas fa-database"></i> ClickHouse</span>
-<span class="dbchip"><i class="fas fa-database"></i> 优炫 UXDB</span>
-<span class="dbchip"><i class="fas fa-database"></i> 瀚高 HGDB</span>
+<span class="dbchip"><img alt="TiDB" onerror="this.outerHTML='<i class=\\'fas fa-database\\'></i>'" src="assets/db_logos/tidb.png"/> TiDB</span>
+<span class="dbchip"><img alt="PostgreSQL" onerror="this.outerHTML='<i class=\\'fas fa-database\\'></i>'" src="assets/db_logos/pg.png"/> PostgreSQL</span>
+<span class="dbchip"><img alt="IvorySQL" onerror="this.outerHTML='<i class=\\'fas fa-database\\'></i>'" src="assets/db_logos/ivorysql.png"/> IvorySQL</span>
+<span class="dbchip"><img alt="KingbaseES" onerror="this.outerHTML='<i class=\\'fas fa-database\\'></i>'" src="assets/db_logos/kingbase.png"/> KingbaseES</span>
+<span class="dbchip"><img alt="Oracle" onerror="this.outerHTML='<i class=\\'fas fa-database\\'></i>'" src="assets/db_logos/oracle.png"/> Oracle</span>
+<span class="dbchip"><img alt="SQL Server" onerror="this.outerHTML='<i class=\\'fas fa-database\\'></i>'" src="assets/db_logos/sqlserver.png"/> SQL Server</span>
+<span class="dbchip"><img alt="达梦 DM8" onerror="this.outerHTML='<i class=\\'fas fa-database\\'></i>'" src="assets/db_logos/dm.png"/> 达梦 DM8</span>
+<span class="dbchip"><img alt="YashanDB" onerror="this.outerHTML='<i class=\\'fas fa-database\\'></i>'" src="assets/db_logos/yashandb.png"/> YashanDB</span>
+<span class="dbchip"><img alt="GBase 8s" onerror="this.outerHTML='<i class=\\'fas fa-database\\'></i>'" src="assets/db_logos/gbase.png"/> GBase 8s</span>
+<span class="dbchip"><img alt="MongoDB" onerror="this.outerHTML='<i class=\\'fas fa-database\\'></i>'" src="assets/db_logos/mongodb.png"/> MongoDB</span>
+<span class="dbchip"><img alt="ClickHouse" onerror="this.outerHTML='<i class=\\'fas fa-database\\'></i>'" src="assets/db_logos/clickhouse.png"/> ClickHouse</span>
+<span class="dbchip"><img alt="优炫 UXDB" onerror="this.outerHTML='<i class=\\'fas fa-database\\'></i>'" src="assets/db_logos/uxdb.png"/> 优炫 UXDB</span>
+<span class="dbchip"><img alt="瀚高 HGDB" onerror="this.outerHTML='<i class=\\'fas fa-database\\'></i>'" src="assets/db_logos/hgdb.png"/> 瀚高 HGDB</span>
 <span class="dbchip"><i class="fas fa-database"></i> TDSQL-C MySQL</span>
-<span class="dbchip"><i class="fas fa-database"></i> OceanBase</span>
-<span class="dbchip"><i class="fas fa-database"></i> Redis</span>
-<span class="dbchip"><i class="fas fa-database"></i> Redis Cluster</span>
-<span class="dbchip"><i class="fas fa-database"></i> DB2</span>
+<span class="dbchip"><img alt="OceanBase" onerror="this.outerHTML='<i class=\\'fas fa-database\\'></i>'" src="assets/db_logos/oceanbase.png"/> OceanBase</span>
+<span class="dbchip"><img alt="Redis" onerror="this.outerHTML='<i class=\\'fas fa-database\\'></i>'" src="assets/db_logos/redis.png"/> Redis</span>
+<span class="dbchip"><img alt="Redis Cluster" onerror="this.outerHTML='<i class=\\'fas fa-database\\'></i>'" src="assets/db_logos/redis.png"/> Redis Cluster</span>
+<span class="dbchip"><img alt="DB2" onerror="this.outerHTML='<i class=\\'fas fa-database\\'></i>'" src="assets/db_logos/db2.png"/> DB2</span>
 <span class="dbchip more"><i class="fas fa-plus"></i> 持续扩展中</span>
 </div>
 </div>
@@ -924,6 +939,33 @@ python web_ui.py</pre>
 <div class="mcard span2 glow reveal"><div class="ic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-lock"></use></svg></div><h3>数据安全与等保</h3><p>纯本地部署、离线 AI 诊断，数据不出网，契合金融政务等高监管场景。</p></div>
 <div class="mcard span4 glow reveal"><div class="ic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-zap"></use></svg></div><h3>故障快速定位</h3><p>实时监控大屏 + 历史趋势，异常早发现、根因快定位，缩短 MTTR。</p></div>
 <div class="mcard span2 glow reveal" style="display:grid;place-items:center;background:linear-gradient(135deg,rgba(10,42,110,.08),rgba(74,159,216,.08));border-style:dashed"><div style="text-align:center;color:var(--text-2);font-weight:600"><i class="fas fa-plus-circle" style="color:var(--primary);font-size:1.4rem;display:block;margin-bottom:8px"></i> 更多场景持续涌现</div></div>
+</div>
+<div class="cust-wrap reveal">
+  <div class="cust-head">
+    <div class="sec-tag"><svg aria-hidden="true" class="svg-ico"><use href="#icon-users"></use></svg> 客户实践</div>
+  </div>
+  <div class="cust-grid stagger">
+    <div class="cust-card glow reveal">
+      <span class="cust-tag">装备制造 · A 股上市</span>
+      <p class="cust-desc">产线 MES 与 ERP 后端横跨 Oracle、达梦与 MySQL，原靠人工巡检易漏复制延迟与表空间瓶颈。引入 RaccoonX 后统一纳管，定时报告 + 实时大屏让隐患提前暴露，运维交接从"靠人盯"转为"看板驱动"。</p>
+      <div class="cust-name">某大型装备制造集团</div>
+    </div>
+    <div class="cust-card glow reveal">
+      <span class="cust-tag">光伏设备 · 创业板上市</span>
+      <p class="cust-desc">研发与制造数据以 PostgreSQL、MongoDB 为主，等保要求数据不出网。采用 RaccoonX 纯本地部署 + 离线 AI 诊断，在合规前提下实现库内风险自动发现与一键整改建议，无需外联任何云端服务。</p>
+      <div class="cust-name">某光伏智能装备企业</div>
+    </div>
+    <div class="cust-card glow reveal">
+      <span class="cust-tag">汽车零部件 · 合资</span>
+      <p class="cust-desc">多工厂数据库类型繁杂（SQL Server、MySQL、KingbaseES），运维标准难统一。通过 RaccoonX 配置基线管理拉齐推荐值，偏差自动告警，新厂上线即可复用同一套巡检模板，复制成本大幅降低。</p>
+      <div class="cust-name">某汽车核心零部件供应商</div>
+    </div>
+    <div class="cust-card glow reveal">
+      <span class="cust-tag">精密制造 · 华东</span>
+      <p class="cust-desc">高并发交易库以 MySQL 与 Redis 为主，锁等待与慢查询曾影响排产节奏。RaccoonX 实时监控 + 智能诊断快速定位根因，平均故障恢复时间（MTTR）明显缩短，排产稳定性显著提升。</p>
+      <div class="cust-name">某精密轴承制造企业</div>
+    </div>
+  </div>
 </div>
 </div>
 </section>
