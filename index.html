@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
@@ -19,7 +18,7 @@
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="RaccoonX · 开源数据库巡检与实时监控平台" name="twitter:title"/>
 <meta content="开源跨平台数据库智能巡检与实时监控平台" name="twitter:description"/>
-<!-- Fonts: modern pairing with system fallback -->
+<!-- Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
@@ -27,37 +26,42 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <style>
     /* ============================================================
-       RaccoonX — Refined Landing
-       Glassmorphism · Organic blobs · Asymmetric grid · Motion
-       Brand: navy/tech-green · Pro accent: gold
+       RaccoonX — 橙红主色 · 现代 Landing 重构
+       配色：暖橙红 (brand) + 红强调 + 暖中性背景
        ============================================================ */
     :root{
-      --primary:#0A2A6E;
-      --primary-2:#4A9FD8;
-      --cyan:#00C8A0;
-      --violet:#0A4A8A;
-      --pink:#00C8A0;
-      --green:#00C8A0;
-      --amber:#f59e0b;
+      /* ---- 品牌橙红系（主色）---- */
+      --primary:#F0511E;        /* 主橙红 */
+      --primary-2:#FF7A3D;      /* 亮橙 */
+      --primary-3:#FF9A3D;      /* 暖橙 */
+      --red:#E23B2E;            /* 红强调 */
+      --red-deep:#C2410C;       /* 深红棕 */
+      --amber:#FFB454;          /* 琥珀 */
 
-      --gold:#e0a93b;
-      --gold-2:#caa23a;
-      --pro-purple:#0A4A8A;
+      /* ---- 深色背景（hero / cta / footer）---- */
+      --ink-deep:#2A0E08;
+      --ink-deep-2:#5A160C;
+      --ink-deep-3:#7A1E0C;
 
-      --bg:#F8F9FA;
-      --surface:rgba(255,255,255,.72);
-      --surface-solid:#ffffff;
-      --surface-2:#F8F9FA;
-      --border:rgba(10,42,110,.12);
-      --border-strong:rgba(10,42,110,.20);
+      /* ---- 浅色背景与表面 ---- */
+      --bg:#FFF8F3;
+      --bg-2:#FFEFE6;
+      --surface:#FFFFFF;
+      --surface-soft:#FFF4EC;
+      --border:rgba(240,81,30,.16);
+      --border-strong:rgba(240,81,30,.28);
 
-      --text:#0D1426;
-      --text-2:#48566b;
-      --text-3:#8b97ab;
+      /* ---- 文字 ---- */
+      --text:#221410;
+      --text-2:#5B463C;
+      --text-3:#9C8478;
+      --on-dark:#FFF3EC;
+      --on-dark-2:#FFD9C7;
 
-      --shadow-sm:0 2px 10px rgba(13,20,38,.05);
-      --shadow:0 22px 50px -28px rgba(10,42,110,.38);
-      --shadow-lg:0 40px 90px -34px rgba(10,42,110,.45);
+      /* ---- 阴影 / 圆角 ---- */
+      --shadow-sm:0 2px 10px rgba(90,22,12,.06);
+      --shadow:0 24px 54px -30px rgba(194,65,12,.42);
+      --shadow-lg:0 42px 96px -34px rgba(194,65,12,.5);
       --radius:24px;
       --radius-lg:30px;
       --maxw:1180px;
@@ -76,442 +80,383 @@
       -webkit-font-smoothing:antialiased;
       overflow-x:hidden;
       background:
-        radial-gradient(120% 80% at 100% 0%, #E0F2F8 0%, transparent 55%),
-        radial-gradient(110% 70% at 0% 18%, #E0F2F8 0%, transparent 50%),
-        linear-gradient(180deg,#F8FAFB 0%,#F0F2F5 100%);
+        radial-gradient(120% 80% at 100% 0%, #FFE7D6 0%, transparent 55%),
+        radial-gradient(110% 70% at 0% 18%, #FFE0CC 0%, transparent 50%),
+        linear-gradient(180deg,#FFF8F3 0%,#FCEEE4 100%);
       background-attachment:fixed;
     }
     a{color:inherit;text-decoration:none}
     .container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
     .mono{font-family:var(--mono)}
     .gradient-text{
-      background:linear-gradient(115deg,var(--primary) 0%,#0A4A8A 35%,var(--primary-2) 100%);
+      background:linear-gradient(115deg,var(--red) 0%,var(--primary) 45%,var(--primary-3) 100%);
       -webkit-background-clip:text;background-clip:text;color:transparent;
     }
 
-    /* ---------- background atmosphere (CSS blobs + grid) ---------- */
+    /* ---------- 背景氛围（CSS 漂浮光斑 + 网格）---------- */
     .bg-atmos{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-    .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;will-change:transform}
-    .blob.b1{width:46vw;height:46vw;left:-12vw;top:-10vw;background:radial-gradient(circle,#A8D0E8 0%,transparent 70%);animation:float1 20s ease-in-out infinite}
-    .blob.b2{width:40vw;height:40vw;right:-10vw;top:6vw;background:radial-gradient(circle,#4A9FD8 0%,transparent 70%);animation:float2 24s ease-in-out infinite}
-    .blob.b3{width:38vw;height:38vw;left:30vw;top:60vh;background:radial-gradient(circle,#F0E0B8 0%,transparent 70%);opacity:.42;animation:float3 28s ease-in-out infinite}
-    .blob.b4{width:30vw;height:30vw;right:8vw;bottom:-8vw;background:radial-gradient(circle,#C8E4F8 0%,transparent 70%);opacity:.34;animation:float1 26s ease-in-out infinite reverse}
+    .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.42;will-change:transform}
+    .blob.b1{width:46vw;height:46vw;left:-12vw;top:-10vw;background:radial-gradient(circle,#FFB07A 0%,transparent 70%);animation:float1 20s ease-in-out infinite}
+    .blob.b2{width:40vw;height:40vw;right:-10vw;top:6vw;background:radial-gradient(circle,#FF7A3D 0%,transparent 70%);animation:float2 24s ease-in-out infinite}
+    .blob.b3{width:38vw;height:38vw;left:30vw;top:60vh;background:radial-gradient(circle,#FFC59A 0%,transparent 70%);opacity:.36;animation:float3 28s ease-in-out infinite}
+    .blob.b4{width:30vw;height:30vw;right:8vw;bottom:-8vw;background:radial-gradient(circle,#FFAE7A 0%,transparent 70%);opacity:.30;animation:float1 26s ease-in-out infinite reverse}
     @keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(4vw,4vh) scale(1.08)}}
     @keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-3vw,3vh) scale(1.1)}}
     @keyframes float3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(3vw,-3vh) scale(1.06)}}
-    .bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
-      background-image:linear-gradient(rgba(10,42,110,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(10,42,110,.06) 1px,transparent 1px);
+    .bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.45;
+      background-image:linear-gradient(rgba(240,81,30,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(240,81,30,.06) 1px,transparent 1px);
       background-size:54px 54px;
       -webkit-mask-image:radial-gradient(80% 70% at 50% 30%,#000 0%,transparent 80%);
       mask-image:radial-gradient(80% 70% at 50% 30%,#000 0%,transparent 80%)}
     .page{position:relative;z-index:1}
 
-    /* ---------- scroll progress + nav ---------- */
+    /* ---------- 滚动进度 + 导航 ---------- */
     .progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:300;
-      background:linear-gradient(90deg,var(--primary),#4A9FD8,var(--primary-2));
-      box-shadow:0 0 12px rgba(10,42,110,.6);transition:width .12s linear}
+      background:linear-gradient(90deg,var(--red),var(--primary),var(--primary-3));
+      box-shadow:0 0 12px rgba(240,81,30,.6);transition:width .12s linear}
     header.nav{position:sticky;top:0;z-index:200;transition:background .3s,box-shadow .3s,border-color .3s;
-      background:rgba(247,248,253,.55);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid transparent}
-    header.nav.scrolled{background:rgba(255,255,255,.72);backdrop-filter:saturate(180%) blur(16px);
-      box-shadow:0 10px 30px -22px rgba(10,42,110,.35);border-bottom:1px solid rgba(10,42,110,.12)}
+      background:rgba(255,248,243,.55);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid transparent}
+    header.nav.scrolled{background:rgba(255,255,255,.78);backdrop-filter:saturate(180%) blur(16px);
+      box-shadow:0 10px 30px -22px rgba(194,65,12,.4);border-bottom:1px solid var(--border)}
     .nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-    .brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:700;font-size:1.25rem;letter-spacing:-.02em}
-    .brand img{height:40px;width:40px;object-fit:contain;flex-shrink:0;display:block}
-    .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(0,200,160,.18);animation:ping 2.4s ease-in-out infinite}
-    @keyframes ping{0%,100%{box-shadow:0 0 0 4px rgba(0,200,160,.18)}50%{box-shadow:0 0 0 7px rgba(0,200,160,.05)}}
-    .nav-links{display:flex;gap:6px;font-weight:500;color:var(--text-2);font-size:.92rem}
+    .brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:700;font-size:1.25rem;letter-spacing:-.02em;color:var(--text)}
+    .brand img{height:40px;width:40px;object-fit:contain;flex-shrink:0;display:block;border-radius:10px;background:linear-gradient(135deg,#fff,#fff4ec);box-shadow:var(--shadow-sm)}
+    .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--primary);box-shadow:0 0 0 4px rgba(240,81,30,.18);animation:ping 2.4s ease-in-out infinite}
+    @keyframes ping{0%,100%{box-shadow:0 0 0 4px rgba(240,81,30,.18)}50%{box-shadow:0 0 0 7px rgba(240,81,30,.04)}}
+    .nav-links{display:flex;gap:4px;font-weight:500;color:var(--text-2);font-size:.92rem}
     .nav-links a{position:relative;padding:8px 12px;border-radius:10px;transition:color .2s,background .2s}
-    .nav-links a:hover{color:var(--primary-2);background:rgba(74,159,216,.1)}
-    .nav-links a.active{color:var(--primary);background:rgba(74,159,216,.12)}
-    .nav-links a.active::after{content:"";position:absolute;left:12px;right:12px;bottom:2px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--primary),var(--primary-2))}
+    .nav-links a:hover{color:var(--primary);background:rgba(240,81,30,.10)}
+    .nav-links a.active{color:var(--primary);background:rgba(240,81,30,.12)}
+    .nav-links a.active::after{content:"";position:absolute;left:12px;right:12px;bottom:2px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--red),var(--primary))}
     .nav-actions{display:flex;gap:10px;align-items:center}
     .menu-toggle{display:none;font-size:1.3rem;color:var(--text);background:none;border:none;cursor:pointer}
 
+    /* ---------- 按钮 ---------- */
     .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.92rem;
       padding:11px 19px;border-radius:13px;cursor:pointer;transition:transform .18s,box-shadow .25s,background .25s,border-color .25s;
       border:1px solid transparent;white-space:nowrap;position:relative;overflow:hidden}
     .btn:active{transform:translateY(1px)}
-    .btn-primary{background:linear-gradient(120deg,var(--primary),#0A4A8A);color:#fff;box-shadow:0 14px 30px -14px rgba(10,42,110,.7)}
+    .btn-primary{background:linear-gradient(120deg,var(--red),var(--primary) 55%,var(--primary-2));color:#fff;box-shadow:0 14px 30px -14px rgba(226,59,46,.7)}
     .btn-primary::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,.42) 50%,transparent 100%);transform:translateX(-130%);transition:none}
-    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 40px -16px rgba(10,42,110,.85)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 40px -16px rgba(226,59,46,.85)}
     .btn-primary:hover::after{transform:translateX(130%);transition:transform .9s ease}
-    .btn-ghost{background:var(--surface-solid);color:var(--text);border-color:var(--border-strong);box-shadow:var(--shadow-sm)}
+    .btn-ghost{background:var(--surface);color:var(--text);border-color:var(--border-strong);box-shadow:var(--shadow-sm)}
     .btn-ghost:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-2px)}
-    .btn-outline{background:transparent;color:var(--primary-2);border-color:var(--primary);font-weight:600}
-    .btn-outline:hover{background:rgba(10,42,110,.09)}
+    .btn-outline{background:transparent;color:var(--primary);border-color:var(--primary);font-weight:600}
+    .btn-outline:hover{background:rgba(240,81,30,.09);transform:translateY(-2px)}
 
     /* ---------- HERO ---------- */
-    .hero{position:relative;padding:84px 0 72px;overflow:hidden}
+    .hero{position:relative;padding:74px 0 70px;overflow:hidden}
     .hero-inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:0 24px;
-      display:grid;grid-template-columns:1.04fr .96fr;gap:54px;align-items:center}
+      display:grid;grid-template-columns:1.02fr .98fr;gap:54px;align-items:center}
     .hero-copy{position:relative}
+    .hero-copy > *{opacity:0;animation:rise .9s cubic-bezier(.2,.7,.3,1) forwards}
+    .hero-copy > *:nth-child(1){animation-delay:.05s}
+    .hero-copy > *:nth-child(2){animation-delay:.16s}
+    .hero-copy > *:nth-child(3){animation-delay:.27s}
+    .hero-copy > *:nth-child(4){animation-delay:.38s}
+    .hero-copy > *:nth-child(5){animation-delay:.49s}
+    @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
     .hero-badge{display:inline-flex;align-items:center;gap:9px;padding:7px 16px;border-radius:999px;
       background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow-sm);backdrop-filter:blur(8px);
       font-size:.82rem;font-weight:600;color:var(--text-2);margin-bottom:24px}
-    .hero-badge .pulse{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(0,200,160,.5);animation:pulse 2s infinite}
-    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,200,160,.5)}70%{box-shadow:0 0 0 10px rgba(0,200,160,0)}100%{box-shadow:0 0 0 0 rgba(0,200,160,0)}}
+    .hero-badge .pulse{width:8px;height:8px;border-radius:50%;background:var(--primary);box-shadow:0 0 0 0 rgba(240,81,30,.5);animation:pulse 2s infinite}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(240,81,30,.5)}70%{box-shadow:0 0 0 10px rgba(240,81,30,0)}100%{box-shadow:0 0 0 0 rgba(240,81,30,0)}}
     .hero h1{font-family:var(--display);font-size:clamp(2.3rem,4.6vw,3.7rem);line-height:1.08;font-weight:700;letter-spacing:-.03em;margin-bottom:20px}
-    .hero p.sub{font-size:clamp(1rem,1.35vw,1.14rem);color:var(--text-2);margin:0 0 24px;max-width:30em}
+    .hero p.sub{font-size:clamp(1rem,1.35vw,1.14rem);color:var(--text-2);margin:0 0 24px;max-width:32em}
     .hero-tags{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
     .hero-tags span{font-size:.8rem;font-weight:600;color:var(--text-2);background:var(--surface);border:1px solid var(--border);padding:7px 14px;border-radius:999px;box-shadow:var(--shadow-sm);backdrop-filter:blur(8px)}
     .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
-    .hero-cta .btn{padding:13px 22px;font-size:.97rem}
 
-    .hero-visual{position:relative;display:flex;flex-direction:column;align-items:center}
-    .hero-visual::before{content:"";position:absolute;inset:-30px -20px;z-index:-1;border-radius:40px;
-      background:radial-gradient(60% 60% at 50% 40%,rgba(10,42,110,.22),transparent 70%);filter:blur(20px)}
-    .mini-dash{background:rgba(255,255,255,.82);backdrop-filter:blur(16px);
-      border:1px solid rgba(255,255,255,.7);border-radius:26px;overflow:hidden;
-      box-shadow:var(--shadow-lg);transform:perspective(1400px) rotateY(-8deg) rotateX(3deg);transition:transform .5s ease;animation:hover-float 7s ease-in-out infinite}
-    @keyframes hover-float{0%,100%{transform:perspective(1400px) rotateY(-8deg) rotateX(3deg) translateY(0)}50%{transform:perspective(1400px) rotateY(-5deg) rotateX(2deg) translateY(-10px)}}
-    .hero-visual:hover .mini-dash{transform:perspective(1400px) rotateY(0) rotateX(0) translateY(-6px)}
+    /* hero 视觉区：吉祥物 + 监控卡 */
+    .hero-visual{position:relative;display:flex;justify-content:center;align-items:center;min-height:380px}
+    .mascot{position:relative;z-index:3;animation:mascotFloat 6s ease-in-out infinite}
+    @keyframes mascotFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-14px) rotate(1deg)}}
+    .mascot-card{position:relative;background:linear-gradient(160deg,#fff,#FFF1E7);border:1px solid var(--border-strong);
+      border-radius:28px;padding:14px;box-shadow:var(--shadow-lg);overflow:hidden}
+    .mascot-card::before{content:"";position:absolute;inset:-2px;border-radius:28px;padding:2px;
+      background:linear-gradient(135deg,var(--primary-3),var(--red),var(--primary));
+      -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.55}
+    .mascot-card img{display:block;width:300px;height:300px;object-fit:contain;filter:drop-shadow(0 18px 28px rgba(194,65,12,.28))}
+    .mascot-badge{position:absolute;left:50%;bottom:-16px;transform:translateX(-50%);white-space:nowrap;
+      display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;
+      background:linear-gradient(120deg,var(--red),var(--primary));color:#fff;font-size:.82rem;font-weight:700;
+      box-shadow:0 14px 30px -12px rgba(226,59,46,.8);animation:pulseBadge 3s ease-in-out infinite}
+    @keyframes pulseBadge{0%,100%{box-shadow:0 14px 30px -12px rgba(226,59,46,.8)}50%{box-shadow:0 14px 38px -8px rgba(240,81,30,.95)}}
+    .mascot-badge .pulse{width:8px;height:8px;border-radius:50%;background:#fff}
 
-    /* ---------- MASCOT: brand raccoon "smart inspection officer" ---------- */
-    /* Floats above the monitoring dashboard; keeps its own animation so it never
-       conflicts with .mini-dash's hover-float. */
-    .mascot{position:relative;z-index:3;width:clamp(230px,30vw,340px);margin-bottom:-30px;animation:mascot-float 6s ease-in-out infinite;will-change:transform}
-    .mascot-card{position:relative}
-    @keyframes mascot-float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-12px) rotate(1.5deg)}}
-    .mascot-card img{display:block;width:100%;height:auto;border-radius:18px}
-    .mascot-badge{position:absolute;left:50%;bottom:-17px;transform:translateX(-50%);z-index:4;
-      display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
-      padding:9px 18px;border-radius:999px;font-size:.82rem;font-weight:700;letter-spacing:.02em;color:#fff;
-      background:linear-gradient(120deg,var(--primary),var(--primary-2));
-      box-shadow:0 14px 30px -12px rgba(10,42,110,.6);border:1px solid rgba(255,255,255,.35)}
-    .mascot-badge .pulse{width:8px;height:8px;border-radius:50%;background:#fff;
-      box-shadow:0 0 0 0 rgba(255,255,255,.6);animation:pulse 2s infinite}
-    .md-bar{display:flex;align-items:center;gap:8px;padding:13px 17px;border-bottom:1px solid rgba(10,42,110,.12);background:linear-gradient(90deg,rgba(10,42,110,.08),rgba(74,159,216,.08))}
-    .md-bar .dots{display:flex;gap:6px}
-    .md-bar .dots i{width:10px;height:10px;border-radius:50%;display:block}
-    .md-bar .t{font-size:.82rem;font-weight:700;color:var(--text-2);margin-left:4px}
-    .md-body{display:grid;grid-template-columns:130px 1fr;gap:14px;padding:18px}
-    .md-gauge{position:relative;display:grid;place-items:center}
-    .md-gauge .gv{position:absolute;font-family:var(--mono);font-weight:700;font-size:1.2rem;color:var(--primary-2)}
-    .md-gauge .gl{position:absolute;bottom:4px;font-size:.66rem;color:var(--text-3)}
-    .md-chart svg{width:100%;height:auto;display:block}
-    .md-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:0 18px 18px}
-    .md-stat{background:var(--surface-2);border:1px solid rgba(10,42,110,.1);border-radius:13px;padding:11px 12px}
-    .md-stat .k{font-size:.68rem;color:var(--text-3);font-weight:600}
-    .md-stat .v{font-family:var(--mono);font-weight:700;font-size:1rem;margin-top:2px}
-    .md-stat .v.c{color:var(--cyan)} .md-stat .v.g{color:var(--green)} .md-stat .v.a{color:var(--amber)}
-    .scroll-hint{display:flex;justify-content:center;margin-top:46px;color:var(--text-3);font-size:.78rem;gap:8px;align-items:center}
-    .scroll-hint i{animation:bob 1.8s ease-in-out infinite}
-    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+    .mini-dash{position:absolute;z-index:4;right:-14px;bottom:-18px;width:255px;
+      background:var(--surface);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow-lg);
+      overflow:hidden;animation:dashFloat 7s ease-in-out infinite}
+    @keyframes dashFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    .md-bar{display:flex;align-items:center;gap:8px;padding:9px 13px;border-bottom:1px solid var(--border);font-size:.74rem;font-weight:700;color:var(--text-2)}
+    .md-bar .dots{display:inline-flex;gap:4px}
+    .md-bar .dots i{width:8px;height:8px;border-radius:50%;display:inline-block}
+    .md-body{display:flex;align-items:center;gap:10px;padding:12px 13px}
+    .md-gauge{position:relative;width:84px;height:60px;flex-shrink:0}
+    .md-gauge .gv{position:absolute;left:0;right:0;top:24px;text-align:center;font-family:var(--display);font-weight:700;font-size:1.05rem;color:var(--primary)}
+    .md-gauge .gl{position:absolute;left:0;right:0;top:44px;text-align:center;font-size:.6rem;color:var(--text-3)}
+    .md-chart{flex:1}
+    .md-chart svg path.line{stroke-dasharray:600;stroke-dashoffset:600;animation:draw 2.4s ease forwards .4s}
+    @keyframes draw{to{stroke-dashoffset:0}}
+    .md-stats{display:flex;border-top:1px solid var(--border)}
+    .md-stat{flex:1;padding:8px 6px;text-align:center;border-right:1px solid var(--border)}
+    .md-stat:last-child{border-right:none}
+    .md-stat .k{font-size:.58rem;color:var(--text-3)}
+    .md-stat .v{font-family:var(--display);font-weight:700;font-size:.96rem}
+    .md-stat .v.c{color:var(--primary)} .md-stat .v.g{color:var(--red-deep)} .md-stat .v.a{color:var(--primary-3)}
 
-    /* ---------- SECTION SHELL ---------- */
-    section.block{padding:92px 0;position:relative;z-index:1}
-    section.block.alt{background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(248,250,252,.55));backdrop-filter:blur(3px)}
-    .sec-head{text-align:center;max-width:780px;margin:0 auto 56px;position:relative}
-    .sec-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-      color:var(--primary-2);background:rgba(10,42,110,.1);padding:7px 16px;border-radius:999px;margin-bottom:18px;
-      border:1px solid rgba(10,42,110,.16)}
-    .sec-head h2{font-family:var(--display);font-size:clamp(1.8rem,3.4vw,2.5rem);font-weight:700;letter-spacing:-.02em;margin-bottom:14px;line-height:1.13}
-    .sec-head p{color:var(--text-2);font-size:1.05rem;max-width:640px;margin:0 auto;line-height:1.75}
+    .scroll-hint{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--text-3);font-size:.78rem;z-index:2}
+    .scroll-hint i{animation:bounce 1.8s infinite}
+    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
 
-    /* organic blob divider */
-    .divider{display:block;width:100%;height:70px;position:relative;z-index:1;margin-top:-1px}
-    .divider svg{width:100%;height:100%;display:block}
+    /* ---------- 区块通用 ---------- */
+    .block{padding:84px 0}
+    .block.alt{background:linear-gradient(180deg,rgba(255,255,255,.6),rgba(255,244,236,.55));border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .sec-head{max-width:720px;margin:0 auto 46px;text-align:center}
+    .sec-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;
+      background:rgba(240,81,30,.1);border:1px solid var(--border);color:var(--primary);font-weight:700;font-size:.8rem;margin-bottom:16px}
+    .sec-tag.pro{background:rgba(226,59,46,.1);color:var(--red)}
+    .sec-head h2{font-family:var(--display);font-size:clamp(1.7rem,3.2vw,2.5rem);line-height:1.15;font-weight:700;letter-spacing:-.02em;margin-bottom:14px}
+    .sec-head p{color:var(--text-2);font-size:1.02rem}
 
-    /* ---------- glass card base + mouse glow ---------- */
-    .glow{position:relative;overflow:hidden}
-    .glow::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .35s;
-      background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%),rgba(10,42,110,.13),transparent 62%)}
+    /* ---------- 信任数据条 ---------- */
+    .trustband{padding:30px 0 10px}
+    .tb-inner{display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:center;
+      background:linear-gradient(135deg,var(--ink-deep),var(--ink-deep-3));color:var(--on-dark);
+      border-radius:var(--radius-lg);padding:42px 46px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+    .tb-inner::after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;
+      background:radial-gradient(circle,rgba(255,122,61,.4),transparent 70%);filter:blur(20px)}
+    .tb-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.84rem;color:var(--on-dark-2);font-weight:600;margin-bottom:8px}
+    .tb-num{font-family:var(--display);font-weight:700;font-size:clamp(2.6rem,6vw,3.8rem);line-height:1;
+      background:linear-gradient(120deg,#FFD0B0,var(--primary-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .tb-label{font-size:.95rem;color:var(--on-dark);font-weight:600;margin-top:6px}
+    .tb-sub{font-size:.82rem;color:var(--on-dark-2);margin-top:4px}
+    .tb-side{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .tb-chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:14px 12px;text-align:center;backdrop-filter:blur(6px);transition:transform .25s,border-color .25s}
+    .tb-chip:hover{transform:translateY(-4px);border-color:rgba(255,154,61,.5)}
+    .tb-chip b{display:block;font-family:var(--display);font-size:1.5rem;font-weight:700;color:#fff;line-height:1.1}
+    .tb-chip span{font-size:.72rem;color:var(--on-dark-2)}
+
+    /* ---------- Bento / 卡片网格 ---------- */
+    .bento{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+    .mcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
+    .mcard.span2{grid-column:span 2} .mcard.span4{grid-column:span 4} .mcard.span6{grid-column:span 6}
+    .mcard .ic{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;font-size:1.3rem;color:#fff;margin-bottom:16px;
+      background:linear-gradient(135deg,var(--red),var(--primary));box-shadow:0 12px 24px -12px rgba(226,59,46,.7)}
+    .mcard h3{font-family:var(--display);font-size:1.18rem;font-weight:700;margin-bottom:8px;color:var(--text)}
+    .mcard p{color:var(--text-2);font-size:.95rem}
+
+    /* glow 鼠标跟随光晕 */
+    .glow::before{content:"";position:absolute;inset:0;border-radius:inherit;opacity:0;transition:opacity .3s;pointer-events:none;
+      background:radial-gradient(360px circle at var(--mx,50%) var(--my,50%),rgba(255,122,61,.18),transparent 60%)}
+    .glow:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--border-strong)}
     .glow:hover::before{opacity:1}
 
-    /* ---------- VALUE / WHY (BENTO, asymmetric) ---------- */
-    .bento{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
-    .mcard{background:var(--surface);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.7);
-      border-radius:var(--radius);padding:30px 26px;box-shadow:var(--shadow);transition:transform .28s,box-shadow .28s,border-color .28s;
-      position:relative;overflow:hidden;border-top:3px solid transparent}
-    .mcard::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 100% 0,rgba(10,42,110,.07),transparent 60%);opacity:0;transition:opacity .3s}
-    .mcard:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--primary)}
-    .mcard:hover::after{opacity:1}
-    .mcard.span4{grid-column:span 4}
-    .mcard.span3{grid-column:span 3}
-    .mcard.span2{grid-column:span 2}
-    .mcard .ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:1.65rem;line-height:1;margin-bottom:18px;color:#fff;
-      background:linear-gradient(135deg,var(--primary),#0A4A8A);border:1px solid transparent;
-      box-shadow:0 8px 18px -10px rgba(10,42,110,.25);transition:transform .3s}
-    .mcard:hover .ic{transform:scale(1.08);border-color:var(--primary-2)}
-    .mcard h3{font-family:var(--display);font-size:1.16rem;font-weight:600;margin-bottom:9px}
-    .mcard p{font-size:.94rem;color:var(--text-2)}
+    /* ---------- 亮点 showcase ---------- */
+    .show-row{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-bottom:56px}
+    .show-row:last-child{margin-bottom:0}
+    .show-row.rev .show-text{order:2}
+    .show-text h3{font-family:var(--display);font-size:1.55rem;font-weight:700;margin-bottom:12px;color:var(--text)}
+    .show-text p{color:var(--text-2);margin-bottom:16px}
+    .show-text ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+    .show-text li{display:flex;gap:10px;align-items:flex-start;color:var(--text-2);font-size:.94rem}
+    .show-text li i{color:var(--primary);margin-top:5px;font-size:.78rem;flex-shrink:0}
+    .show-art{background:linear-gradient(160deg,#fff,#FFF1E7);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);transition:transform .3s,box-shadow .3s}
+    .show-art:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+    .show-art svg{width:100%;height:auto;display:block}
+    .show-art svg .line{stroke-dasharray:600;stroke-dashoffset:600;animation:draw 2.2s ease forwards}
+    .show-art svg .pulse-dot{transform-origin:center;animation:dotPulse 2s ease-in-out infinite}
+    @keyframes dotPulse{0%,100%{opacity:.5;r:3}50%{opacity:1;r:5}}
 
-    /* ---------- SHOWCASE (asymmetric, overlapping art) ---------- */
-    .showcase .show-row{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-top:84px}
-    .showcase .show-row:first-of-type{margin-top:8px}
-    .showcase .show-row.rev .show-text{order:2}
-    .show-text h3{font-family:var(--display);font-size:1.45rem;font-weight:600;letter-spacing:-.01em;margin-bottom:14px;line-height:1.25}
-    .show-text p{color:var(--text-2);font-size:1.02rem;margin-bottom:16px;max-width:540px;line-height:1.75}
-    .show-text ul{list-style:none;display:flex;flex-direction:column;gap:12px}
-    .show-text li{display:flex;gap:10px;font-size:.95rem;color:var(--text-2);align-items:flex-start;line-height:1.6}
-    .show-text li i{color:var(--gold);margin-top:6px;font-size:.85em;transition:none}
-    .show-art{position:relative;border-radius:28px;padding:34px;box-shadow:var(--shadow-sm);
-      background:linear-gradient(135deg,rgba(10,42,110,.05),rgba(74,159,216,.05));
-      border:1px solid rgba(255,255,255,.6);overflow:hidden;display:grid;place-items:center;
-      backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-    .show-art::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(10,42,110,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(10,42,110,.06) 1px,transparent 1px);background-size:28px 28px;opacity:.3}
-    .show-art svg{position:relative;width:100%;max-width:340px;height:auto}
-    .show-row.rev .show-art{transform:translateY(6px)}
-    .show-row:not(.rev) .show-art{transform:translateY(-6px)}
-
-    /* ---------- FEATURES ---------- */
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .fcard{background:var(--surface);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.7);
-      border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);transition:transform .28s,box-shadow .28s,border-color .28s;position:relative;overflow:hidden}
-    .fcard::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--primary-2));opacity:0;transition:opacity .28s}
-    .fcard:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--primary)}
-    .fcard:hover::before{opacity:1}
-    .fcard .fic{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;font-size:1.3rem;margin-bottom:18px;color:#fff;
-      background:linear-gradient(135deg,var(--primary),#0A4A8A);border:1px solid transparent;transition:transform .28s,background .28s}
-    .fcard:hover .fic{transform:scale(1.05);border-color:var(--primary-2)}
-    .fcard h3{font-family:var(--display);font-size:1.1rem;font-weight:600;margin-bottom:10px}
-    .fcard p{font-size:.93rem;color:var(--text-2)}
-    .fcard .tag{display:inline-block;margin-top:14px;font-size:.74rem;font-weight:600;color:var(--primary-2);background:rgba(10,42,110,.1);padding:4px 11px;border-radius:999px}
-    .feat-cat{margin-top:50px}
-    .feat-cat:first-of-type{margin-top:8px}
-    .feat-cat-h{display:flex;align-items:center;gap:12px;font-family:var(--display);font-size:1.2rem;font-weight:600;color:var(--text);margin-bottom:20px;padding-left:4px}
-    .feat-cat-h .fic-mini{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:#fff;font-size:1rem;background:linear-gradient(135deg,var(--primary),var(--primary-2));box-shadow:0 8px 18px -8px rgba(10,42,110,.7)}
-    .feat-cat-h::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--border-strong),transparent)}
-
-    /* ---------- FEATURES (tabbed, compact) ---------- */
-    .feat-tabs{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:6px 0 38px}
-    .feat-tab{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;
-      border:1px solid var(--border);background:rgba(255,255,255,.7);backdrop-filter:blur(10px);
-      font-family:var(--display);font-size:.98rem;font-weight:600;color:var(--text-2);cursor:pointer;
-      transition:transform .25s,color .25s,border-color .25s,box-shadow .25s,background .25s;white-space:nowrap}
-    .feat-tab .fic-mini{width:34px;height:34px;border-radius:10px;font-size:1.15rem;line-height:1;display:grid;place-items:center;
-      background:#E6EBF5;border:1px solid rgba(10,42,110,.12);color:#0A2A6E;transition:background .25s}
-    .feat-tab .fic-mini .svg-ico{color:#0A2A6E}
-    .feat-tab:hover{transform:translateY(-2px);color:var(--text);border-color:var(--primary-2)}
-    .feat-tab.active{color:#fff;border-color:transparent;background:linear-gradient(135deg,var(--primary),#053a7a);
-      box-shadow:0 12px 26px -12px rgba(10,42,110,.85)}
-    .feat-tab.active .fic-mini{background:#fff;border-color:rgba(255,255,255,.55);box-shadow:0 4px 10px -4px rgba(0,0,0,.2)}
+    /* ---------- 功能全览 tabs ---------- */
+    .feat-tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:34px}
+    .feat-tab{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:13px;cursor:pointer;
+      background:var(--surface);border:1px solid var(--border);color:var(--text-2);font-weight:600;font-size:.9rem;transition:all .2s}
+    .feat-tab .fic-mini{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-size:.8rem;
+      background:rgba(240,81,30,.12);color:var(--primary)}
+    .feat-tab:hover{border-color:var(--primary);color:var(--primary)}
+    .feat-tab.active{background:linear-gradient(120deg,var(--red),var(--primary));color:#fff;border-color:transparent;box-shadow:0 12px 26px -12px rgba(226,59,46,.7)}
+    .feat-tab.active .fic-mini{background:rgba(255,255,255,.22);color:#fff}
     .feat-panel{position:relative}
-    .feat-pane{display:none}
-    .feat-pane.active{display:block;animation:featIn .5s cubic-bezier(.22,1,.36,1) both}
-    @keyframes featIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-    .feat-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:14px 22px}
-    .feat-item{display:flex;gap:15px;align-items:flex-start;padding:17px 19px;border-radius:16px;
-      background:var(--surface);border:1px solid rgba(255,255,255,.7);box-shadow:0 8px 20px -16px rgba(30,41,59,.4);
-      backdrop-filter:blur(10px);transition:transform .28s,box-shadow .28s,border-color .28s,opacity .5s;
-      opacity:0;animation:itemIn .5s ease both}
-    .feat-pane.active .feat-item{animation:itemIn .5s ease both}
-    @keyframes itemIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-    .feat-pane.active .feat-item:nth-child(1){animation-delay:.03s}
-    .feat-pane.active .feat-item:nth-child(2){animation-delay:.07s}
-    .feat-pane.active .feat-item:nth-child(3){animation-delay:.11s}
-    .feat-pane.active .feat-item:nth-child(4){animation-delay:.15s}
-    .feat-pane.active .feat-item:nth-child(5){animation-delay:.19s}
-    .feat-pane.active .feat-item:nth-child(6){animation-delay:.23s}
-    .feat-item:hover{transform:translateY(-3px);border-color:var(--primary);box-shadow:0 16px 32px -16px rgba(10,42,110,.55)}
-    .feat-item .fic-mini{flex:0 0 auto;width:50px;height:50px;border-radius:14px;font-size:1.55rem;line-height:1;display:grid;place-items:center;color:#fff;
-      background:linear-gradient(135deg,var(--primary),#0A4A8A);border:1px solid transparent;
-      box-shadow:0 6px 14px -8px rgba(10,42,110,.25);transition:transform .28s,border-color .28s}
-    .feat-item:hover .fic-mini{transform:scale(1.08);border-color:var(--primary-2)}
-    .fi-text h3{font-family:var(--display);font-size:1.02rem;font-weight:600;margin:2px 0 6px;color:var(--text)}
-    .fi-text p{margin:0;font-size:.88rem;line-height:1.55;color:var(--text-2)}
-    @media(max-width:980px){ .feat-list{grid-template-columns:1fr} }
+    .feat-pane{display:none;animation:fadeUp .5s ease}
+    .feat-pane.active{display:block}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+    .feat-list{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .feat-item{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px 20px;box-shadow:var(--shadow-sm);transition:transform .25s,box-shadow .3s,border-color .25s}
+    .feat-item:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--border-strong)}
+    .fic-mini{width:42px;height:42px;border-radius:12px;flex-shrink:0;display:grid;place-items:center;font-size:1.05rem;color:#fff;
+      background:linear-gradient(135deg,var(--red),var(--primary))}
+    .fi-text h3{font-family:var(--display);font-size:1.02rem;font-weight:700;margin-bottom:4px;color:var(--text)}
+    .fi-text p{color:var(--text-2);font-size:.88rem;line-height:1.55}
 
-    /* ---------- DB CHIPS ---------- */
-    .dbchips{display:flex;flex-wrap:wrap;justify-content:center;gap:13px;margin-top:14px}
-    .dbchip{display:inline-flex;align-items:center;gap:9px;padding:11px 17px;border-radius:14px;background:var(--surface);
-      border:1px solid rgba(255,255,255,.7);box-shadow:var(--shadow);font-weight:600;font-size:.92rem;color:var(--text);
-      transition:transform .22s,border-color .22s,box-shadow .22s;backdrop-filter:blur(8px)}
-    .dbchip:hover{transform:translateY(-4px) rotate(-1deg);border-color:var(--primary);box-shadow:var(--shadow-lg)}
-    .dbchip img{height:20px;width:20px;object-fit:contain}
-    .dbchip i{color:var(--primary-2);font-size:1.05rem}
-    .dbchip.more{background:rgba(10,42,110,.08);border:1px dashed var(--border-strong);font-weight:600;font-size:.88rem;color:var(--text-2)}
-    /* 客户实践 */
-    .cust-wrap{margin-top:42px}
-    .cust-head{margin-bottom:18px}
-    .cust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    @media(max-width:980px){.cust-grid{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:560px){.cust-grid{grid-template-columns:1fr}}
-    .cust-card{display:flex;flex-direction:column;gap:12px;padding:20px 18px;border-radius:16px;background:var(--surface);
-      border:1px solid rgba(255,255,255,.7);box-shadow:var(--shadow);transition:transform .22s,box-shadow .22s,border-color .22s}
-    .cust-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--primary)}
-    .cust-tag{display:inline-block;align-self:flex-start;font-size:.72rem;font-weight:700;letter-spacing:.03em;
-      color:var(--primary);background:rgba(10,42,110,.08);padding:3px 10px;border-radius:999px}
-    .cust-desc{font-size:.9rem;line-height:1.65;color:var(--text-2);margin:0;flex:1}
-    .cust-name{display:flex;align-items:center;gap:8px;font-weight:700;font-size:.95rem;color:var(--text)}
-    .cust-name::before{content:"";width:22px;height:22px;border-radius:50%;flex:0 0 22px;
-      background:linear-gradient(135deg,var(--primary),var(--primary-2))}
+    /* ---------- 如何工作 步骤 ---------- */
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:none}
+    .step{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px 24px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
+    .step:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+    .step .num{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:1.25rem;color:#fff;margin-bottom:16px;
+      background:linear-gradient(135deg,var(--red),var(--primary));box-shadow:0 12px 24px -12px rgba(226,59,46,.7);position:relative}
+    .step .num::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px dashed rgba(240,81,30,.35);animation:spin 12s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .step h4{font-family:var(--display);font-size:1.1rem;font-weight:700;margin-bottom:6px;color:var(--text)}
+    .step p{color:var(--text-2);font-size:.9rem}
 
-    /* ---------- HOW IT WORKS ---------- */
-    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative;max-width:1080px;margin:10px auto 0}
-    .step{position:relative;padding:30px 22px 16px;text-align:center;background:var(--surface);border:1px solid rgba(255,255,255,.7);
-      border-radius:22px;box-shadow:var(--shadow);transition:transform .26s,box-shadow .26s}
-    .step:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
-    .step .num{width:58px;height:58px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:1.4rem;color:#fff;
-      background:linear-gradient(135deg,var(--primary),var(--primary-2));box-shadow:0 12px 26px -10px rgba(10,42,110,.8);position:relative;z-index:2}
-    .step h4{font-family:var(--display);font-size:1.06rem;font-weight:600;margin-bottom:8px}
-    .step p{font-size:.9rem;color:var(--text-2);max-width:230px;margin:0 auto}
-    .steps .step:not(:last-child)::after{content:"";position:absolute;top:58px;left:calc(50% + 30px);width:calc(100% - 60px);height:2px;
-      background:linear-gradient(90deg,var(--primary),transparent);opacity:.3;z-index:1}
-
-    /* ---------- QUICK START ---------- */
+    /* ---------- 快速开始 ---------- */
     .qs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .qs{background:linear-gradient(160deg,#0D1426,#0A3A7E);color:#e2e8f0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);display:flex;flex-direction:column;position:relative}
-    .qs::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 80% 0%,rgba(10,42,110,.28),transparent 60%);pointer-events:none}
-    .qs-head{display:flex;align-items:center;gap:10px;padding:15px 19px;background:rgba(255,255,255,.05);font-weight:700;font-size:.95rem;border-bottom:1px solid rgba(255,255,255,.08);position:relative}
-    .qs-head i{color:var(--cyan)}
-    .qs pre{margin:0;padding:19px;font-family:var(--mono);font-size:.8rem;line-height:1.75;color:#cbd5e1;overflow-x:auto;flex:1;position:relative}
-    .qs .hint{padding:13px 19px;font-size:.8rem;color:#94a3b8;background:rgba(255,255,255,.03);border-top:1px solid rgba(255,255,255,.08);position:relative}
+    .qs{background:#1B0F0B;color:#FFE9DD;border:1px solid rgba(255,122,61,.25);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
+    .qs::before{content:"";position:absolute;right:-40px;top:-40px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(255,122,61,.35),transparent 70%)}
+    .qs:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+    .qs-head{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:1.05rem;margin-bottom:14px;color:#fff}
+    .qs-head i{color:var(--primary-2);font-size:1.2rem}
+    .qs pre{background:#0F0805;border:1px solid rgba(255,122,61,.18);border-radius:12px;padding:14px;font-family:var(--mono);font-size:.82rem;line-height:1.6;color:#FFC9A8;overflow-x:auto;white-space:pre}
+    .qs .hint{margin-top:12px;font-size:.8rem;color:#FFB394;line-height:1.5}
+    .cmp-note{text-align:center;margin-top:26px;color:var(--text-2);font-size:.92rem}
 
-    /* ---------- MOAT ---------- */
-    .moat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
-    .moat{background:var(--surface);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:26px 18px;text-align:center;box-shadow:var(--shadow);transition:transform .24s,box-shadow .24s}
-    .moat:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
-    .moat .mic{width:54px;height:54px;border-radius:16px;margin:0 auto 15px;display:grid;place-items:center;font-size:1.7rem;line-height:1;color:#fff;
-      background:linear-gradient(135deg,var(--primary),#0A4A8A);border:1px solid transparent;
-      box-shadow:0 8px 18px -10px rgba(10,42,110,.25);transition:transform .3s,border-color .3s}
-    .moat:hover .mic{transform:scale(1.08) rotate(3deg);border-color:var(--primary-2)}
-    .moat h4{font-family:var(--display);font-size:1rem;font-weight:600;margin-bottom:7px}
-    .moat p{font-size:.84rem;color:var(--text-2)}
+    /* ---------- 下载中心 ---------- */
+    .download-wrap{margin-top:6px}
+    .dl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:14px}
+    .dl-card{display:flex;flex-direction:column;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px 22px;box-shadow:var(--shadow);transition:transform .25s,box-shadow .3s,border-color .25s}
+    .dl-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--border-strong)}
+    .dl-card .dl-ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:1.2rem;color:#fff;background:linear-gradient(135deg,var(--red),var(--primary))}
+    .dl-card h4{font-family:var(--display);font-size:1.02rem;font-weight:700;color:var(--text)}
+    .dl-card p{color:var(--text-2);font-size:.82rem;flex:1}
+    .dl-card .btn{width:100%;justify-content:center;margin-top:4px}
 
-    /* ---------- BUSINESS MODEL cards ---------- */
-    .bm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-    .bm{background:var(--surface);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.7);border-radius:var(--radius);padding:32px 28px;box-shadow:var(--shadow);position:relative;overflow:hidden}
-    .bm.plan{border-style:dashed;border-color:var(--border-strong)}
-    .bm .bmk{font-size:.76rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--primary-2)}
-    .bm h3{font-family:var(--display);font-size:1.22rem;font-weight:600;margin:9px 0 7px}
-    .bm .price{font-family:var(--mono);font-size:1.02rem;color:var(--text-2);margin-bottom:16px}
+    /* ---------- 数据库 logo 墙 ---------- */
+    .dbchips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+    .dbchip{display:inline-flex;align-items:center;gap:9px;padding:10px 16px;border-radius:14px;background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow-sm);
+      font-weight:600;color:var(--text-2);font-size:.9rem;transition:transform .22s,box-shadow .25s,border-color .22s,color .22s}
+    .dbchip img{height:22px;width:22px;object-fit:contain}
+    .dbchip:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--primary);color:var(--primary)}
+    .dbchip.more{border-style:dashed;cursor:default}
+    .dbchip.more:hover{transform:translateY(-4px);color:var(--primary)}
+
+    /* ---------- 使用场景 / 客户实践 ---------- */
+    .cust-wrap{margin-top:54px}
+    .cust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .cust-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);transition:transform .3s,box-shadow .3s}
+    .cust-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+    .cust-tag{display:inline-block;font-size:.74rem;font-weight:700;color:var(--primary);background:rgba(240,81,30,.1);border:1px solid var(--border);padding:5px 12px;border-radius:999px;margin-bottom:14px}
+    .cust-desc{color:var(--text-2);font-size:.92rem;line-height:1.65}
+    .cust-name{margin-top:14px;font-family:var(--display);font-weight:700;color:var(--text);font-size:.92rem}
+
+    /* ---------- 护城河 moat ---------- */
+    .moat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+    .moat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px 20px;box-shadow:var(--shadow);text-align:center;transition:transform .3s,box-shadow .3s}
+    .moat:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+    .mic{width:54px;height:54px;border-radius:16px;margin:0 auto 14px;display:grid;place-items:center;font-size:1.4rem;color:#fff;
+      background:linear-gradient(135deg,var(--red),var(--primary));box-shadow:0 12px 24px -12px rgba(226,59,46,.7)}
+    .moat h4{font-family:var(--display);font-size:1.05rem;font-weight:700;margin-bottom:6px;color:var(--text)}
+    .moat p{color:var(--text-2);font-size:.84rem;line-height:1.55}
+
+    /* ---------- 版本对比 ---------- */
+    .bm-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .bm{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px 30px;box-shadow:var(--shadow);transition:transform .3s,box-shadow .3s}
+    .bm:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+    .bmk{display:inline-block;font-size:.74rem;font-weight:700;letter-spacing:.04em;color:var(--primary);background:rgba(240,81,30,.1);border:1px solid var(--border);padding:5px 12px;border-radius:999px;margin-bottom:12px}
+    .bm h3{font-family:var(--display);font-size:1.4rem;font-weight:700;margin-bottom:6px;color:var(--text)}
+    .bm .price{font-family:var(--mono);color:var(--primary);font-weight:700;font-size:1.5rem;margin-bottom:18px}
     .bm ul{list-style:none;display:flex;flex-direction:column;gap:11px}
-    .bm li{display:flex;gap:10px;font-size:.93rem;color:var(--text-2)}
-    .bm li i.fa-check{color:var(--green);margin-top:4px}
-    .bm li i.fa-clock{color:var(--amber);margin-top:4px}
-    .bm .tag-plan{display:inline-block;margin-top:15px;font-size:.72rem;font-weight:700;color:var(--amber);background:rgba(245,158,11,.12);padding:4px 11px;border-radius:999px}
-    .bm .no-trial{display:flex;gap:8px;align-items:center;margin-top:15px;font-size:.82rem;color:var(--text-2);background:rgba(245,158,11,.1);border:1px dashed rgba(245,158,11,.5);padding:10px 13px;border-radius:13px}
-    .bm .no-trial i{color:#b45309}
+    .bm li{display:flex;gap:10px;align-items:flex-start;color:var(--text-2);font-size:.94rem}
+    .bm li i{color:var(--primary);margin-top:4px;font-size:.8rem;flex-shrink:0}
 
-    /* ---------- COMMUNITY ---------- */
-    .community{background:linear-gradient(135deg,#E6EBF5,#E0F2F8);border:1px solid rgba(255,255,255,.7);border-radius:34px;padding:60px 48px;text-align:center;position:relative;overflow:hidden;box-shadow:var(--shadow)}
-    .community::before,.community::after{content:"";position:absolute;border-radius:50%;filter:blur(60px);opacity:.6}
-    .community::before{width:340px;height:340px;top:-120px;right:-80px;background:radial-gradient(circle,#B8D4F0,transparent 70%)}
-    .community::after{width:300px;height:300px;bottom:-120px;left:-80px;background:radial-gradient(circle,#4A9FD8,transparent 70%)}
-    .community-inner{position:relative;z-index:1}
-    .community .sec-tag{background:#fff;color:var(--primary-2)}
-    .community h2{font-family:var(--display);font-size:clamp(1.6rem,3vw,2.3rem);font-weight:600;margin-bottom:12px}
-    .community p.lead{color:var(--text-2);max-width:640px;margin:0 auto 30px;font-size:1.05rem}
-    .community .hero-cta{justify-content:center;margin-bottom:0}
+    /* ---------- 商业支持报价 ---------- */
+    .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px}
+    .price-card{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:34px 28px 30px;box-shadow:var(--shadow);overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
+    .price-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--primary-2)}
+    .price-card.featured{border:1.5px solid var(--primary);box-shadow:0 26px 60px -30px rgba(240,81,30,.65);background:linear-gradient(160deg,#FFF6EE,#FFEFE2)}
+    .pc-head{margin-bottom:18px}
+    .pc-name{font-family:var(--display);font-size:1.45rem;font-weight:700;color:var(--text);line-height:1.1}
+    .pc-sub{font-size:.86rem;color:var(--text-3);margin-top:6px}
+    .pc-price{display:flex;align-items:baseline;gap:2px;font-family:var(--mono);color:var(--primary);margin-bottom:22px}
+    .pc-price .cur{font-size:1.2rem;font-weight:700;margin-right:2px}
+    .pc-price .amt{font-size:2.6rem;font-weight:700;letter-spacing:-.02em}
+    .pc-price .per{font-size:.95rem;color:var(--text-3);margin-left:6px}
+    .pc-list{list-style:none;margin:0 0 8px;padding:0;display:flex;flex-direction:column;gap:11px}
+    .pc-list li{display:flex;align-items:flex-start;gap:10px;font-size:.94rem;color:var(--text-2);line-height:1.5}
+    .pc-list li i{margin-top:3px;font-size:.82rem;color:var(--primary)}
+    .pc-list li.muted{color:var(--text-3)}
+    .pc-list li.muted i{color:var(--text-3)}
+    .pc-badge{position:absolute;top:18px;right:-34px;transform:rotate(45deg);background:linear-gradient(120deg,var(--red),var(--primary));color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.06em;padding:5px 40px;box-shadow:0 6px 16px -8px rgba(226,59,46,.8)}
+    .price-foot{text-align:center;margin-top:38px}
+    .price-foot .lead{color:var(--text-2);font-size:1rem}
+    .price-foot a{color:var(--primary);font-weight:600;text-decoration:none}
+    .price-foot a:hover{text-decoration:underline}
+
+    /* ---------- 开源社区 ---------- */
+    .community{background:linear-gradient(135deg,var(--ink-deep),var(--ink-deep-3));color:var(--on-dark);border-radius:var(--radius-lg);padding:56px 40px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+    .community::after{content:"";position:absolute;left:-60px;bottom:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(255,122,61,.4),transparent 70%);filter:blur(20px)}
+    .community .sec-head{margin-bottom:26px}
+    .community .sec-head h2{color:#fff}
+    .community .sec-head p{color:var(--on-dark-2)}
+    .community .sec-tag{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);color:#FFD0B0}
 
     /* ---------- CTA ---------- */
-    .cta{text-align:center}
-    .cta-box{background:linear-gradient(120deg,var(--primary),#0A4A8A 45%,var(--primary-2));border-radius:34px;padding:64px 30px;color:#fff;position:relative;overflow:hidden;box-shadow:var(--shadow-lg)}
-    .cta-box::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:40px 40px;opacity:.5;-webkit-mask-image:radial-gradient(70% 70% at 50% 50%,#000,transparent);mask-image:radial-gradient(70% 70% at 50% 50%,#000,transparent)}
-    .cta-box::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;top:-160px;left:-120px;background:radial-gradient(circle,rgba(255,255,255,.22),transparent 65%);filter:blur(20px)}
-    .cta-box h2{font-family:var(--display);font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:700;margin-bottom:12px;position:relative}
-    .cta-box p{opacity:.93;max-width:560px;margin:0 auto 30px;position:relative}
-    .cta-box .hero-cta{justify-content:center;margin-bottom:0;position:relative}
-    .cta-box .btn-ghost{background:rgba(255,255,255,.16);color:#fff;border-color:rgba(255,255,255,.4)}
-    .cta-box .btn-ghost:hover{background:rgba(255,255,255,.3)}
-    .cta-box .btn-outline{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.5)}
-    .cta-box .btn-outline:hover{background:rgba(255,255,255,.24)}
+    .cta-box{background:linear-gradient(120deg,var(--red),var(--primary) 55%,var(--primary-2));color:#fff;border-radius:var(--radius-lg);padding:56px 40px;text-align:center;box-shadow:var(--shadow-lg);position:relative;overflow:hidden;background-size:200% 200%;animation:flow 8s ease infinite}
+    @keyframes flow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+    .cta-box::before,.cta-box::after{content:"";position:absolute;border-radius:50%;filter:blur(30px)}
+    .cta-box::before{width:200px;height:200px;background:rgba(255,255,255,.18);top:-60px;left:-40px}
+    .cta-box::after{width:240px;height:240px;background:rgba(255,154,61,.3);bottom:-80px;right:-50px}
+    .cta-box h2{font-family:var(--display);font-size:clamp(1.7rem,3vw,2.4rem);font-weight:700;margin-bottom:12px;position:relative;z-index:2}
+    .cta-box p{color:rgba(255,255,255,.92);max-width:560px;margin:0 auto 26px;position:relative;z-index:2}
+    .cta-box .hero-cta{justify-content:center;position:relative;z-index:2}
+    .cta-box .btn-outline{color:#fff;border-color:rgba(255,255,255,.7)}
+    .cta-box .btn-outline:hover{background:rgba(255,255,255,.15)}
+    .cta-box .btn-ghost{background:rgba(255,255,255,.95);color:var(--red)}
 
-    /* ---------- FOOTER ---------- */
-    footer{background:#0D1426;color:#94a3b8;padding:52px 0 36px;position:relative;z-index:1}
-    .foot-inner{max-width:var(--maxw);margin:0 auto;padding:0 24px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px}
-    .foot-brand{display:flex;align-items:center;gap:10px;color:#fff;font-family:var(--display);font-weight:700;font-size:1.12rem}
-    .foot-brand img{height:30px}
-    .foot-meta{font-size:.85rem;line-height:1.9;margin-top:12px}
-    .foot-links{display:flex;gap:22px;font-size:.9rem;flex-wrap:wrap;align-items:center}
-    .foot-links a:hover{color:#fff}
-    .foot-bottom{max-width:var(--maxw);margin:28px auto 0;padding:18px 24px 0;border-top:1px solid rgba(255,255,255,.08);font-size:.8rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+    /* ---------- footer ---------- */
+    footer{background:linear-gradient(135deg,var(--ink-deep),#3A1008);color:var(--on-dark);padding:56px 0 30px;margin-top:84px;position:relative;overflow:hidden}
+    footer::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:48px 48px;
+      -webkit-mask-image:radial-gradient(70% 90% at 50% 0%,#000,transparent 80%);mask-image:radial-gradient(70% 90% at 50% 0%,#000,transparent 80%)}
+    .foot-inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+    .foot-brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:1.2rem}
+    .foot-brand img{height:34px;width:34px;border-radius:9px;background:#fff;padding:3px}
+    .foot-meta{margin-top:12px;font-size:.86rem;color:var(--on-dark-2);line-height:1.6}
+    .foot-links{display:flex;flex-wrap:wrap;gap:10px 20px;max-width:520px;align-content:flex-start}
+    .foot-links a{color:var(--on-dark-2);font-size:.9rem;transition:color .2s}
+    .foot-links a:hover{color:var(--primary-2)}
+    .foot-bottom{position:relative;z-index:2;max-width:var(--maxw);margin:34px auto 0;padding:20px 24px 0;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.82rem;color:var(--on-dark-2)}
 
-    /* ---------- 商业支持 accent (gold tag kept for #support) ---------- */
-    .sec-tag.pro{background:linear-gradient(120deg,rgba(224,169,59,.2),rgba(10,42,110,.2));color:#a16207;border-color:rgba(224,169,59,.3);box-shadow:none}
+    /* ---------- 分隔波浪 ---------- */
+    .divider{line-height:0;margin:-2px 0}
+    .divider svg{width:100%;height:70px;display:block}
 
-    /* ---------- VERSION COMPARE TABLE ---------- */
-    .cmp-wrap{max-width:940px;margin:0 auto;background:var(--surface);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.7);border-radius:var(--radius);padding:8px 24px 18px;box-shadow:var(--shadow);overflow:hidden}
-    .cmp-table{width:100%;border-collapse:collapse;font-size:.95rem}
-    .cmp-table th,.cmp-table td{padding:14px 14px;text-align:left;border-bottom:1px solid rgba(10,42,110,.1)}
-    .cmp-table thead th{font-family:var(--display);font-size:.96rem;font-weight:600;color:var(--text);background:var(--surface-2)}
-    .cmp-table thead th:nth-child(2),.cmp-table thead th:nth-child(3),.cmp-table td:nth-child(2),.cmp-table td:nth-child(3){text-align:center}
-    .cmp-table thead th:nth-child(2){color:var(--primary-2)}
-    .cmp-table thead th:nth-child(3){color:#a16207}
-    .cmp-table tbody tr{transition:background .2s}
-    .cmp-table tbody tr:hover{background:var(--surface-2)}
-    .cmp-table tbody tr:last-child td{border-bottom:none}
-    .cmp-table td.y{color:var(--green);font-weight:700}
-    .cmp-table td.n{color:var(--text-3);font-weight:700}
-    .cmp-table td:first-child{font-weight:600;color:var(--text)}
-    .cmp-note{margin-top:18px;text-align:center;font-size:.86rem;color:var(--text-2)}
-    .cmp-note b{color:#a16207}
-
-    /* ---------- trust band ---------- */
-    .trustband{position:relative;padding:30px 0 6px;z-index:2}
-    .tb-inner{display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;
-      background:var(--surface);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.7);border-radius:26px;padding:28px 36px;
-      box-shadow:var(--shadow-lg)}
-    .tb-main{display:flex;flex-direction:column}
-    .tb-eyebrow{font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--primary-2);font-weight:700;margin-bottom:6px}
-    .tb-num{display:flex;align-items:baseline;gap:1px;font-family:var(--mono);line-height:1}
-    .tb-num .val{font-size:3.4rem;font-weight:800;background:linear-gradient(100deg,#0A2A6E,var(--primary-2));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .tb-num .plus{font-size:2rem;font-weight:800;color:var(--primary-2)}
-    .tb-label{font-family:var(--display);font-size:1.04rem;font-weight:600;color:var(--text);margin-top:6px}
-    .tb-sub{font-size:.86rem;color:var(--text-2);margin-top:3px}
-    .tb-side{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
-    .tb-chip{background:rgba(10,42,110,.07);border:1px solid var(--border);border-radius:16px;padding:12px 18px;text-align:center;min-width:96px}
-    .tb-chip b{display:block;font-size:1.45rem;font-weight:800;color:var(--primary);font-family:var(--mono)}
-    .tb-chip span{font-size:.76rem;color:var(--text-2)}
-
-    /* ---------- reveal ---------- */
-    .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+    /* ---------- 滚动揭示 ---------- */
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
     .reveal.in{opacity:1;transform:none}
+    .stagger > .reveal{transition-delay:0ms}
 
-    /* ---------- responsive ---------- */
+    /* ---------- 响应式 ---------- */
     @media(max-width:980px){
       .hero-inner{grid-template-columns:1fr;gap:40px}
-      .hero-visual{order:-1;max-width:480px;margin:0 auto}
-      .mascot{width:clamp(200px,42vw,300px);margin-bottom:-22px}
-      .showcase .show-row,.showcase .show-row.rev{grid-template-columns:1fr;gap:30px}
-      .showcase .show-row.rev .show-text{order:0}
-      .showcase .show-row.rev .show-art,.showcase .show-row:not(.rev) .show-art{transform:none}
+      .hero-visual{min-height:auto;order:-1}
+      .tb-inner{grid-template-columns:1fr;padding:32px}
+      .tb-side{grid-template-columns:repeat(3,1fr)}
       .bento{grid-template-columns:repeat(2,1fr)}
-      .mcard.span4,.mcard.span3,.mcard.span2{grid-column:span 1}
-      .mcard.span4{grid-column:span 2}
-      .grid-3,.bm-grid,.qs-grid{grid-template-columns:1fr}
+      .mcard.span2,.mcard.span4{grid-column:span 2}
+      .steps,.qs-grid,.price-grid{grid-template-columns:repeat(2,1fr)}
       .moat-grid{grid-template-columns:repeat(2,1fr)}
-      .steps{grid-template-columns:repeat(2,1fr);gap:18px}
-      .nav-links{display:none}
+      .cust-grid,.bm-grid{grid-template-columns:1fr}
+      .feat-list{grid-template-columns:1fr}
+      .show-row,.show-row.rev .show-text{grid-template-columns:1fr;order:0}
+    }
+    @media(max-width:680px){
+      .nav-links{display:none;position:absolute;top:64px;left:12px;right:12px;flex-direction:column;background:var(--surface);padding:14px;border-radius:16px;box-shadow:var(--shadow-lg);border:1px solid var(--border)}
+      .nav-links.open{display:flex}
       .menu-toggle{display:block}
-      .nav-links.open{display:flex;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:#fff;padding:18px 24px;gap:6px;border-bottom:1px solid var(--border);box-shadow:var(--shadow)}
+      .bento,.steps,.qs-grid,.price-grid,.moat-grid,.tb-side{grid-template-columns:1fr}
+      .mcard.span2,.mcard.span4{grid-column:span 1}
+      .block{padding:60px 0}
+      .mini-dash{position:relative;right:0;bottom:0;margin-top:18px;width:100%}
     }
-    @media(max-width:620px){
-      .stats{grid-template-columns:repeat(2,1fr)}
-      .bento{grid-template-columns:1fr}
-      .mcard.span4{grid-column:span 1}
-      .moat-grid,.steps{grid-template-columns:1fr}
-      .hero{padding:60px 0 50px}
-      .mascot{width:min(70vw,250px);margin-bottom:-18px}
-      .mascot-badge{font-size:.74rem;padding:7px 14px}
-      section.block{padding:64px 0}
-      .community{padding:40px 22px}
-      .steps .step:not(:last-child)::after{display:none}
-      .tb-inner{flex-direction:column;align-items:stretch;text-align:center}
-      .tb-num .val{font-size:2.8rem}
-      .tb-side{justify-content:center}
+    @media(prefers-reduced-motion:reduce){
+      *{animation:none!important;transition:none!important}
+      .reveal{opacity:1;transform:none}
+      .hero-copy>*{opacity:1;animation:none}
     }
-
-    @media (prefers-reduced-motion: reduce){
-      *{animation:none !important;transition:none !important;scroll-behavior:auto !important}
-      .reveal{opacity:1 !important;transform:none !important}
-      .blob{animation:none !important}
-    }
-
-    /* ─── 内联 SVG 图标（统一 stroke 风格，颜色跟随容器 currentColor）─── */
-    .svg-ico{width:1.5em;height:1.5em;flex-shrink:0;display:inline-block;vertical-align:middle}
-    .fic-mini .svg-ico,.ic .svg-ico,.mic .svg-ico,.fic .svg-ico,.feat-cat-h .fic-mini .svg-ico{color:#fff}
-    .feat-tab .fic-mini .svg-ico,.feat-item .fic-mini .svg-ico{width:24px;height:24px}
-    .feat-cat-h .fic-mini .svg-ico{width:20px;height:20px}
-    .ic .svg-ico,.mic .svg-ico{width:26px;height:26px}
-    .fic .svg-ico{width:24px;height:24px}
-    .sec-tag .svg-ico{width:1.05em;height:1.05em;flex-shrink:0}
-    .feat-tab.active .fic-mini .svg-ico{color:#0A2A6E}
-  </style>
+</style>
 </head>
 <body>
-<svg aria-hidden="true" class="svg-sprite" style="display:none" xmlns="http://www.w3.org/2000/svg"><symbol fill="none" id="icon-shield" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></symbol><symbol fill="none" id="icon-bar-chart" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><line x1="12" x2="12" y1="20" y2="10"></line><line x1="18" x2="18" y1="20" y2="4"></line><line x1="6" x2="6" y1="20" y2="14"></line></symbol><symbol fill="none" id="icon-cpu" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="16" rx="2" width="16" x="4" y="4"></rect><rect height="6" width="6" x="9" y="9"></rect><line x1="9" x2="9" y1="1" y2="4"></line><line x1="15" x2="15" y1="1" y2="4"></line><line x1="9" x2="9" y1="20" y2="23"></line><line x1="15" x2="15" y1="20" y2="23"></line><line x1="20" x2="23" y1="9" y2="9"></line><line x1="20" x2="23" y1="14" y2="14"></line><line x1="1" x2="4" y1="9" y2="9"></line><line x1="1" x2="4" y1="14" y2="14"></line></symbol><symbol fill="none" id="icon-file-text" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></symbol><symbol fill="none" id="icon-grid" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="7" width="7" x="3" y="3"></rect><rect height="7" width="7" x="14" y="3"></rect><rect height="7" width="7" x="14" y="14"></rect><rect height="7" width="7" x="3" y="14"></rect></symbol><symbol fill="none" id="icon-database" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></symbol><symbol fill="none" id="icon-list" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><line x1="8" x2="21" y1="6" y2="6"></line><line x1="8" x2="21" y1="12" y2="12"></line><line x1="8" x2="21" y1="18" y2="18"></line><line x1="3" x2="3.01" y1="6" y2="6"></line><line x1="3" x2="3.01" y1="12" y2="12"></line><line x1="3" x2="3.01" y1="18" y2="18"></line></symbol><symbol fill="none" id="icon-alert-triangle" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></symbol><symbol fill="none" id="icon-sliders" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><line x1="4" x2="4" y1="21" y2="14"></line><line x1="4" x2="4" y1="10" y2="3"></line><line x1="12" x2="12" y1="21" y2="12"></line><line x1="12" x2="12" y1="8" y2="3"></line><line x1="20" x2="20" y1="21" y2="16"></line><line x1="20" x2="20" y1="12" y2="3"></line><line x1="1" x2="7" y1="14" y2="14"></line><line x1="9" x2="15" y1="8" y2="8"></line><line x1="17" x2="23" y1="16" y2="16"></line></symbol><symbol fill="none" id="icon-leaf" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6"></path></symbol><symbol fill="none" id="icon-flame" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></symbol><symbol fill="none" id="icon-trending-up" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></symbol><symbol fill="none" id="icon-heart" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></symbol><symbol fill="none" id="icon-message-circle" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></symbol><symbol fill="none" id="icon-book" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></symbol><symbol fill="none" id="icon-hard-drive" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><line x1="22" x2="2" y1="12" y2="12"></line><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path><line x1="6" x2="6.01" y1="16" y2="16"></line><line x1="10" x2="10.01" y1="16" y2="16"></line></symbol><symbol fill="none" id="icon-link" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></symbol><symbol fill="none" id="icon-check-circle" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></symbol><symbol fill="none" id="icon-bell" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></symbol><symbol fill="none" id="icon-box" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" x2="12" y1="22.08" y2="12"></line></symbol><symbol fill="none" id="icon-terminal" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" x2="20" y1="19" y2="19"></line></symbol><symbol fill="none" id="icon-server" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="8" rx="2" width="20" x="2" y="2"></rect><rect height="8" rx="2" width="20" x="2" y="14"></rect><line x1="6" x2="6.01" y1="6" y2="6"></line><line x1="6" x2="6.01" y1="18" y2="18"></line></symbol><symbol fill="none" id="icon-globe" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" x2="22" y1="12" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></symbol><symbol fill="none" id="icon-flag" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" x2="4" y1="22" y2="15"></line></symbol><symbol fill="none" id="icon-users" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></symbol><symbol fill="none" id="icon-zap" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></symbol><symbol fill="none" id="icon-search" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></symbol><symbol fill="none" id="icon-target" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></symbol><symbol fill="none" id="icon-ticket" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 7v4a2 2 0 0 0 0 4v2a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2a2 2 0 0 0 0-4V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"></path><line x1="13" x2="13" y1="5" y2="19"></line></symbol><symbol fill="none" id="icon-clock" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></symbol><symbol fill="none" id="icon-wind" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path></symbol><symbol fill="none" id="icon-lock" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="11" rx="2" width="18" x="3" y="11"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></symbol><symbol fill="none" id="icon-award" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></symbol><symbol fill="none" id="icon-compass" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></symbol><symbol fill="none" id="icon-star" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></symbol><symbol fill="none" id="icon-book-open" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></symbol><symbol fill="none" id="icon-crown" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><polygon points="2 18 2 7 8 11 12 4 16 11 22 7 22 18 2 18"></polygon></symbol><symbol fill="none" id="icon-bulb" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path></symbol><symbol fill="none" id="icon-map" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" x2="8" y1="2" y2="18"></line><line x1="16" x2="16" y1="6" y2="22"></line></symbol><symbol fill="none" id="icon-microscope" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><circle cx="11" cy="11" r="4"></circle><line x1="11" x2="11" y1="15" y2="21"></line><line x1="8" x2="14" y1="21" y2="21"></line><line x1="21" x2="16.65" y1="21" y2="16.65"></line></symbol><symbol fill="none" id="icon-rocket" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M12 2c3 1 5 4 5 8 0 3-1 5-1 7H8c0-2-1-4-1-7 0-4 2-7 5-8z"></path><circle cx="12" cy="8" r="1.8"></circle><path d="M8 17l-2 4 3-1M16 17l2 4-3-1"></path></symbol></svg>
 <!-- background atmosphere -->
 <div aria-hidden="true" class="bg-atmos">
 <span class="blob b1"></span>
@@ -526,14 +471,14 @@
 <!-- ================= NAV ================= -->
 <header class="nav" id="nav">
 <div class="nav-inner">
-<a class="brand" href="#top"><img alt="RaccoonX" src="dbcheck_logo_icon.png"/> RaccoonX</a>
+<a class="brand" href="#top"><img alt="RaccoonX" src="dbcheck_logo_icon.png"/><span>RaccoonX</span></a>
 <nav class="nav-links" id="navLinks">
-<a href="#features">功能</a>
-<a href="#showcase">亮点</a>
+<a href="#features">核心功能</a>
+<a href="#showcase">产品亮点</a>
 <a href="#how">如何工作</a>
 <a href="#quickstart">快速开始</a>
 <a href="#download">下载</a>
-<a href="#databases">数据库</a>
+<a href="#databases">支持数据库</a>
 <a href="#usecases">使用场景</a>
 <a href="#model">版本与支持</a>
 <a href="#support">商业支持</a>
@@ -553,10 +498,10 @@
 <h1>让数据库运维<br/><span class="gradient-text">可知 · 可控 · 可防</span></h1>
 <p class="sub">RaccoonX（原名 DBCheck）是一款<strong>开源、跨平台</strong>、支持 <strong>21 种</strong>主流与国产数据库的智能巡检与实时监控平台。内置 344+ 巡检规则、实时监控大屏、本地 AI 诊断与一键报告，把 DBA 的重复劳动变成一键流程。</p>
 <div class="hero-tags">
-<span>🌐 Web 界面</span>
-<span>🔒 私有化部署</span>
-<span>🧠 离线 AI 诊断</span>
-<span>💻 跨平台</span>
+<span><i class="fas fa-globe"></i> Web 界面</span>
+<span><i class="fas fa-lock"></i> 私有化部署</span>
+<span><i class="fas fa-brain"></i> 离线 AI 诊断</span>
+<span><i class="fas fa-laptop-code"></i> 跨平台</span>
 </div>
 <div class="hero-cta">
 <a class="btn btn-primary" href="https://github.com/fiyo/DBCheck" target="_blank"><i class="fab fa-github"></i> 在 GitHub 查看</a>
@@ -565,41 +510,38 @@
 <a class="btn btn-ghost" href="#features"><i class="fas fa-layer-group"></i> 核心功能</a>
 </div>
 </div>
-<!-- product mockup: realtime monitoring dashboard -->
+<!-- 吉祥物 + 实时监控卡 -->
 <div class="hero-visual">
-<!-- brand mascot: RaccoonX 智能巡检官（吉祥物浣熊） -->
 <div class="mascot">
   <div class="mascot-card">
-    <img src="mascot.png" alt="RaccoonX 智能巡检官 · 吉祥物浣熊" width="340" height="340" />
+    <img src="mascot.png" alt="RaccoonX 智能巡检官 · 吉祥物浣熊" />
     <div class="mascot-badge"><span class="pulse"></span> RaccoonX · 智能巡检官</div>
   </div>
 </div>
 <div class="mini-dash">
 <div class="md-bar">
 <span class="dots"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></span>
-<span class="t">RaccoonX · 实时监控大屏</span>
+<span>实时监控大屏</span>
 </div>
 <div class="md-body">
 <div class="md-gauge">
-<svg height="78" viewbox="0 0 118 78" width="118">
-<path d="M10 70 A49 49 0 0 1 108 70" fill="none" stroke="#e6eaf2" stroke-linecap="round" stroke-width="10"></path>
-<path d="M10 70 A49 49 0 0 1 100 26" fill="none" stroke="url(#gg)" stroke-linecap="round" stroke-width="10"></path>
-<defs><lineargradient id="gg" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#4A9FD8"></stop><stop offset="1" stop-color="#4A9FD8"></stop></lineargradient></defs>
+<svg height="60" viewBox="0 0 118 78" width="84">
+<path d="M10 70 A49 49 0 0 1 108 70" fill="none" stroke="#FFE0CC" stroke-linecap="round" stroke-width="10"></path>
+<path d="M10 70 A49 49 0 0 1 100 26" fill="none" stroke="url(#gg2)" stroke-linecap="round" stroke-width="10" stroke-dasharray="154" stroke-dashoffset="154" style="animation:draw 2s ease forwards .3s"></path>
+<defs><linearGradient id="gg2" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#E23B2E"></stop><stop offset="1" stop-color="#FF7A3D"></stop></linearGradient></defs>
 </svg>
 <span class="gv">99%</span>
 <span class="gl">可用率</span>
 </div>
 <div class="md-chart">
-<svg preserveaspectratio="none" viewbox="0 0 220 90">
-<defs>
-<lineargradient id="ar" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#0A2A6E" stop-opacity=".35"></stop><stop offset="1" stop-color="#0A2A6E" stop-opacity="0"></stop></lineargradient>
-</defs>
-<g stroke="#e6eaf2" stroke-width="1">
+<svg preserveAspectRatio="none" viewBox="0 0 220 90">
+<g stroke="#FFE0CC" stroke-width="1">
 <line x1="0" x2="220" y1="22" y2="22"></line><line x1="0" x2="220" y1="45" y2="45"></line><line x1="0" x2="220" y1="68" y2="68"></line>
 </g>
-<path d="M0 70 L20 60 L40 64 L60 48 L80 52 L100 36 L120 42 L140 28 L160 34 L180 20 L200 26 L220 16 L220 90 L0 90 Z" fill="url(#ar)"></path>
-<path d="M0 70 L20 60 L40 64 L60 48 L80 52 L100 36 L120 42 L140 28 L160 34 L180 20 L200 26 L220 16" fill="none" stroke="url(#lg)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
-<defs><lineargradient id="lg" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#0A2A6E"></stop><stop offset="1" stop-color="#4A9FD8"></stop></lineargradient></defs>
+<path d="M0 70 L20 60 L40 64 L60 48 L80 52 L100 36 L120 42 L140 28 L160 34 L180 20 L200 26 L220 16 L220 90 L0 90 Z" fill="url(#ar2)"></path>
+<path class="line" d="M0 70 L20 60 L40 64 L60 48 L80 52 L100 36 L120 42 L140 28 L160 34 L180 20 L200 26 L220 16" fill="none" stroke="url(#lg2)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+<defs><linearGradient id="ar2" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#F0511E" stop-opacity=".30"></stop><stop offset="1" stop-color="#F0511E" stop-opacity="0"></stop></linearGradient>
+<linearGradient id="lg2" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#E23B2E"></stop><stop offset="1" stop-color="#FF7A3D"></stop></linearGradient></defs>
 </svg>
 </div>
 </div>
@@ -607,7 +549,6 @@
 <div class="md-stat"><div class="k">吞吐 QPS</div><div class="v c">1.2k</div></div>
 <div class="md-stat"><div class="k">连接数</div><div class="v g">248</div></div>
 <div class="md-stat"><div class="k">延迟 ms</div><div class="v a">3.4</div></div>
-</div>
 </div>
 </div>
 </div>
@@ -627,36 +568,37 @@
 <div class="tb-chip"><b data-count="21">0</b><span>数据库类型</span></div>
 <div class="tb-chip"><b data-count="344" data-suffix="+">0</b><span>巡检规则</span></div>
 <div class="tb-chip"><b data-count="10" data-suffix="+">0</b><span>国产数据库</span></div>
-<div class="tb-chip"><b data-count="219" data-suffix="+">0</b><span>基线配置参数</span></div>
+<div class="tb-chip"><b data-count="219" data-suffix="+">0</b><span>基线参数</span></div>
 <div class="tb-chip"><b>Apache 2.0</b><span>社区版协议</span></div>
+<div class="tb-chip"><b><i class="fas fa-paw"></i></b><span>智能巡检官</span></div>
 </div>
 </div>
 </div>
 </section>
-<!-- ================= VALUE / WHY (BENTO, asymmetric) ================= -->
+<!-- ================= VALUE / WHY (BENTO) ================= -->
 <section class="block alt" id="why">
 <div class="container">
 <div class="sec-head reveal">
-<div class="sec-tag"><svg aria-hidden="true" class="svg-ico"><use href="#icon-compass"></use></svg> 为什么需要</div>
+<div class="sec-tag"><i class="fas fa-compass"></i> 为什么需要</div>
 <h2>数据库稳，业务才稳</h2>
 <p>巡检与可观测不是锦上添花，而是数据库日常运维里最容易被忽略、却最影响稳定性的环节。</p>
 </div>
 <div class="bento stagger">
-<div class="mcard span4 glow reveal"><div class="ic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-database"></use></svg></div><h3>业务连续性依赖</h3><p>一次数据库故障的代价远超日常巡检投入。RaccoonX 把"连接、会话、表空间、复制、锁等待"等隐患提前暴露，从被动救火转为主动防御，才是真正的降本。</p></div>
-<div class="mcard span2 glow reveal"><div class="ic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-flag"></use></svg></div><h3>国产化替代</h3><p>国产库百花齐放却普遍缺统一巡检工具——RaccoonX 已适配 10+ 国产库。</p></div>
-<div class="mcard span2 glow reveal"><div class="ic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-users"></use></svg></div><h3>运维人力缺口</h3><p>DBA 人力贵、流动大，自动化巡检把重复劳动变成一键流程，释放产能。</p></div>
-<div class="mcard span4 glow reveal"><div class="ic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-shield"></use></svg></div><h3>数据安全合规</h3><p>金融、政务要求数据不出网。RaccoonX 支持纯本地部署与离线 AI 诊断（数据零外传），报告自动脱敏，天然契合高安全监管场景。</p></div>
+<div class="mcard span4 glow reveal"><div class="ic"><i class="fas fa-database"></i></div><h3>业务连续性依赖</h3><p>一次数据库故障的代价远超日常巡检投入。RaccoonX 把"连接、会话、表空间、复制、锁等待"等隐患提前暴露，从被动救火转为主动防御，才是真正的降本。</p></div>
+<div class="mcard span2 glow reveal"><div class="ic"><i class="fas fa-flag"></i></div><h3>国产化替代</h3><p>国产库百花齐放却普遍缺统一巡检工具——RaccoonX 已适配 10+ 国产库。</p></div>
+<div class="mcard span2 glow reveal"><div class="ic"><i class="fas fa-users"></i></div><h3>运维人力缺口</h3><p>DBA 人力贵、流动大，自动化巡检把重复劳动变成一键流程，释放产能。</p></div>
+<div class="mcard span4 glow reveal"><div class="ic"><i class="fas fa-shield-halved"></i></div><h3>数据安全合规</h3><p>金融、政务要求数据不出网。RaccoonX 支持纯本地部署与离线 AI 诊断（数据零外传），报告自动脱敏，天然契合高安全监管场景。</p></div>
 </div>
 </div>
 </section>
 <div aria-hidden="true" class="divider">
-<svg preserveaspectratio="none" viewbox="0 0 1440 70"><path d="M0,30 C260,68 520,4 760,24 C1000,44 1220,70 1440,30 L1440,70 L0,70 Z" fill="#f8fafc" fill-opacity=".55"></path></svg>
+<svg preserveAspectRatio="none" viewBox="0 0 1440 70"><path d="M0,30 C260,68 520,4 760,24 C1000,44 1220,70 1440,30 L1440,70 L0,70 Z" fill="#FFEFE6"></path></svg>
 </div>
-<!-- ================= SHOWCASE (alternating, tech illustrations) ================= -->
+<!-- ================= SHOWCASE (alternating) ================= -->
 <section class="block showcase" id="showcase">
 <div class="container">
 <div class="sec-head reveal">
-<div class="sec-tag"><svg aria-hidden="true" class="svg-ico"><use href="#icon-star"></use></svg> 亮点功能</div>
+<div class="sec-tag"><i class="fas fa-star"></i> 产品亮点</div>
 <h2>把复杂留给自己，把简单交给 DBA</h2>
 <p>三件 RaccoonX 做得最用心的事——也是日常运维里最耗神的部分。</p>
 </div>
@@ -672,21 +614,21 @@
 </ul>
 </div>
 <div class="show-art">
-<svg fill="none" height="200" viewbox="0 0 320 200" width="320">
+<svg fill="none" height="200" viewBox="0 0 320 200" width="320">
 <defs>
-<lineargradient id="monCard" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="rgba(255,255,255,.72)"></stop><stop offset="1" stop-color="rgba(238,242,255,.5)"></stop></lineargradient>
-<lineargradient id="monArea" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#0A2A6E" stop-opacity=".28"></stop><stop offset="1" stop-color="#0A2A6E" stop-opacity="0"></stop></lineargradient>
+<linearGradient id="monCard2" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="rgba(255,255,255,.9)"></stop><stop offset="1" stop-color="rgba(255,241,231,.7)"></stop></linearGradient>
+<linearGradient id="monArea2" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#F0511E" stop-opacity=".30"></stop><stop offset="1" stop-color="#F0511E" stop-opacity="0"></stop></linearGradient>
 </defs>
-<rect fill="url(#monCard)" height="172" rx="16" stroke="rgba(10,42,110,.28)" stroke-width="1" width="292" x="14" y="14"></rect>
-<circle cx="32" cy="36" fill="#0A2A6E" r="5"></circle>
-<text fill="#475569" font-family="Inter" font-size="12" font-weight="700" x="46" y="40">实时监控 · 多实例</text>
-<g stroke="rgba(10,42,110,.12)" stroke-width="1"><line x1="30" x2="290" y1="92" y2="92"></line><line x1="30" x2="290" y1="128" y2="128"></line></g>
-<path d="M30 150 L60 116 L90 132 L120 96 L150 110 L180 74 L210 96 L240 66 L270 84 L290 70 L290 164 L30 164 Z" fill="url(#monArea)"></path>
-<path d="M30 150 L60 116 L90 132 L120 96 L150 110 L180 74 L210 96 L240 66 L270 84 L290 70" fill="none" stroke="#0A2A6E" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
-<path d="M30 120 L70 104 L110 114 L150 90 L190 102 L230 78 L270 92 L290 86" fill="none" stroke="#4A9FD8" stroke-dasharray="2 5" stroke-linecap="round" stroke-width="2"></path>
-<circle cx="240" cy="66" fill="#0A2A6E" r="3.5"></circle>
-<line stroke="rgba(10,42,110,.2)" stroke-width="1" x1="30" x2="290" y1="164" y2="164"></line>
-<g fill="#94a3b8" font-family="Inter" font-size="8"><text x="30" y="176">00:00</text><text x="262" y="176">now</text></g>
+<rect fill="url(#monCard2)" height="172" rx="16" stroke="rgba(240,81,30,.28)" stroke-width="1" width="292" x="14" y="14"></rect>
+<circle cx="32" cy="36" fill="#F0511E" r="5"></circle>
+<text fill="#5B463C" font-family="Inter" font-size="12" font-weight="700" x="46" y="40">实时监控 · 多实例</text>
+<g stroke="rgba(240,81,30,.12)" stroke-width="1"><line x1="30" x2="290" y1="92" y2="92"></line><line x1="30" x2="290" y1="128" y2="128"></line></g>
+<path d="M30 150 L60 116 L90 132 L120 96 L150 110 L180 74 L210 96 L240 66 L270 84 L290 70 L290 164 L30 164 Z" fill="url(#monArea2)"></path>
+<path class="line" d="M30 150 L60 116 L90 132 L120 96 L150 110 L180 74 L210 96 L240 66 L270 84 L290 70" fill="none" stroke="#E23B2E" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+<path d="M30 120 L70 104 L110 114 L150 90 L190 102 L230 78 L270 92 L290 86" fill="none" stroke="#FF9A3D" stroke-dasharray="2 5" stroke-linecap="round" stroke-width="2"></path>
+<circle class="pulse-dot" cx="240" cy="66" fill="#E23B2E" r="3.5"></circle>
+<line stroke="rgba(240,81,30,.2)" stroke-width="1" x1="30" x2="290" y1="164" y2="164"></line>
+<g fill="#9C8478" font-family="Inter" font-size="8"><text x="30" y="176">00:00</text><text x="262" y="176">now</text></g>
 </svg>
 </div>
 </div>
@@ -702,21 +644,21 @@
 </ul>
 </div>
 <div class="show-art">
-<svg fill="none" height="200" viewbox="0 0 320 200" width="320">
+<svg fill="none" height="200" viewBox="0 0 320 200" width="320">
 <defs>
-<radialgradient cx=".5" cy=".4" id="aiCore"><stop offset="0" stop-color="#4A9FD8"></stop><stop offset="1" stop-color="#0A2A6E"></stop></radialgradient>
+<radialGradient cx=".5" cy=".4" id="aiCore2"><stop offset="0" stop-color="#FF7A3D"></stop><stop offset="1" stop-color="#C2410C"></stop></radialGradient>
 </defs>
-<g opacity=".7" stroke="#c7d2fe" stroke-width="1.2">
+<g opacity=".7" stroke="#FFD0B0" stroke-width="1.2">
 <line x1="160" x2="54" y1="100" y2="48"></line><line x1="160" x2="60" y1="100" y2="150"></line>
 <line x1="160" x2="266" y1="100" y2="52"></line><line x1="160" x2="262" y1="100" y2="148"></line>
 </g>
-<circle cx="160" cy="100" fill="url(#aiCore)" r="34" stroke="#0A2A6E" stroke-width="2"></circle>
+<circle cx="160" cy="100" fill="url(#aiCore2)" r="34" stroke="#C2410C" stroke-width="2"></circle>
 <text fill="#fff" font-family="Inter" font-size="20" font-weight="700" text-anchor="middle" x="160" y="106">AI</text>
 <g fill="#fff" font-family="Inter" font-size="11" font-weight="600">
-<rect fill="#0A2A6E" height="24" rx="12" stroke="#0A2A6E" stroke-width="1" width="56" x="26" y="36"></rect><text text-anchor="middle" x="54" y="52">MySQL</text>
-<rect fill="#0A2A6E" height="24" rx="12" stroke="#0A2A6E" stroke-width="1" width="56" x="32" y="138"></rect><text text-anchor="middle" x="60" y="154">Oracle</text>
-<rect fill="#0A2A6E" height="24" rx="12" stroke="#0A2A6E" stroke-width="1" width="56" x="238" y="40"></rect><text text-anchor="middle" x="266" y="56">达梦</text>
-<rect fill="#0A2A6E" height="24" rx="12" stroke="#0A2A6E" stroke-width="1" width="56" x="234" y="136"></rect><text text-anchor="middle" x="262" y="152">PG</text>
+<rect fill="#C2410C" height="24" rx="12" stroke="#C2410C" stroke-width="1" width="56" x="26" y="36"></rect><text text-anchor="middle" x="54" y="52">MySQL</text>
+<rect fill="#C2410C" height="24" rx="12" stroke="#C2410C" stroke-width="1" width="56" x="32" y="138"></rect><text text-anchor="middle" x="60" y="154">Oracle</text>
+<rect fill="#C2410C" height="24" rx="12" stroke="#C2410C" stroke-width="1" width="56" x="238" y="40"></rect><text text-anchor="middle" x="266" y="56">达梦</text>
+<rect fill="#C2410C" height="24" rx="12" stroke="#C2410C" stroke-width="1" width="56" x="234" y="136"></rect><text text-anchor="middle" x="262" y="152">PG</text>
 </g>
 </svg>
 </div>
@@ -733,29 +675,29 @@
 </ul>
 </div>
 <div class="show-art">
-<svg fill="none" height="200" viewbox="0 0 320 200" width="320">
+<svg fill="none" height="200" viewBox="0 0 320 200" width="320">
 <defs>
-<lineargradient id="repCard" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="rgba(255,255,255,.72)"></stop><stop offset="1" stop-color="rgba(238,242,255,.48)"></stop></lineargradient>
+<linearGradient id="repCard2" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="rgba(255,255,255,.9)"></stop><stop offset="1" stop-color="rgba(255,241,231,.7)"></stop></linearGradient>
 </defs>
-<rect fill="url(#repCard)" height="172" rx="16" stroke="rgba(10,42,110,.28)" stroke-width="1" width="292" x="14" y="14"></rect>
-<text fill="#475569" font-family="Inter" font-size="12" font-weight="700" x="32" y="40">巡检报告 · 自动脱敏</text>
+<rect fill="url(#repCard2)" height="172" rx="16" stroke="rgba(240,81,30,.28)" stroke-width="1" width="292" x="14" y="14"></rect>
+<text fill="#5B463C" font-family="Inter" font-size="12" font-weight="700" x="32" y="40">巡检报告 · 自动脱敏</text>
 <g>
-<circle cx="52" cy="74" fill="rgba(10,42,110,.12)" r="8" stroke="#0A2A6E" stroke-width="1"></circle>
-<path d="M49 74 l2 2 l5 -5" fill="none" stroke="#0A2A6E" stroke-linecap="round" stroke-width="2"></path>
-<rect fill="rgba(10,42,110,.12)" height="8" rx="4" width="88" x="74" y="68"></rect>
-<rect fill="rgba(148,163,184,.25)" height="6" rx="3" width="60" x="74" y="82"></rect>
-<circle cx="52" cy="112" fill="rgba(10,42,110,.12)" r="8" stroke="#0A2A6E" stroke-width="1"></circle>
-<path d="M49 112 l2 2 l5 -5" fill="none" stroke="#0A2A6E" stroke-linecap="round" stroke-width="2"></path>
-<rect fill="rgba(10,42,110,.12)" height="8" rx="4" width="76" x="74" y="106"></rect>
-<rect fill="rgba(148,163,184,.25)" height="6" rx="3" width="50" x="74" y="120"></rect>
-<circle cx="52" cy="150" fill="rgba(10,42,110,.12)" r="8" stroke="#0A2A6E" stroke-width="1"></circle>
-<path d="M49 150 l2 2 l5 -5" fill="none" stroke="#0A2A6E" stroke-linecap="round" stroke-width="2"></path>
-<rect fill="rgba(10,42,110,.12)" height="8" rx="4" width="104" x="74" y="144"></rect>
-<rect fill="rgba(148,163,184,.25)" height="6" rx="3" width="64" x="74" y="158"></rect>
+<circle cx="52" cy="74" fill="rgba(240,81,30,.14)" r="8" stroke="#F0511E" stroke-width="1"></circle>
+<path d="M49 74 l2 2 l5 -5" fill="none" stroke="#F0511E" stroke-linecap="round" stroke-width="2"></path>
+<rect fill="rgba(240,81,30,.14)" height="8" rx="4" width="88" x="74" y="68"></rect>
+<rect fill="rgba(156,132,120,.25)" height="6" rx="3" width="60" x="74" y="82"></rect>
+<circle cx="52" cy="112" fill="rgba(240,81,30,.14)" r="8" stroke="#F0511E" stroke-width="1"></circle>
+<path d="M49 112 l2 2 l5 -5" fill="none" stroke="#F0511E" stroke-linecap="round" stroke-width="2"></path>
+<rect fill="rgba(240,81,30,.14)" height="8" rx="4" width="76" x="74" y="106"></rect>
+<rect fill="rgba(156,132,120,.25)" height="6" rx="3" width="50" x="74" y="120"></rect>
+<circle cx="52" cy="150" fill="rgba(240,81,30,.14)" r="8" stroke="#F0511E" stroke-width="1"></circle>
+<path d="M49 150 l2 2 l5 -5" fill="none" stroke="#F0511E" stroke-linecap="round" stroke-width="2"></path>
+<rect fill="rgba(240,81,30,.14)" height="8" rx="4" width="104" x="74" y="144"></rect>
+<rect fill="rgba(156,132,120,.25)" height="6" rx="3" width="64" x="74" y="158"></rect>
 </g>
 <g transform="translate(238,120)">
-<circle cx="16" cy="16" fill="rgba(10,42,110,.12)" r="16" stroke="#0A2A6E" stroke-width="1"></circle>
-<path d="M16 26 l-8 -4 v-6 C8 12 12 10 16 10 s8 2 8 6 v6 z" fill="#0A2A6E"></path>
+<circle cx="16" cy="16" fill="rgba(240,81,30,.14)" r="16" stroke="#F0511E" stroke-width="1"></circle>
+<path d="M16 26 l-8 -4 v-6 C8 12 12 10 16 10 s8 2 8 6 v6 z" fill="#F0511E"></path>
 <path d="M12 17 l3 3 l7 -7" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"></path>
 </g>
 </svg>
@@ -767,73 +709,73 @@
 <section class="block alt" id="features">
 <div class="container">
 <div class="sec-head reveal">
-<div class="sec-tag"><svg aria-hidden="true" class="svg-ico"><use href="#icon-book-open"></use></svg> 功能全览</div>
+<div class="sec-tag"><i class="fas fa-book-open"></i> 功能全览</div>
 <h2>一套平台，覆盖数据库全生命周期</h2>
 <p>从智能巡检、实时监控到 AI 诊断与合规报告——以下能力均已落地（参考官方文档）。</p>
 </div>
 <!-- 分类胶囊切换 -->
 <div class="feat-tabs reveal" id="featTabs" role="tablist">
-<button aria-selected="true" class="feat-tab active" data-cat="0" role="tab" type="button"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-shield"></use></svg></span><span>智能巡检</span></button>
-<button aria-selected="false" class="feat-tab" data-cat="1" role="tab" type="button"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-bar-chart"></use></svg></span><span>实时监控</span></button>
-<button aria-selected="false" class="feat-tab" data-cat="2" role="tab" type="button"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-cpu"></use></svg></span><span>AI 与诊断</span></button>
-<button aria-selected="false" class="feat-tab" data-cat="3" role="tab" type="button"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-file-text"></use></svg></span><span>报告与协作</span></button>
-<button aria-selected="false" class="feat-tab" data-cat="4" role="tab" type="button"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-grid"></use></svg></span><span>扩展与运维</span></button>
+<button aria-selected="true" class="feat-tab active" data-cat="0" role="tab" type="button"><span class="fic-mini"><i class="fas fa-shield-halved"></i></span><span>智能巡检</span></button>
+<button aria-selected="false" class="feat-tab" data-cat="1" role="tab" type="button"><span class="fic-mini"><i class="fas fa-chart-line"></i></span><span>实时监控</span></button>
+<button aria-selected="false" class="feat-tab" data-cat="2" role="tab" type="button"><span class="fic-mini"><i class="fas fa-microchip"></i></span><span>AI 与诊断</span></button>
+<button aria-selected="false" class="feat-tab" data-cat="3" role="tab" type="button"><span class="fic-mini"><i class="fas fa-file-shield"></i></span><span>报告与协作</span></button>
+<button aria-selected="false" class="feat-tab" data-cat="4" role="tab" type="button"><span class="fic-mini"><i class="fas fa-table-cells"></i></span><span>扩展与运维</span></button>
 </div>
 <div class="feat-panel" id="featPanel">
 <!-- 0 智能巡检 -->
 <div class="feat-pane active" data-cat="0" role="tabpanel">
 <ul class="feat-list">
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-database"></use></svg></span><div class="fi-text"><h3>数据库巡检</h3><p>覆盖 21 种数据库，344+ 巡检规则，自动生成专业 Word 报告，支持自由配置巡检章节。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-list"></use></svg></span><div class="fi-text"><h3>逐库深度覆盖</h3><p>基本信息、会话连接、内存缓存、表空间、SGA/PGA、Redo、归档备份、安全审计、Top SQL、复制/Data Guard、RAC、锁与阻塞等多维度检查。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-alert-triangle"></use></svg></span><div class="fi-text"><h3>智能风险分析</h3><p>自动识别风险，每条附<strong>可执行修复 SQL</strong>，支持一键执行；危险操作二次确认 + 全程日志。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-sliders"></use></svg></span><div class="fi-text"><h3>配置基线管理</h3><p>可视化编辑各库推荐值（覆盖 15+ 数据库、219+ 基线参数，含动态推荐与默认合规规则），偏离即告警。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-leaf"></use></svg></span><div class="fi-text"><h3>索引健康分析</h3><p>检测缺失、冗余、长期未使用索引，给出优化建议，从源头消除性能隐患。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-bar-chart"></use></svg></span><div class="fi-text"><h3>风险规则统计</h3><p>MySQL 35+ · PG 27+ · Oracle 20+ · SQL Server 15+ · DM8 16+ · TiDB 18+ · Kingbase 19+ · UXDB 12+ … 按库细分。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-database"></i></span><div class="fi-text"><h3>数据库巡检</h3><p>覆盖 21 种数据库，344+ 巡检规则，自动生成专业 Word 报告，支持自由配置巡检章节。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-list-check"></i></span><div class="fi-text"><h3>逐库深度覆盖</h3><p>基本信息、会话连接、内存缓存、表空间、SGA/PGA、Redo、归档备份、安全审计、Top SQL、复制/Data Guard、RAC、锁与阻塞等多维度检查。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-triangle-exclamation"></i></span><div class="fi-text"><h3>智能风险分析</h3><p>自动识别风险，每条附<strong>可执行修复 SQL</strong>，支持一键执行；危险操作二次确认 + 全程日志。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-sliders"></i></span><div class="fi-text"><h3>配置基线管理</h3><p>可视化编辑各库推荐值（覆盖 15+ 数据库、219+ 基线参数，含动态推荐与默认合规规则），偏离即告警。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-leaf"></i></span><div class="fi-text"><h3>索引健康分析</h3><p>检测缺失、冗余、长期未使用索引，给出优化建议，从源头消除性能隐患。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-chart-bar"></i></span><div class="fi-text"><h3>风险规则统计</h3><p>MySQL 35+ · PG 27+ · Oracle 20+ · SQL Server 15+ · DM8 16+ · TiDB 18+ · Kingbase 19+ · UXDB 12+ … 按库细分。</p></div></li>
 </ul>
 </div>
 <!-- 1 实时监控 -->
 <div class="feat-pane" data-cat="1" role="tabpanel">
 <ul class="feat-list">
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-bar-chart"></use></svg></span><div class="fi-text"><h3>首页实时监控</h3><p>吞吐 / 连接 / 响应延迟 / 端口可用性，flask-socketio 每 30s 推送刷新，多实例健康态势一屏掌握。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-flame"></use></svg></span><div class="fi-text"><h3>慢查询与连接热力图</h3><p>活跃连接与慢查询实时监控，5~60s 刷新可调，支持 CSV 导出。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-trending-up"></use></svg></span><div class="fi-text"><h3>历史趋势分析</h3><p>多轮巡检数据聚合，阈值线 + 前后对比彩色标注，提前发现风险。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-heart"></use></svg></span><div class="fi-text"><h3>非深采连通性画像</h3><p>暂不支持深采的实例，展示「端口可用性」时间线 + 「连通性诊断」仪表盘（可用率 + 真实失败原因）。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-chart-line"></i></span><div class="fi-text"><h3>首页实时监控</h3><p>吞吐 / 连接 / 响应延迟 / 端口可用性，flask-socketio 每 30s 推送刷新，多实例健康态势一屏掌握。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-fire"></i></span><div class="fi-text"><h3>慢查询与连接热力图</h3><p>活跃连接与慢查询实时监控，5~60s 刷新可调，支持 CSV 导出。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-arrow-trend-up"></i></span><div class="fi-text"><h3>历史趋势分析</h3><p>多轮巡检数据聚合，阈值线 + 前后对比彩色标注，提前发现风险。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-heart-pulse"></i></span><div class="fi-text"><h3>非深采连通性画像</h3><p>暂不支持深采的实例，展示「端口可用性」时间线 + 「连通性诊断」仪表盘（可用率 + 真实失败原因）。</p></div></li>
 </ul>
 </div>
 <!-- 2 AI 与诊断 -->
 <div class="feat-pane" data-cat="2" role="tabpanel">
 <ul class="feat-list">
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-cpu"></use></svg></span><div class="fi-text"><h3>本地 AI 智能诊断</h3><p>基于本地 Ollama，数据完全离线、零外传；另支持 OpenAI / DeepSeek 云端后端。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-message-circle"></use></svg></span><div class="fi-text"><h3>AI 对话巡检</h3><p>Web UI 内置 AI 面板，自然语言发起巡检，降低使用门槛。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-book"></use></svg></span><div class="fi-text"><h3>RAG 知识库</h3><p>上传 PDF / Word / MD / TXT 自动向量化，诊断时自动检索最佳实践。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-trending-up"></use></svg></span><div class="fi-text"><h3>Oracle AWR 分析</h3><p>上传 AWR HTML，自动解析生成结构化 Word 报告 + AI 诊断建议。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-hard-drive"></use></svg></span><div class="fi-text"><h3>DM8 离线存储检查</h3><p>无需启动实例，直接扫描 .DBF 识别坏块（全零 / 常量填充 / 截断），支持本地与 SSH 远程。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-users"></use></svg></span><div class="fi-text"><h3>协同诊断中枢</h3><p>一支由五位诊断专员（监控哨兵 / 巡检分析 / 根因定位 / SQL 治理 / 锁等待分析）组成的 AI DBA 团队，在<strong>共享上下文（黑板）</strong>上串行接力、彼此印证，输出根因推断与可执行处置方案。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-target"></use></svg></span><div class="fi-text"><h3>方案代价验证</h3><p>协同诊断中枢为每个处置方案标注执行代价、回滚风险与维护窗口提示，给出"先易后难"的执行顺序，避免盲改生产。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-microchip"></i></span><div class="fi-text"><h3>本地 AI 智能诊断</h3><p>基于本地 Ollama，数据完全离线、零外传；另支持 OpenAI / DeepSeek 云端后端。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-comments"></i></span><div class="fi-text"><h3>AI 对话巡检</h3><p>Web UI 内置 AI 面板，自然语言发起巡检，降低使用门槛。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-book"></i></span><div class="fi-text"><h3>RAG 知识库</h3><p>上传 PDF / Word / MD / TXT 自动向量化，诊断时自动检索最佳实践。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-chart-line"></i></span><div class="fi-text"><h3>Oracle AWR 分析</h3><p>上传 AWR HTML，自动解析生成结构化 Word 报告 + AI 诊断建议。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-hard-drive"></i></span><div class="fi-text"><h3>DM8 离线存储检查</h3><p>无需启动实例，直接扫描 .DBF 识别坏块（全零 / 常量填充 / 截断），支持本地与 SSH 远程。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-users"></i></span><div class="fi-text"><h3>协同诊断中枢</h3><p>一支由五位诊断专员（监控哨兵 / 巡检分析 / 根因定位 / SQL 治理 / 锁等待分析）组成的 AI DBA 团队，在<strong>共享上下文（黑板）</strong>上串行接力、彼此印证，输出根因推断与可执行处置方案。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-bullseye"></i></span><div class="fi-text"><h3>方案代价验证</h3><p>协同诊断中枢为每个处置方案标注执行代价、回滚风险与维护窗口提示，给出"先易后难"的执行顺序，避免盲改生产。</p></div></li>
 </ul>
 </div>
 <!-- 3 报告与协作 -->
 <div class="feat-pane" data-cat="3" role="tabpanel">
 <ul class="feat-list">
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-file-text"></use></svg></span><div class="fi-text"><h3>Word / PDF + 脱敏</h3><p>一键生成专业报告，自动掩码 IP、端口、账号等敏感信息，适合对外交付。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-link"></use></svg></span><div class="fi-text"><h3>分享链接</h3><p>一键生成在线链接，免登录查看，权限隔离 + 访问统计，随时撤销。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-check-circle"></use></svg></span><div class="fi-text"><h3>巡检章节管理</h3><p>每种库可独立增删 / 排序 / 启停章节，Word 报告动态生成。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-bell"></use></svg></span><div class="fi-text"><h3>定时任务与通知</h3><p>Cron 快捷预设，完成后自动邮件（带附件）或 Webhook（企微 / 钉钉 / 自定义）。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-ticket"></use></svg></span><div class="fi-text"><h3>工单闭环</h3><p>诊断结果一键生成工单，跟踪待处理 / 处理中 / 已解决 / 已关闭 / 已取消并回写反馈，形成"诊断 → 派单 → 处置 → 反馈"运维闭环。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-clock"></use></svg></span><div class="fi-text"><h3>诊断历史</h3><p>每次协同诊断完整落库并生成诊断编号（diag_no），支持按数据源筛选、列表浏览与一键回填工单。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-file-shield"></i></span><div class="fi-text"><h3>Word / PDF + 脱敏</h3><p>一键生成专业报告，自动掩码 IP、端口、账号等敏感信息，适合对外交付。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-link"></i></span><div class="fi-text"><h3>分享链接</h3><p>一键生成在线链接，免登录查看，权限隔离 + 访问统计，随时撤销。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-list-check"></i></span><div class="fi-text"><h3>巡检章节管理</h3><p>每种库可独立增删 / 排序 / 启停章节，Word 报告动态生成。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-bell"></i></span><div class="fi-text"><h3>定时任务与通知</h3><p>Cron 快捷预设，完成后自动邮件（带附件）或 Webhook（企微 / 钉钉 / 自定义）。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-ticket"></i></span><div class="fi-text"><h3>工单闭环</h3><p>诊断结果一键生成工单，跟踪待处理 / 处理中 / 已解决 / 已关闭 / 已取消并回写反馈，形成"诊断 → 派单 → 处置 → 反馈"运维闭环。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-clock-rotate-left"></i></span><div class="fi-text"><h3>诊断历史</h3><p>每次协同诊断完整落库并生成诊断编号（diag_no），支持按数据源筛选、列表浏览与一键回填工单。</p></div></li>
 </ul>
 </div>
 <!-- 4 扩展与运维 -->
 <div class="feat-pane" data-cat="4" role="tabpanel">
 <ul class="feat-list">
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-box"></use></svg></span><div class="fi-text"><h3>插件系统</h3><p>独立插件架构，生命周期管理、插件市场、干净卸载、数据隔离；内置 MongoDB / Oracle(JDBC) 插件。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-terminal"></use></svg></span><div class="fi-text"><h3>SQL 编辑器 &amp; 远程终端</h3><p>内置 SQL 编辑器（全 11 库、语法高亮）；SSH 远程终端支持多标签与全屏。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-server"></use></svg></span><div class="fi-text"><h3>服务器巡检</h3><p>独立于数据库巡检，覆盖 CPU / 内存 / 磁盘 / 网络 / 服务 / 进程。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-terminal"></use></svg></span><div class="fi-text"><h3>REST API</h3><p>API Key 认证，便于接入 CI/CD 与监控系统，融入自动化运维流水线。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-globe"></use></svg></span><div class="fi-text"><h3>多语言 · 主题 · 分发</h3><p>中 / 英文切换，深 / 浅色主题；Docker 多架构镜像 + 一键打包分发。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-microscope"></use></svg></span><div class="fi-text"><h3>eBPF 内核级采集</h3><p>块设备服务时间 p50/p95/p99 微秒级百分位、按进程 IO / CPU 归因，精度高于 psutil，擅长暴露长尾抖动。<strong>默认关闭、仅 opt-in</strong>，绝不在生产默认注入内核程序。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-terminal"></use></svg></span><div class="fi-text"><h3>SSH 安全宿主采集</h3><p>零侵入、无需预装 Python 也可采集：纯 Shell 脚本经 SSH 注入远端执行，凭据 Fernet 加密，防打满、防悬挂、防泄露。</p></div></li>
-<li class="feat-item glow"><span class="fic-mini"><svg aria-hidden="true" class="svg-ico"><use href="#icon-shield"></use></svg></span><div class="fi-text"><h3>统一可观测视图</h3><p>宿主资源（eBPF / psutil / SSH）+ 数据库细粒度指标 + 巡检风险统一到同一分析平面，根因定位成为可串联的证据链。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-box-open"></i></span><div class="fi-text"><h3>插件系统</h3><p>独立插件架构，生命周期管理、插件市场、干净卸载、数据隔离；内置 MongoDB / Oracle(JDBC) 插件。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-terminal"></i></span><div class="fi-text"><h3>SQL 编辑器 &amp; 远程终端</h3><p>内置 SQL 编辑器（全 11 库、语法高亮）；SSH 远程终端支持多标签与全屏。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-server"></i></span><div class="fi-text"><h3>服务器巡检</h3><p>独立于数据库巡检，覆盖 CPU / 内存 / 磁盘 / 网络 / 服务 / 进程。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-code"></i></span><div class="fi-text"><h3>REST API</h3><p>API Key 认证，便于接入 CI/CD 与监控系统，融入自动化运维流水线。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-globe"></i></span><div class="fi-text"><h3>多语言 · 主题 · 分发</h3><p>中 / 英文切换，深 / 浅色主题；Docker 多架构镜像 + 一键打包分发。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-microscope"></i></span><div class="fi-text"><h3>eBPF 内核级采集</h3><p>块设备服务时间 p50/p95/p99 微秒级百分位、按进程 IO / CPU 归因，精度高于 psutil，擅长暴露长尾抖动。<strong>默认关闭、仅 opt-in</strong>，绝不在生产默认注入内核程序。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-terminal"></i></span><div class="fi-text"><h3>SSH 安全宿主采集</h3><p>零侵入、无需预装 Python 也可采集：纯 Shell 脚本经 SSH 注入远端执行，凭据 Fernet 加密，防打满、防悬挂、防泄露。</p></div></li>
+<li class="feat-item glow"><span class="fic-mini"><i class="fas fa-layer-group"></i></span><div class="fi-text"><h3>统一可观测视图</h3><p>宿主资源（eBPF / psutil / SSH）+ 数据库细粒度指标 + 巡检风险统一到同一分析平面，根因定位成为可串联的证据链。</p></div></li>
 </ul>
 </div>
 </div>
@@ -841,10 +783,10 @@
 </section>
 
 <!-- ================= HOW IT WORKS ================= -->
-<section class="block alt" id="how">
+<section class="block" id="how">
 <div class="container">
 <div class="sec-head reveal">
-<div class="sec-tag"><svg aria-hidden="true" class="svg-ico"><use href="#icon-map"></use></svg> 如何工作</div>
+<div class="sec-tag"><i class="fas fa-map"></i> 如何工作</div>
 <h2>四步，从接入到报告</h2>
 <p>无需复杂配置，RaccoonX 把「连上数据库 → 自动巡检 → 风险诊断 → 产出报告」串成一条流水线。</p>
 </div>
@@ -857,10 +799,10 @@
 </div>
 </section>
 <!-- ================= QUICK START ================= -->
-<section class="block" id="quickstart">
+<section class="block alt" id="quickstart">
 <div class="container">
 <div class="sec-head reveal">
-<div class="sec-tag"><svg aria-hidden="true" class="svg-ico"><use href="#icon-rocket"></use></svg> 快速开始</div>
+<div class="sec-tag"><i class="fas fa-rocket"></i> 快速开始</div>
 <h2>三种方式，几分钟跑起来</h2>
 <p>无论你习惯容器、compose 还是源码，都能快速启动。启动后访问 <span class="mono">http://localhost:5003</span>。</p>
 </div>
@@ -898,27 +840,44 @@ python web_ui.py</pre>
 <section class="block" id="download">
 <div class="container">
 <div class="sec-head reveal">
-<div class="sec-tag"><svg aria-hidden="true" class="svg-ico"><use href="#icon-file-text"></use></svg> 下载中心</div>
+<div class="sec-tag"><i class="fas fa-download"></i> 下载中心</div>
 <h2>下载中心</h2>
 <p>获取 RaccoonX 用户手册与客户端安装包（Windows / macOS），快速开始数据库智能巡检与实时监控。</p>
 </div>
-<div class="download-wrap reveal" style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:6px">
-<a class="btn btn-primary" href="assets/downloads/RaccoonX-Manual-v26.9.4.0.pdf" download><i class="fas fa-file-download"></i> 下载用户手册（v26.9.4.0 · PDF）</a>
-<span style="color:var(--text-2);font-size:.92rem"><i class="fas fa-info-circle"></i> 约 10&nbsp;MB · 共 11 章 · 随版本持续更新</span>
+<div class="dl-grid reveal">
+<a class="dl-card" href="assets/downloads/RaccoonX-Manual-v26.9.4.0.pdf" download>
+<div class="dl-ic"><i class="fas fa-file-pdf"></i></div>
+<h4>用户手册</h4>
+<p>v26.9.4.0 · PDF 约 10&nbsp;MB · 共 11 章，随版本持续更新。</p>
+<span class="btn btn-primary"><i class="fas fa-file-download"></i> 下载用户手册</span>
+</a>
+<a class="dl-card" href="https://github.com/fiyo/DBCheck/releases/download/v26.9.4.0/RaccoonX-Windows-x86_64-v26.9.4.0.zip" target="_blank" rel="noopener">
+<div class="dl-ic"><i class="fab fa-windows"></i></div>
+<h4>Windows 客户端</h4>
+<p>x86_64 · v26.9.4.0 · ZIP · 解压即用，支持 Windows 10/11。</p>
+<span class="btn btn-primary"><i class="fab fa-windows"></i> 下载 Windows 版</span>
+</a>
+<a class="dl-card" href="https://github.com/fiyo/DBCheck/releases/download/v26.9.4.0/RaccoonX-macOS-arm64-v26.9.4.0.tar.gz" target="_blank" rel="noopener">
+<div class="dl-ic"><i class="fab fa-apple"></i></div>
+<h4>macOS 客户端（arm64）</h4>
+<p>Apple 芯片 · v26.9.4.0 · tar.gz · 支持 macOS 11+。</p>
+<span class="btn btn-primary"><i class="fab fa-apple"></i> 下载 macOS arm64</span>
+</a>
+<a class="dl-card" href="https://github.com/fiyo/DBCheck/releases/download/v26.9.4.0/RaccoonX-macOS-x86_64-v26.9.4.0.tar.gz" target="_blank" rel="noopener">
+<div class="dl-ic"><i class="fab fa-apple"></i></div>
+<h4>macOS 客户端（x86_64）</h4>
+<p>Intel 芯片 · v26.9.4.0 · tar.gz · 支持 macOS 11+。</p>
+<span class="btn btn-primary"><i class="fab fa-apple"></i> 下载 macOS x86_64</span>
+</a>
 </div>
-<div class="download-wrap reveal" style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:14px">
-<a class="btn btn-primary" href="https://github.com/fiyo/DBCheck/releases/download/v26.9.4.0/RaccoonX-Windows-x86_64-v26.9.4.0.zip" target="_blank" rel="noopener"><i class="fab fa-windows"></i> 下载 Windows 客户端（x86_64 · v26.9.4.0 · ZIP）</a>
-<a class="btn btn-primary" href="https://github.com/fiyo/DBCheck/releases/download/v26.9.4.0/RaccoonX-macOS-arm64-v26.9.4.0.tar.gz" target="_blank" rel="noopener"><i class="fab fa-apple"></i> 下载 macOS 客户端（arm64 · v26.9.4.0 · tar.gz）</a>
-<a class="btn btn-primary" href="https://github.com/fiyo/DBCheck/releases/download/v26.9.4.0/RaccoonX-macOS-x86_64-v26.9.4.0.tar.gz" target="_blank" rel="noopener"><i class="fab fa-apple"></i> 下载 macOS 客户端（x86_64 · v26.9.4.0 · tar.gz）</a>
-<span style="color:var(--text-2);font-size:.92rem"><i class="fas fa-info-circle"></i> 解压即用 · 免安装 · 支持 Windows 10/11 · macOS 11+（Linux 客户端暂未发布）</span>
-</div>
+<p style="text-align:center;color:var(--text-3);font-size:.88rem;margin-top:18px"><i class="fas fa-info-circle"></i> 解压即用 · 免安装 · Linux 客户端暂未发布</p>
 </div>
 </section>
 <!-- ================= SUPPORTED DB ================= -->
 <section class="block alt" id="databases">
 <div class="container">
 <div class="sec-head reveal">
-<div class="sec-tag"><svg aria-hidden="true" class="svg-ico"><use href="#icon-server"></use></svg> 广泛兼容</div>
+<div class="sec-tag"><i class="fas fa-server"></i> 广泛兼容</div>
 <h2>一套工具，纳管你的全部数据库</h2>
 <p>21 种主流与国产数据库统一接入，正是信创混合架构下的现实需求。</p>
 </div>
@@ -951,21 +910,22 @@ python web_ui.py</pre>
 <section class="block" id="usecases">
 <div class="container">
 <div class="sec-head reveal">
-<div class="sec-tag"><svg aria-hidden="true" class="svg-ico"><use href="#icon-bulb"></use></svg> 使用场景</div>
+<div class="sec-tag"><i class="fas fa-lightbulb"></i> 使用场景</div>
 <h2>谁在用，用在哪</h2>
 <p>从个人 DBA 到企业信创项目，RaccoonX 覆盖数据库运维的关键节点。</p>
 </div>
 <div class="bento stagger">
-<div class="mcard span2 glow reveal"><div class="ic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-list"></use></svg></div><h3>日常巡检与交接</h3><p>定时巡检 + 一键报告，把经验沉淀成文档，新人也能快速接手库。</p></div>
-<div class="mcard span2 glow reveal"><div class="ic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-flag"></use></svg></div><h3>国产化迁移合规</h3><p>统一纳管混合架构下的国产库，生成信创合规报表，迁移前后可对比。</p></div>
-<div class="mcard span2 glow reveal"><div class="ic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-lock"></use></svg></div><h3>数据安全与等保</h3><p>纯本地部署、离线 AI 诊断，数据不出网，契合金融政务等高监管场景。</p></div>
-<div class="mcard span4 glow reveal"><div class="ic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-zap"></use></svg></div><h3>故障快速定位</h3><p>实时监控大屏 + 历史趋势，异常早发现、根因快定位，缩短 MTTR。</p></div>
-<div class="mcard span2 glow reveal" style="display:grid;place-items:center;background:linear-gradient(135deg,rgba(10,42,110,.08),rgba(74,159,216,.08));border-style:dashed"><div style="text-align:center;color:var(--text-2);font-weight:600"><i class="fas fa-plus-circle" style="color:var(--primary);font-size:1.4rem;display:block;margin-bottom:8px"></i> 更多场景持续涌现</div></div>
+<div class="mcard span2 glow reveal"><div class="ic"><i class="fas fa-list-check"></i></div><h3>日常巡检与交接</h3><p>定时巡检 + 一键报告，把经验沉淀成文档，新人也能快速接手库。</p></div>
+<div class="mcard span2 glow reveal"><div class="ic"><i class="fas fa-flag"></i></div><h3>国产化迁移合规</h3><p>统一纳管混合架构下的国产库，生成信创合规报表，迁移前后可对比。</p></div>
+<div class="mcard span2 glow reveal"><div class="ic"><i class="fas fa-lock"></i></div><h3>数据安全与等保</h3><p>纯本地部署、离线 AI 诊断，数据不出网，契合金融政务等高监管场景。</p></div>
+<div class="mcard span4 glow reveal"><div class="ic"><i class="fas fa-bolt"></i></div><h3>故障快速定位</h3><p>实时监控大屏 + 历史趋势，异常早发现、根因快定位，缩短 MTTR。</p></div>
+<div class="mcard span6 glow reveal" style="display:flex;align-items:center;justify-content:center;gap:18px;background:linear-gradient(135deg,rgba(240,81,30,.08),rgba(255,154,61,.10));border-style:dashed">
+<div class="ic" style="margin:0"><i class="fas fa-paw" style="color:var(--primary)"></i></div>
+<div style="text-align:left"><h3 style="margin:0 0 4px">智能巡检官随时待命</h3><p style="margin:0">RaccoonX 的吉祥物巡检官，陪你一起守护每一台数据库的健康。</p></div>
+</div>
 </div>
 <div class="cust-wrap reveal">
-  <div class="cust-head">
-    <div class="sec-tag"><svg aria-hidden="true" class="svg-ico"><use href="#icon-users"></use></svg> 客户实践</div>
-  </div>
+  <div class="sec-tag" style="margin:0 auto 18px;display:flex;width:fit-content"><i class="fas fa-users"></i> 客户实践</div>
   <div class="cust-grid stagger">
     <div class="cust-card glow reveal">
       <span class="cust-tag">装备制造 · A 股上市</span>
@@ -995,16 +955,16 @@ python web_ui.py</pre>
 <section class="block alt" id="moat">
 <div class="container">
 <div class="sec-head reveal">
-<div class="sec-tag"><svg aria-hidden="true" class="svg-ico"><use href="#icon-award"></use></svg> 为什么是 RaccoonX</div>
+<div class="sec-tag"><i class="fas fa-award"></i> 为什么是 RaccoonX</div>
 <h2>务实、开源、贴合国产环境</h2>
 <p>这些特质让 RaccoonX 在真实运维场景里更好用、更可信。</p>
 </div>
 <div class="moat-grid stagger">
-<div class="moat reveal"><div class="mic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-wind"></use></svg></div><h4>开源可审计</h4><p>Apache 2.0 开源，代码透明、可自托管，社区持续反哺。</p></div>
-<div class="moat reveal"><div class="mic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-flag"></use></svg></div><h4>国产库适配</h4><p>10+ 国产库率先适配，覆盖信创混合架构现实需求。</p></div>
-<div class="moat reveal"><div class="mic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-grid"></use></svg></div><h4>插件生态</h4><p>插件市场可热加载扩展，巡检规则、告警渠道、报告模板皆可定制。</p></div>
-<div class="moat reveal"><div class="mic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-lock"></use></svg></div><h4>数据不出网</h4><p>纯本地 / 私有化部署，离线 AI 诊断契合高安全监管。</p></div>
-<div class="moat reveal"><div class="mic"><svg aria-hidden="true" class="svg-ico"><use href="#icon-zap"></use></svg></div><h4>轻量落地</h4><p>一条命令或打包版即可运行，部署与学习成本极低。</p></div>
+<div class="moat reveal"><div class="mic"><i class="fas fa-wind"></i></div><h4>开源可审计</h4><p>Apache 2.0 开源，代码透明、可自托管，社区持续反哺。</p></div>
+<div class="moat reveal"><div class="mic"><i class="fas fa-flag"></i></div><h4>国产库适配</h4><p>10+ 国产库率先适配，覆盖信创混合架构现实需求。</p></div>
+<div class="moat reveal"><div class="mic"><i class="fas fa-table-cells"></i></div><h4>插件生态</h4><p>插件市场可热加载扩展，巡检规则、告警渠道、报告模板皆可定制。</p></div>
+<div class="moat reveal"><div class="mic"><i class="fas fa-lock"></i></div><h4>数据不出网</h4><p>纯本地 / 私有化部署，离线 AI 诊断契合高安全监管。</p></div>
+<div class="moat reveal"><div class="mic"><i class="fas fa-bolt"></i></div><h4>轻量落地</h4><p>一条命令或打包版即可运行，部署与学习成本极低。</p></div>
 </div>
 </div>
 </section>
@@ -1012,11 +972,11 @@ python web_ui.py</pre>
 <section class="block" id="model">
 <div class="container">
 <div class="sec-head reveal">
-<div class="sec-tag"><svg aria-hidden="true" class="svg-ico"><use href="#icon-book-open"></use></svg> 版本与支持</div>
+<div class="sec-tag"><i class="fas fa-book-open"></i> 版本与支持</div>
 <h2>开源免费，商业支持可选</h2>
 <p>RaccoonX 社区版永久免费、Apache 2.0 开源，前述全部能力（含协同诊断中枢、eBPF / SSH 采集、工单闭环）均随社区版开放；如需稳定的官方技术支持，可购买商业支持服务。</p>
 </div>
-<div class="bm-grid stagger" style="margin-top:8px;grid-template-columns:repeat(2,1fr)">
+<div class="bm-grid stagger">
 <div class="bm reveal">
 <div class="bmk">COMMUNITY · 免费开源</div>
 <h3>社区版 · 永久免费</h3>
@@ -1048,7 +1008,7 @@ python web_ui.py</pre>
 <section class="block alt" id="support">
 <div class="container">
 <div class="sec-head reveal">
-<div class="sec-tag pro"><svg aria-hidden="true" class="svg-ico"><use href="#icon-award"></use></svg> 商业技术支持</div>
+<div class="sec-tag pro"><i class="fas fa-headset"></i> 商业技术支持</div>
 <h2>商业技术支持（付费）</h2>
 <p>如贵司需要稳定的官方技术支持（问题响应、故障排查、版本适配、部署咨询等），可购买我们的商业支持服务。建议方案如下（最终以正式报价单为准）：</p>
 </div>
@@ -1099,12 +1059,12 @@ python web_ui.py</pre>
 </div>
 </section>
 <!-- ================= COMMUNITY ================= -->
-<section class="block alt">
+<section class="block">
 <div class="container">
 <div class="community reveal">
 <div class="community-inner">
-<div class="sec-head" style="text-align:center;margin:0 0 6px">
-<div class="sec-tag"><svg aria-hidden="true" class="svg-ico"><use href="#icon-users"></use></svg> 开源社区</div>
+<div class="sec-head">
+<div class="sec-tag"><i class="fas fa-users"></i> 开源社区</div>
 <h2>和我们一起把数据库运维变得更简单</h2>
 <p class="lead">RaccoonX 由社区驱动。欢迎 Star、提交 Issue、贡献代码，或来信交流你的使用场景与需求。</p>
 </div>
@@ -1138,11 +1098,11 @@ python web_ui.py</pre>
 <div class="foot-meta">开源智能数据库巡检与实时监控平台<br/>让每一台数据库可知 · 可控 · 可防</div>
 </div>
 <div class="foot-links">
-<a href="#features">功能</a>
-<a href="#showcase">亮点</a>
+<a href="#features">核心功能</a>
+<a href="#showcase">产品亮点</a>
 <a href="#how">如何工作</a>
 <a href="#quickstart">快速开始</a>
-<a href="#databases">数据库</a>
+<a href="#databases">支持数据库</a>
 <a href="#usecases">使用场景</a>
 <a href="#model">版本与支持</a>
 <a href="#support">商业支持</a>
@@ -1155,31 +1115,6 @@ python web_ui.py</pre>
 </div>
 </footer>
 </div>
-<style>
-    /* ===== commercial support pricing ===== */
-    .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px}
-    .price-card{position:relative;background:var(--surface);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.7);border-radius:var(--radius);padding:34px 28px 30px;box-shadow:var(--shadow);overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
-    .price-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--primary-2)}
-    .price-card.featured{border:1.5px solid var(--gold);box-shadow:0 26px 60px -30px rgba(224,169,59,.65);background:linear-gradient(160deg,rgba(255,252,244,.95),rgba(250,246,255,.92))}
-    .pc-head{margin-bottom:18px}
-    .pc-name{font-family:var(--display);font-size:1.45rem;font-weight:700;color:var(--text);line-height:1.1}
-    .pc-sub{font-size:.86rem;color:var(--text-3);margin-top:6px}
-    .pc-price{display:flex;align-items:baseline;gap:2px;font-family:var(--mono);color:var(--primary);margin-bottom:22px}
-    .pc-price .cur{font-size:1.2rem;font-weight:700;margin-right:2px}
-    .pc-price .amt{font-size:2.6rem;font-weight:700;letter-spacing:-.02em}
-    .pc-price .per{font-size:.95rem;color:var(--text-3);margin-left:6px}
-    .pc-list{list-style:none;margin:0 0 8px;padding:0;display:flex;flex-direction:column;gap:11px}
-    .pc-list li{display:flex;align-items:flex-start;gap:10px;font-size:.94rem;color:var(--text-2);line-height:1.5}
-    .pc-list li i{margin-top:3px;font-size:.82rem;color:var(--green)}
-    .pc-list li.muted{color:var(--text-3)}
-    .pc-list li.muted i{color:var(--text-3)}
-    .pc-badge{position:absolute;top:18px;right:-34px;transform:rotate(45deg);background:linear-gradient(120deg,var(--gold),#caa23a);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.06em;padding:5px 40px;box-shadow:0 6px 16px -8px rgba(224,169,59,.8)}
-    .price-foot{text-align:center;margin-top:38px}
-    .price-foot .lead{color:var(--text-2);font-size:1rem}
-    .price-foot a{color:var(--primary);font-weight:600;text-decoration:none}
-    .price-foot a:hover{text-decoration:underline}
-    @media(max-width:880px){.price-grid{grid-template-columns:1fr}}
-  </style>
 <script>
     (function(){
       'use strict';
@@ -1211,8 +1146,6 @@ python web_ui.py</pre>
         }
         requestAnimationFrame(step);
       }
-
-      // initialise all [data-count] elements
       var counted = {};
       function runCount(el){
         if(counted[el.id || el.getAttribute('data-count')]) return;
@@ -1243,7 +1176,6 @@ python web_ui.py</pre>
       if(reduceMotion){
         document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
       } else {
-        // stagger grouped items
         document.querySelectorAll('.stagger').forEach(function(group){
           var items = group.querySelectorAll(':scope > .reveal');
           items.forEach(function(el, i){ el.style.transitionDelay = (Math.min(i, 8) * 80) + 'ms'; });
