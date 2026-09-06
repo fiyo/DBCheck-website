@@ -1159,7 +1159,7 @@ python web_ui.py</pre>
         var el = document.getElementById('dockerPulls');
         if(!el) return;
         function updatePulls(n){
-          if(n&&n>0) animateNumber(el, n, {suffix:'+', comma:true, dur:1800});
+          if(n&&n>0) animateNumber(el, n, {comma:true, dur:1800});
         }
         // 优先从本地 JSON 读取精确数字
         fetch('docker-stats.json')
