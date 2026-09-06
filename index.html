@@ -1154,22 +1154,32 @@ python web_ui.py</pre>
       }
       document.querySelectorAll('[data-count]').forEach(function(el){ runCount(el); });
 
-      // ---- Docker pulls (user volume): live via shields.io, fallback 3651 ----
+      // ---- Docker pulls: read from local JSON (精确数字), fallback shields.io ----
       (function(){
         var el = document.getElementById('dockerPulls');
         if(!el) return;
-        function parseAbbrev(s){
-          if(typeof s !== 'string') return null;
-          var m = s.trim().toLowerCase().match(/^([\d.]+)\s*([kmb])?$/);
-          if(!m) return null;
-          var n = parseFloat(m[1]); if(isNaN(n)) return null;
-          if(m[2]==='k') n*=1e3; else if(m[2]==='m') n*=1e6; else if(m[2]==='b') n*=1e9;
-          return Math.round(n);
+        function updatePulls(n){
+          if(n&&n>0) animateNumber(el, n, {suffix:'+', comma:true, dur:1800});
         }
-        fetch('https://img.shields.io/docker/pulls/jackge12345/dbcheck.json')
-          .then(function(r){return r.json();})
-          .then(function(d){ var n=parseAbbrev(d&&d.value); if(n&&n>0) animateNumber(el, n, {suffix:'+', comma:true, dur:1800}); })
-          .catch(function(){});
+        // 优先从本地 JSON 读取精确数字
+        fetch('docker-stats.json')
+          .then(function(r){ return r.json(); })
+          .then(function(d){ updatePulls(d&&d.pull_count); })
+          .catch(function(){
+            // fallback: shields.io (近似值)
+            function parseAbbrev(s){
+              if(typeof s !== 'string') return null;
+              var m = s.trim().toLowerCase().match(/^([\d.]+)\s*([kmb])?$/);
+              if(!m) return null;
+              var n = parseFloat(m[1]); if(isNaN(n)) return null;
+              if(m[2]==='k') n*=1e3; else if(m[2]==='m') n*=1e6; else if(m[2]==='b') n*=1e9;
+              return Math.round(n);
+            }
+            fetch('https://img.shields.io/docker/pulls/jackge12345/dbcheck.json')
+              .then(function(r){return r.json();})
+              .then(function(d){ var n=parseAbbrev(d&&d.value); updatePulls(n); })
+              .catch(function(){});
+          });
       })();
 
       // ---- reveal on scroll (with stagger) ----
