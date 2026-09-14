@@ -3,13 +3,13 @@
   "items": [
     {
       "icon": "🦝",
-      "text": "DBCheck v26.9 发布：智能诊断中心 · SQL 审计 · 多数据库巡检全面升级",
-      "link": "https://dbcheck.top",
+      "text": "RaccoonX v26.9 发布：智能诊断中心 · MCP Server · 工作流编排",
+      "link": "https://raccoonx.cn",
       "link_text": "了解详情"
     },
     {
       "icon": "⭐",
-      "text": "觉得 DBCheck 好用？去 GitHub 给我们一个 Star 吧",
+      "text": "觉得 RaccoonX 好用？去 GitHub 给我们一个 Star 吧",
       "link": "https://github.com/fiyo/DBCheck",
       "link_text": "GitHub Star"
     }
