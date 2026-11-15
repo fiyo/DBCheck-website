@@ -1338,6 +1338,118 @@ DM8 达梦（走纯 Java JDBC 驱动）、崖山 YashanDB、MongoDB、Redis、Cl
         }
         tabs.forEach(function(t, i){ t.addEventListener('click', function(){ activate(i); }); });
       })();
+
+      // ---- 滚动伙伴：小浣熊沿卡片顶边跳跃 ----
+      // 全部位移/跳跃都由滚动速度注入的 energy 驱动；滚动一停，energy 衰减到 0，
+      // rAF 循环自行结束，浣熊落地后完全静止（页面里没有任何 infinite 动画）。
+      // 复用 hero 已加载的 mascot.png，无额外请求；prefers-reduced-motion / 小屏 / 触屏不启用。
+      (function(){
+        if(reduceMotion) return;
+        if(!window.matchMedia('(min-width:981px) and (hover:hover)').matches) return;
+
+        var style = document.createElement('style');
+        style.textContent = [
+          '#rxBuddy{position:fixed;left:0;top:0;width:74px;height:74px;z-index:150;',
+          'pointer-events:none;will-change:transform;opacity:0;transition:opacity .4s ease;',
+          'filter:drop-shadow(0 9px 10px rgba(194,65,12,.26))}',
+          '#rxBuddy.on{opacity:1}',
+          '#rxBuddy img{display:block;width:100%;height:100%;object-fit:contain}',
+          '#rxBuddy .sh{position:absolute;left:50%;bottom:0;width:42px;height:8px;border-radius:50%;',
+          'background:rgba(42,14,8,.20);filter:blur(3px);transform:translateX(-50%)}',
+          '@media(max-width:980px),(hover:none){#rxBuddy{display:none}}'
+        ].join('');
+        document.head.appendChild(style);
+
+        var el = document.createElement('div');
+        el.id = 'rxBuddy';
+        el.setAttribute('aria-hidden', 'true');
+        el.innerHTML = '<div class="sh"></div><img src="mascot.png" alt="">';
+        document.body.appendChild(el);
+        var shadow = el.querySelector('.sh');
+
+        // 落脚点：可见的主卡片。缓存文档坐标，滚动过程中只做数值比较，不反复读布局。
+        var SEL = '.mcard,.dl-card,.moat,.step,.qs,.feat-item,.cta-box';
+        var cards = [];
+        function measure(){
+          var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+          cards = [];
+          Array.prototype.forEach.call(document.querySelectorAll(SEL), function(node){
+            if(node.offsetParent === null) return;              // 过滤 tab 中未激活的面板
+            var r = node.getBoundingClientRect();
+            if(r.width < 190 || r.height < 60) return;         // 过滤徽章/按钮等小元素
+            cards.push({ top: r.top + y, left: r.left, w: r.width });
+          });
+          cards.sort(function(a, b){ return a.top - b.top; });
+        }
+
+        // 选一张「顶边正好在视口内、且最靠近视线」的卡片作为落脚点
+        function pick(y){
+          var best = null, bestD = Infinity;
+          for(var i = 0; i < cards.length; i++){
+            var vt = cards[i].top - y;
+            if(vt < 116 || vt > window.innerHeight - 150) continue;
+            var d = Math.abs(vt - window.innerHeight * 0.42);
+            if(d < bestD){ bestD = d; best = { c: cards[i], vt: vt }; }
+          }
+          return best;
+        }
+
+        var lastY = window.pageYOffset || 0;
+        var energy = 0, phase = 0, cx = 0, cy = 0, raf = 0;
+        var started = false, visible = false, prevTop = null;
+
+        function frame(){
+          raf = 0;
+          var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+          var hit = pick(y);
+          var tx = cx, ty = cy;
+          if(hit){
+            tx = hit.c.left + hit.c.w * 0.72 - 37;   // 落在卡片偏右侧，避开标题文字
+            ty = hit.vt - 62;                         // 站在卡片顶边之上
+            if(!started){ cx = tx; cy = ty; started = true; }
+            else { cx += (tx - cx) * 0.26; cy += (ty - cy) * 0.26; }
+            var key = Math.round(hit.c.top);
+            if(key !== prevTop){ prevTop = key; energy = Math.max(energy, 0.9); phase = 0; } // 换卡片 → 起跳
+          }
+
+          energy *= 0.84;
+          phase += 0.18 + energy * 0.12;
+          var hop   = -Math.abs(Math.sin(phase)) * 24 * energy;
+          var tilt  = Math.sin(phase) * 7 * energy;
+          el.style.transform = 'translate3d(' + cx.toFixed(1) + 'px,' + (cy + hop).toFixed(1) + 'px,0) rotate(' + tilt.toFixed(1) + 'deg)';
+          shadow.style.opacity = (0.95 - energy * 0.55).toFixed(2);
+          shadow.style.transform = 'translateX(-50%) scale(' + (1 - energy * 0.35).toFixed(2) + ')';
+
+          // 首屏 hero 已有大吉祥物，滚过之后再淡入，避免两只叠在一起
+          var want = y > 240 && !!hit && started;
+          if(want !== visible){ visible = want; el.classList.toggle('on', want); }
+
+          // 能量耗尽 + 位置收敛 → 不再请求下一帧，画面彻底静止
+          if(energy > 0.012 || Math.abs(tx - cx) > 0.4 || Math.abs(ty - cy) > 0.4){
+            raf = requestAnimationFrame(frame);
+          } else {
+            el.style.transform = 'translate3d(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px,0)';
+            shadow.style.opacity = '0.95';
+            shadow.style.transform = 'translateX(-50%)';
+          }
+        }
+        function kick(){ if(!raf) raf = requestAnimationFrame(frame); }
+        function onScroll(){
+          var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+          energy = Math.min(1, energy + Math.abs(y - lastY) / 260);
+          lastY = y;
+          kick();
+        }
+
+        measure();
+        window.addEventListener('scroll', onScroll, {passive:true});
+        window.addEventListener('resize', function(){ measure(); kick(); }, {passive:true});
+        window.addEventListener('load', function(){ measure(); kick(); });
+        // 特性标签切换会改变可见卡片，需重新测量落脚点
+        Array.prototype.forEach.call(document.querySelectorAll('#featTabs .feat-tab'), function(tab){
+          tab.addEventListener('click', function(){ setTimeout(function(){ measure(); kick(); }, 30); });
+        });
+      })();
     })();
   </script>
 </div>
