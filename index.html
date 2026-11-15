@@ -216,7 +216,6 @@
     .sec-head{max-width:720px;margin:0 auto 46px;text-align:center}
     .sec-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;
       background:rgba(240,81,30,.1);border:1px solid var(--border);color:var(--primary);font-weight:700;font-size:.8rem;margin-bottom:16px}
-    .sec-tag.pro{background:rgba(226,59,46,.1);color:var(--red)}
     .sec-head h2{font-family:var(--display);font-size:clamp(1.7rem,3.2vw,2.5rem);line-height:1.15;font-weight:700;letter-spacing:-.02em;margin-bottom:14px}
     .sec-head p{color:var(--text-2);font-size:1.02rem}
 
@@ -360,28 +359,66 @@
     .bm li{display:flex;gap:10px;align-items:flex-start;color:var(--text-2);font-size:.94rem}
     .bm li i{color:var(--primary);margin-top:4px;font-size:.8rem;flex-shrink:0}
 
-    /* ---------- 商业支持报价 ---------- */
-    .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px}
-    .price-card{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:34px 28px 30px;box-shadow:var(--shadow);overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
-    .price-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--primary-2)}
-    .price-card.featured{border:1.5px solid var(--primary);box-shadow:0 26px 60px -30px rgba(240,81,30,.65);background:linear-gradient(160deg,#FFF6EE,#FFEFE2)}
-    .pc-head{margin-bottom:18px}
-    .pc-name{font-family:var(--display);font-size:1.45rem;font-weight:700;color:var(--text);line-height:1.1}
-    .pc-sub{font-size:.86rem;color:var(--text-3);margin-top:6px}
-    .pc-price{display:flex;align-items:baseline;gap:2px;font-family:var(--mono);color:var(--primary);margin-bottom:22px}
-    .pc-price .cur{font-size:1.2rem;font-weight:700;margin-right:2px}
-    .pc-price .amt{font-size:2.6rem;font-weight:700;letter-spacing:-.02em}
-    .pc-price .per{font-size:.95rem;color:var(--text-3);margin-left:6px}
-    .pc-list{list-style:none;margin:0 0 8px;padding:0;display:flex;flex-direction:column;gap:11px}
-    .pc-list li{display:flex;align-items:flex-start;gap:10px;font-size:.94rem;color:var(--text-2);line-height:1.5}
-    .pc-list li i{margin-top:3px;font-size:.82rem;color:var(--primary)}
-    .pc-list li.muted{color:var(--text-3)}
-    .pc-list li.muted i{color:var(--text-3)}
-    .pc-badge{position:absolute;top:18px;right:-34px;transform:rotate(45deg);background:linear-gradient(120deg,var(--red),var(--primary));color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.06em;padding:5px 40px;box-shadow:0 6px 16px -8px rgba(226,59,46,.8)}
-    .price-foot{text-align:center;margin-top:38px}
-    .price-foot .lead{color:var(--text-2);font-size:1rem}
-    .price-foot a{color:var(--primary);font-weight:600;text-decoration:none}
-    .price-foot a:hover{text-decoration:underline}
+    /* ---------- 支持开发 / 赞助（静态双码 + 心形鸣谢文字云） ---------- */
+    .anchor-guard{display:block;height:0;scroll-margin-top:78px}
+    #sponsor{scroll-margin-top:78px}
+    .sponsor-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;align-items:start}
+    .sponsor-pay,.sponsor-note{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px 26px;box-shadow:var(--shadow)}
+    .sp-pay-tabs{display:flex;gap:10px;margin-bottom:18px}
+    .sp-pay-tab{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--surface-soft);color:var(--text-2);font-size:.9rem;font-weight:600;cursor:pointer;transition:background .25s,border-color .25s,color .25s}
+    .sp-pay-tab:hover{border-color:var(--primary-2)}
+    .sp-pay-tab.active{background:linear-gradient(120deg,var(--primary),var(--primary-2));border-color:transparent;color:#fff}
+    .sp-qr-head{font-family:var(--display);font-size:1.1rem;font-weight:700;color:var(--text);text-align:center;margin-bottom:12px}
+    .sp-qr-frame{width:min(100%,248px);margin:0 auto;padding:10px;background:#fff;border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow-sm)}
+    .sp-qr-img{display:block;width:100%;height:auto;border-radius:8px}
+    .sp-qr-payee{text-align:center;font-size:.88rem;font-weight:600;color:var(--text);margin-top:14px}
+    .sp-qr-note{text-align:center;font-size:.82rem;line-height:1.8;color:var(--text-3);margin-top:10px}
+    .sp-qr-badge{display:inline-block;padding:2px 10px;border-radius:999px;background:rgba(240,81,30,.1);color:var(--primary);font-weight:700;font-size:.76rem;margin-bottom:6px}
+    .sp-qr-fine{margin-top:14px;padding-top:12px;border-top:1px dashed var(--border);font-size:.76rem;line-height:1.7;color:var(--text-3);text-align:center}
+    .sponsor-note h3{font-family:var(--display);font-size:1.3rem;font-weight:700;margin-bottom:12px;color:var(--text)}
+    .sponsor-note h3 i{color:var(--primary);margin-right:8px}
+    .sponsor-note>p{font-size:.95rem;color:var(--text-2);line-height:1.8;margin-bottom:16px}
+    .sp-notes{list-style:none;display:flex;flex-direction:column;gap:11px;margin:0 0 16px;padding:0}
+    .sp-notes li{display:flex;align-items:flex-start;gap:10px;font-size:.9rem;color:var(--text-2);line-height:1.7}
+    .sp-notes li i{color:var(--primary);margin-top:5px;font-size:.78rem;flex-shrink:0}
+    .sp-notes a{color:var(--primary);font-weight:600;text-decoration:none}
+    .sp-notes a:hover{text-decoration:underline}
+    .sp-note-foot{font-size:.86rem!important;color:var(--text-3)!important;margin:0!important}
+    .sponsor-wall{margin-top:40px;text-align:center}
+    .sponsor-wall[hidden]{display:none!important}
+    .sp-wall-label{display:inline-block;padding:6px 16px;border-radius:999px;background:rgba(240,81,30,.1);border:1px solid var(--border);color:var(--primary);font-size:.82rem;font-weight:700;letter-spacing:.04em}
+    .sp-cloud{position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;max-width:860px;min-height:260px;margin:18px auto 10px;padding:26px 20px;overflow:hidden}
+    .sp-cloud-heart{position:absolute;pointer-events:none}
+    .sp-cloud-heart-bg{width:94%;height:94%;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.12}
+    .sp-cloud-heart-mini{width:30px;top:12%;left:13%;transform:rotate(-16deg);opacity:.45}
+    .sp-cloud-deco{position:absolute;inset:0;pointer-events:none}
+    .sp-cloud-deco i{position:absolute;font-style:normal;font-size:13px;color:var(--primary-2);opacity:.45}
+    .sp-cloud-deco i:nth-child(1){left:5%;top:16%;transform:rotate(-18deg)}
+    .sp-cloud-deco i:nth-child(2){left:20%;top:8%;font-size:10px}
+    .sp-cloud-deco i:nth-child(3){right:8%;top:20%;transform:rotate(14deg)}
+    .sp-cloud-deco i:nth-child(4){right:20%;top:9%;font-size:11px}
+    .sp-cloud-deco i:nth-child(5){left:10%;bottom:14%;font-size:10px}
+    .sp-cloud-deco i:nth-child(6){right:12%;bottom:18%;transform:rotate(-12deg)}
+    .sp-cloud-deco i:nth-child(7){left:30%;bottom:6%;font-size:9px}
+    .sp-cloud-deco i:nth-child(8){right:32%;bottom:7%;font-size:12px}
+    .sp-cloud-core{position:relative;z-index:2;flex:0 0 100%;font-family:var(--display);font-size:clamp(1.35rem,3vw,2rem);font-weight:700;letter-spacing:.01em;margin:4px 0 16px;background:linear-gradient(100deg,var(--red-deep),var(--primary) 55%,#C4558F);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .sp-name{position:relative;display:inline-block;margin:5px 9px;padding:2px 5px;white-space:nowrap;font-weight:600;cursor:default;opacity:0;transform:translateY(16px) rotate(var(--rot,0deg)) scale(.94);transition:opacity .55s ease,transform .55s cubic-bezier(.2,.7,.3,1),color .25s,text-shadow .25s;transition-delay:var(--d,0ms)}
+    .sp-name.in{opacity:var(--op,1);transform:translateY(var(--ty,0px)) rotate(var(--rot,0deg)) scale(1)}
+    .sp-name[data-tone="0"]{color:#B8431C}
+    .sp-name[data-tone="1"]{color:#1F6F66}
+    .sp-name[data-tone="2"]{color:#9B4A86}
+    .sp-name:hover{z-index:5;color:var(--primary);text-shadow:0 0 14px rgba(240,81,30,.45);transform:translateY(0) rotate(0deg) scale(1.14);transition-delay:0ms}
+    .sp-name::before{content:"";position:absolute;inset:-9px -11px;border-radius:999px;background:radial-gradient(ellipse,rgba(255,154,61,.32),transparent 70%);opacity:0;transition:opacity .3s;pointer-events:none}
+    .sp-name:hover::before{opacity:1}
+    .sp-name::after{content:"♥ ♥";position:absolute;left:50%;top:-2px;font-size:10px;color:var(--primary-2);opacity:0;pointer-events:none;white-space:nowrap;transform:translate(-50%,0)}
+    .sp-name:hover::after{animation:spHeartFloat 1.1s ease-out forwards}
+    @keyframes spHeartFloat{0%{opacity:0;transform:translate(-50%,4px) scale(.7)}25%{opacity:.9}100%{opacity:0;transform:translate(-50%,-26px) scale(1.1)}}
+    .sp-wall-line{font-size:.95rem;color:var(--text-2);font-weight:600}
+    .sp-wall-note{font-size:.8rem;color:var(--text-3);margin-top:6px}
+    @media(hover:none){
+      .sp-name::before,.sp-name::after{display:none}
+      .sp-name:hover{transform:translateY(var(--ty,0px)) rotate(var(--rot,0deg)) scale(1);text-shadow:none}
+    }
 
     /* ---------- 开源社区 ---------- */
     .community{background:linear-gradient(135deg,var(--ink-deep),var(--ink-deep-3));color:var(--on-dark);border-radius:var(--radius-lg);padding:56px 40px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
@@ -434,7 +471,8 @@
       .tb-side{grid-template-columns:repeat(3,1fr)}
       .bento{grid-template-columns:repeat(2,1fr)}
       .mcard.span2,.mcard.span4{grid-column:span 2}
-      .steps,.qs-grid,.price-grid{grid-template-columns:repeat(2,1fr)}
+      .steps,.qs-grid{grid-template-columns:repeat(2,1fr)}
+      .sponsor-grid{grid-template-columns:1fr}
       .moat-grid{grid-template-columns:repeat(2,1fr)}
       .cust-grid,.bm-grid{grid-template-columns:1fr}
       .feat-list{grid-template-columns:1fr}
@@ -444,7 +482,9 @@
       .nav-links{display:none;position:absolute;top:64px;left:12px;right:12px;flex-direction:column;background:var(--surface);padding:14px;border-radius:16px;box-shadow:var(--shadow-lg);border:1px solid var(--border)}
       .nav-links.open{display:flex}
       .menu-toggle{display:block}
-      .bento,.steps,.qs-grid,.price-grid,.moat-grid,.tb-side{grid-template-columns:1fr}
+      .bento,.steps,.qs-grid,.moat-grid,.tb-side{grid-template-columns:1fr}
+      .sp-cloud{min-height:0;padding:18px 8px}
+      .sp-name{margin:4px 6px}
       .mcard.span2,.mcard.span4{grid-column:span 1}
       .block{padding:60px 0}
       .mini-dash{position:relative;right:0;bottom:0;margin-top:18px;width:100%}
@@ -452,6 +492,7 @@
     @media(prefers-reduced-motion:reduce){
       *{animation:none!important;transition:none!important}
       .reveal{opacity:1;transform:none}
+      .sp-name,.sp-name.in{opacity:1!important;transform:none!important;transition:none!important}
       .hero-copy>*{opacity:1;animation:none}
     }
 </style>
@@ -480,8 +521,8 @@
 <a href="#download">下载</a>
 <a href="#databases">支持数据库</a>
 <a href="#usecases">使用场景</a>
-<a href="#model">版本与支持</a>
-<a href="#support">商业支持</a>
+<a href="#model">开源与社区</a>
+<a href="#sponsor">支持开发</a>
 </nav>
 <div class="nav-actions">
 <a class="btn btn-ghost" href="https://github.com/fiyo/DBCheck" target="_blank"><i class="fab fa-github"></i> GitHub</a>
@@ -496,7 +537,7 @@
 <div class="hero-copy">
 <div class="hero-badge"><span class="pulse"></span> 社区版 · 开源 Apache 2.0 协议 · <span id="verBadge">v26.11.14.2</span></div>
 <h1>让数据库运维<br/><span class="gradient-text">可知 · 可控 · 可防</span></h1>
-<p class="sub">RaccoonX（原名 DBCheck）是一款<strong>开源、跨平台</strong>、支持 <strong>22 种</strong>主流与国产数据库的智能巡检与实时监控平台。内置 839+ 巡检规则、实时监控大屏、本地 AI 诊断、SQL 审核与工作流编排，把 DBA 的重复劳动变成一键流程。</p>
+<p class="sub">RaccoonX 是一款<strong>开源、跨平台</strong>、支持 <strong>22 种</strong>主流与国产数据库的智能巡检与实时监控平台。内置 839+ 巡检规则、实时监控大屏、本地 AI 诊断、SQL 审核与工作流编排，把 DBA 的重复劳动变成一键流程。</p>
 <div class="hero-tags">
 <span><i class="fas fa-globe"></i> Web 界面</span>
 <span><i class="fas fa-lock"></i> 私有化部署</span>
@@ -1037,9 +1078,9 @@ DM8 达梦（走纯 Java JDBC 驱动）、崖山 YashanDB、MongoDB、Redis、Cl
 <section class="block" id="model">
 <div class="container">
 <div class="sec-head reveal">
-<div class="sec-tag"><i class="fas fa-book-open"></i> 版本与支持</div>
-<h2>开源免费，商业支持可选</h2>
-<p>RaccoonX 社区版永久免费、Apache 2.0 开源，前述全部能力（含协同诊断中枢、eBPF / SSH 采集、工单闭环）均随社区版开放；如需稳定的官方技术支持，可购买商业支持服务。</p>
+<div class="sec-tag"><i class="fas fa-book-open"></i> 开源与社区</div>
+<h2>开源免费，社区驱动</h2>
+<p>RaccoonX 社区版永久免费、Apache 2.0 开源，前述全部能力（含协同诊断中枢、eBPF / SSH 采集、工单闭环）均随社区版开放；项目按 issue 跟踪、自担风险维护，不提供商业技术支持。如它帮上了忙，也欢迎以完全自愿的方式支持开发。</p>
 </div>
 <div class="bm-grid stagger">
 <div class="bm reveal">
@@ -1056,70 +1097,73 @@ DM8 达梦（走纯 Java JDBC 驱动）、崖山 YashanDB、MongoDB、Redis、Cl
 </ul>
 </div>
 <div class="bm reveal">
-<div class="bmk">SERVICES · 已开放</div>
-<h3>商业技术支持</h3>
-<div class="price">付费官方支持服务</div>
+<div class="bmk">COMMUNITY · 反馈与共建</div>
+<h3>社区与反馈</h3>
+<div class="price">自愿赞助支持</div>
 <ul>
-<li><i class="fas fa-check"></i> 基础版 / 标准版 / 企业版（按年）</li>
-<li><i class="fas fa-check"></i> 问题响应、故障排查、版本适配</li>
-<li><i class="fas fa-check"></i> 部署咨询与定制支持</li>
+<li><i class="fas fa-check"></i> 提 issue / PR，参与规则与文档共建</li>
+<li><i class="fas fa-check"></i> 写使用心得、内部分享，或推荐给同事</li>
+<li><i class="fas fa-check"></i> 完全自愿的赞助，无任何服务或权益回报</li>
+<li><i class="fas fa-check"></i> 名单只记昵称，可随时要求移除</li>
 </ul>
-<a class="btn btn-ghost" href="#support" style="margin-top:18px"><i class="fas fa-arrow-right"></i> 查看服务报价</a>
+<a class="btn btn-ghost" href="#sponsor" style="margin-top:18px"><i class="fas fa-arrow-right"></i> 支持开发</a>
 </div>
 </div>
 </div>
 </section>
-<!-- ================= COMMERCIAL SUPPORT ================= -->
-<section class="block alt" id="support">
+<!-- ================= 旧 #support 锚点保留，防止历史外链失效 ================= -->
+<span id="support" class="anchor-guard" aria-hidden="true"></span>
+<!-- ================= SPONSOR / 支持开发 ================= -->
+<section class="block alt" id="sponsor">
 <div class="container">
 <div class="sec-head reveal">
-<div class="sec-tag pro"><i class="fas fa-headset"></i> 商业技术支持</div>
-<h2>商业技术支持（付费）</h2>
-<p>如贵司需要稳定的官方技术支持（问题响应、故障排查、版本适配、部署咨询等），可购买我们的商业支持服务。建议方案如下（最终以正式报价单为准）：</p>
+<div class="sec-tag"><i class="fas fa-mug-hot"></i> 支持开发</div>
+<h2>支持 RaccoonX 持续更新</h2>
+<p>RaccoonX 社区版永久免费、Apache 2.0 开源，不提供商业技术支持。如果它帮你省过一次排查、少熬过一次夜，可以完全自愿地支持开发——金额自定，扫码即可。</p>
 </div>
-<div class="price-grid stagger">
-<div class="price-card reveal">
-<div class="pc-head">
-<div class="pc-name">基础版</div>
-<div class="pc-sub">标准响应 · 成本可控</div>
+
+<div class="sponsor-grid stagger">
+<div class="sponsor-pay reveal">
+<div class="sp-pay-tabs" role="tablist" aria-label="收款方式">
+<button type="button" class="sp-pay-tab active" data-pay="wechat" role="tab" aria-selected="true" onclick="setSponsorPay('wechat')"><i class="fab fa-weixin"></i> 微信</button>
+<button type="button" class="sp-pay-tab" data-pay="alipay" role="tab" aria-selected="false" onclick="setSponsorPay('alipay')"><i class="fab fa-alipay"></i> 支付宝</button>
 </div>
-<div class="pc-price"><span class="cur">¥</span><span class="amt">9,800</span><span class="per">/ 年起</span></div>
-<ul class="pc-list">
-<li><i class="fas fa-check"></i> 邮件 / 工单支持，工作日响应（≤24h）</li>
-<li><i class="fas fa-check"></i> bug 修复</li>
-<li class="muted"><i class="fas fa-times"></i> 不含紧急服务</li>
+<div class="sp-qr-head" id="sp-qr-head">微信</div>
+<div class="sp-qr-frame"><img class="sp-qr-img" id="sp-qr-img" src="assets/web/donate-wechat.png" alt="微信收款码 · 程序猿水果摊"></div>
+<div class="sp-qr-payee" id="sp-qr-payee">收款方：程序猿水果摊</div>
+<div class="sp-qr-note"><span class="sp-qr-badge" id="sp-qr-badge">微信支付</span><br><span id="sp-qr-note">长按图片识别，或保存到相册后用微信打开。</span></div>
+<div class="sp-qr-fine">个人收款码，与软件功能、服务响应无关；纯自愿支持，无任何服务或权益回报。</div>
+</div>
+
+<div class="sponsor-note reveal">
+<h3><i class="fas fa-heart"></i> 请作者喝杯咖啡</h3>
+<p>每一笔都用于让项目持续更新：域名、CI 构建分钟数、测试用的国产数据库环境。</p>
+<ul class="sp-notes">
+<li><i class="fas fa-check"></i> 纯自愿，金额自定；不附带任何服务或权益回报，也不会影响 issue 的处理顺序。</li>
+<li><i class="fas fa-check"></i> 这不是公益募捐，不提供捐赠票据，也不享受税收优惠。</li>
+<li><i class="fas fa-check"></i> 不改变 Apache 2.0 授权：社区版永久免费、全功能开放，不提供商业技术支持。</li>
+<li><i class="fas fa-check"></i> 如需退款，请通过支付平台账单申请，或邮件联系 <a href="mailto:sdfiyon@gmail.com">sdfiyon@gmail.com</a>。</li>
+<li><i class="fas fa-check"></i> 名单只记昵称，不记金额、排名与日期；不想显示名字，提个 issue 或来信即可移除。</li>
 </ul>
-</div>
-<div class="price-card featured reveal">
-<div class="pc-badge">推荐</div>
-<div class="pc-head">
-<div class="pc-name">标准版</div>
-<div class="pc-sub">含紧急响应 · 小版本适配</div>
-</div>
-<div class="pc-price"><span class="cur">¥</span><span class="amt">29,800</span><span class="per">/ 年起</span></div>
-<ul class="pc-list">
-<li><i class="fas fa-check"></i> 含紧急响应（白天 ≤8h SLA）</li>
-<li><i class="fas fa-check"></i> 小版本适配，不增加新功能</li>
-<li><i class="fas fa-check"></i> 邮件 / 工单支持，工作日响应（≤24h）</li>
-<li><i class="fas fa-check"></i> bug 修复</li>
-</ul>
-</div>
-<div class="price-card reveal">
-<div class="pc-head">
-<div class="pc-name">企业版</div>
-<div class="pc-sub">最高 SLA · 定制开发</div>
-</div>
-<div class="pc-price"><span class="cur">¥</span><span class="amt">98,000</span><span class="per">/ 年起</span></div>
-<ul class="pc-list">
-<li><i class="fas fa-check"></i> 含紧急响应（白天 ≤4h SLA）</li>
-<li><i class="fas fa-check"></i> 定制开发</li>
-<li><i class="fas fa-check"></i> 内网离线部署协助</li>
-<li><i class="fas fa-check"></i> 含标准版全部服务能力</li>
-</ul>
+<p class="sp-note-foot">不付款也完全没关系：点个 Star、提个 issue、写一篇使用心得，一样是在帮它变好。</p>
 </div>
 </div>
-<div class="price-foot reveal">
-<p class="lead">以上为建议方案，最终以正式报价单为准。如需咨询，请邮件联系 <a href="mailto:sdfiyon@gmail.com"><i class="fas fa-envelope"></i> sdfiyon@gmail.com</a>。</p>
+
+<div class="sponsor-wall reveal" id="sponsor-wall" hidden>
+<div class="sp-wall-label">也谢谢这些名字</div>
+<div class="sp-cloud" id="sp-cloud-words">
+<svg class="sp-cloud-heart sp-cloud-heart-bg" viewBox="0 0 100 92" aria-hidden="true">
+<defs><linearGradient id="spHeartGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F0511E"/><stop offset="100%" stop-color="#F19BBB"/></linearGradient></defs>
+<path d="M50 88C20 66 3 48 3 29 3 14 15 3 30 3c9 0 16 5 20 13 4-8 11-13 20-13 15 0 27 11 27 26 0 19-17 37-47 59z" fill="url(#spHeartGrad)"/>
+</svg>
+<svg class="sp-cloud-heart sp-cloud-heart-mini" viewBox="0 0 100 92" aria-hidden="true">
+<path d="M50 88C20 66 3 48 3 29 3 14 15 3 30 3c9 0 16 5 20 13 4-8 11-13 20-13 15 0 27 11 27 26 0 19-17 37-47 59z" fill="#FF7A3D"/>
+</svg>
+<span class="sp-cloud-deco" aria-hidden="true"><i>♥</i><i>♥</i><i>♥</i><i>♥</i><i>♥</i><i>♥</i><i>♥</i><i>♥</i></span>
+<span class="sp-cloud-core">感谢每一位支持者</span>
+</div>
+<p class="sp-wall-line">每一笔都用于让项目持续更新。</p>
+<p class="sp-wall-note">只记昵称，不排名、不显示金额与日期；不想显示名字，提个 issue 或来信，我删掉。</p>
 </div>
 </div>
 </section>
@@ -1148,7 +1192,7 @@ DM8 达梦（走纯 Java JDBC 驱动）、崖山 YashanDB、MongoDB、Redis、Cl
 <h2>开始使用 RaccoonX</h2>
 <p>免费、开源、可私有化部署。欢迎试用、提建议，或与我们交流你的数据库运维场景。</p>
 <div class="hero-cta">
-<a class="btn btn-outline" href="#support"><i class="fas fa-award"></i> 商业支持</a>
+<a class="btn btn-outline" href="#sponsor"><i class="fas fa-heart"></i> 支持开发</a>
 <a class="btn btn-ghost" href="#quickstart"><i class="fas fa-rocket"></i> 快速开始</a>
 <a class="btn btn-primary" href="https://github.com/fiyo/DBCheck" target="_blank"><i class="fab fa-github"></i> 查看开源项目</a>
 </div>
@@ -1169,8 +1213,8 @@ DM8 达梦（走纯 Java JDBC 驱动）、崖山 YashanDB、MongoDB、Redis、Cl
 <a href="#quickstart">快速开始</a>
 <a href="#databases">支持数据库</a>
 <a href="#usecases">使用场景</a>
-<a href="#model">版本与支持</a>
-<a href="#support">商业支持</a>
+<a href="#model">开源与社区</a>
+<a href="#sponsor">支持开发</a>
 <a href="mailto:sdfiyon@gmail.com">联系</a>
 </div>
 </div>
@@ -1452,6 +1496,83 @@ DM8 达梦（走纯 Java JDBC 驱动）、崖山 YashanDB、MongoDB、Redis、Cl
       })();
     })();
   </script>
+
+<script>
+(function(){
+  'use strict';
+  var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+  // 收款码切换：与主程序「作者手记」同一组收款主体，纯前端、零后端
+  var payCfg = {
+    wechat: {
+      img:'assets/web/donate-wechat.png', alt:'微信收款码 · 程序猿水果摊',
+      head:'微信', badge:'微信支付', payee:'收款方：程序猿水果摊',
+      note:'长按图片识别，或保存到相册后用微信打开。'
+    },
+    alipay: {
+      img:'assets/web/donate-alipay.png', alt:'支付宝收款码 · 程序猿水果(**杰)',
+      head:'支付宝', badge:'支付宝', payee:'收款方：程序猿水果(**杰)',
+      note:'保存图片后，在支付宝中从相册识别。'
+    }
+  };
+  window.setSponsorPay = function(pay){
+    var c = payCfg[pay] || payCfg.wechat;
+    var img = document.getElementById('sp-qr-img');
+    if(!img) return;
+    img.src = c.img; img.alt = c.alt;
+    var put = function(id, val){ var el = document.getElementById(id); if(el) el.textContent = val; };
+    put('sp-qr-head', c.head); put('sp-qr-badge', c.badge);
+    put('sp-qr-payee', c.payee); put('sp-qr-note', c.note);
+    Array.prototype.forEach.call(document.querySelectorAll('.sp-pay-tab'), function(btn){
+      var on = btn.getAttribute('data-pay') === pay;
+      btn.classList.toggle('active', on);
+      btn.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+  };
+
+  function hash(i, salt){ return ((i * 9301 + salt) % 233280) / 233280; }
+  function styleName(el, i){
+    var text = el.textContent || '';
+    var r1 = hash(i + 1, 49297), r2 = hash(i + 1, 18719);
+    var size = text.length > 14 ? 12 : text.length > 9 ? 13.5 : (13.5 + Math.round(r1 * 6));
+    el.style.fontSize = size + 'px';
+    el.style.setProperty('--ty', ((r1 - .5) * 10).toFixed(1) + 'px');
+    el.style.setProperty('--rot', (r2 * 14 - 7).toFixed(1) + 'deg');
+    el.style.setProperty('--d', (Math.min(i, 30) * 35) + 'ms');  // 依次入场延迟封顶 30 个
+    el.setAttribute('data-tone', String(i % 3));                  // 配色只由序号决定，与金额无关
+    if (i % 5 === 2) el.style.setProperty('--op', '.72');
+  }
+  function revealNames(wall){
+    var add = function(){ Array.prototype.forEach.call(wall.querySelectorAll('.sp-name'), function(n){ n.classList.add('in'); }); };
+    if (reduce || !('IntersectionObserver' in window)) { add(); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ add(); io.unobserve(e.target); } });
+    }, {threshold:.12});
+    io.observe(wall);
+  }
+
+  var wall = document.getElementById('sponsor-wall');
+  var box = document.getElementById('sp-cloud-words');
+  if(!wall || !box) return;
+  fetch('donors.json', {cache:'no-store'})
+    .then(function(r){ if(!r.ok) throw new Error('http ' + r.status); return r.json(); })
+    .then(function(d){
+      var names = (d && d.enabled && Array.isArray(d.names)) ? d.names : [];
+      if(!names.length) return;                       // 空名单 / 关闭：静默隐藏，不留白框
+      names.forEach(function(n, i){
+        var span = document.createElement('span');
+        span.className = 'sp-name';
+        span.textContent = String(n);                // 远程内容只走 textContent，不拼 innerHTML
+        styleName(span, i);
+        box.appendChild(span);
+      });
+      wall.hidden = false;
+      wall.classList.add('in');
+      revealNames(wall);
+    })
+    .catch(function(){ /* 静默降级 */ });
+})();
+</script>
 </div>
 </body>
 </html>
